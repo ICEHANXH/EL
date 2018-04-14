@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/libofmusic" />
+            <option value="$PROJECT_DIR$/testoflfm" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -112,6 +112,10 @@
         "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\3fd661db4e3a472b9ca31b3850c95f70\\res\\drawable-mdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
+        "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_main_navigation_head.xml.flat",
+        "source": "F:\\EL\\Meetings\\ELApp\\app\\src\\main\\res\\layout\\main_navigation_head.xml"
+    },
+    {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
         "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\3fd661db4e3a472b9ca31b3850c95f70\\res\\drawable-xxxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
@@ -336,10 +340,6 @@
         "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\3fd661db4e3a472b9ca31b3850c95f70\\res\\drawable-mdpi-v4\\abc_popup_background_mtrl_mult.9.png"
     },
     {
-        "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_new_mession.xml.flat",
-        "source": "F:\\EL\\Meetings\\ELApp\\app\\src\\main\\res\\drawable\\ic_new_mession.xml"
-    },
-    {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_alert_dialog_title_material.xml.flat",
         "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\3fd661db4e3a472b9ca31b3850c95f70\\res\\layout\\abc_alert_dialog_title_material.xml"
     },
@@ -354,6 +354,10 @@
     {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_tab_indicator_material.xml.flat",
         "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\3fd661db4e3a472b9ca31b3850c95f70\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_new_task.xml.flat",
+        "source": "F:\\EL\\Meetings\\ELApp\\app\\src\\main\\res\\drawable\\ic_new_task.xml"
     },
     {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_main_icon.xml.flat",
@@ -478,6 +482,10 @@
     {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_notification_action_tombstone.xml.flat",
         "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\0aa23a26b2873b9a70ce3805c0cb6b36\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\menu_navigation_content.xml.flat",
+        "source": "F:\\EL\\Meetings\\ELApp\\app\\src\\main\\res\\menu\\navigation_content.xml"
     },
     {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_black_16dp.png.flat",
@@ -606,10 +614,6 @@
     {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ratingbar_indicator_material.xml.flat",
         "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\3fd661db4e3a472b9ca31b3850c95f70\\res\\drawable\\abc_ratingbar_indicator_material.xml"
-    },
-    {
-        "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\menu_navigation.xml.flat",
-        "source": "F:\\EL\\Meetings\\ELApp\\app\\src\\main\\res\\menu\\navigation.xml"
     },
     {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -854,10 +858,6 @@
     {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_background_cache_hint_selector_material_dark.xml.flat",
         "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\3fd661db4e3a472b9ca31b3850c95f70\\res\\color\\abc_background_cache_hint_selector_material_dark.xml"
-    },
-    {
-        "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_navigation_head.xml.flat",
-        "source": "F:\\EL\\Meetings\\ELApp\\app\\src\\main\\res\\layout\\navigation_head.xml"
     },
     {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
@@ -1408,6 +1408,10 @@
         "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\3fd661db4e3a472b9ca31b3850c95f70\\res\\drawable-hdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
     },
     {
+        "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_main_right.xml.flat",
+        "source": "F:\\EL\\Meetings\\ELApp\\app\\src\\main\\res\\layout\\fragment_main_right.xml"
+    },
+    {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_voice_search_api_material.xml.flat",
         "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\3fd661db4e3a472b9ca31b3850c95f70\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },
@@ -1630,6 +1634,10 @@
     {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\3fd661db4e3a472b9ca31b3850c95f70\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_main_left.xml.flat",
+        "source": "F:\\EL\\Meetings\\ELApp\\app\\src\\main\\res\\layout\\fragment_main_left.xml"
     },
     {
         "merged": "F:\\EL\\Meetings\\ELApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxxhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
