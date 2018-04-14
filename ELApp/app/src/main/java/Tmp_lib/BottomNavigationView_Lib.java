@@ -8,6 +8,10 @@ import android.widget.TextView;
 import com.example.lenovo.elapp.R;
 
 public class BottomNavigationView_Lib {
+    /**
+     * @param textView :(it could be changed into your own views) return the action
+     *                 listener to react something to the Onclick
+    * */
     public BottomNavigationView.OnNavigationItemSelectedListener
     Get_OnNavigationItemselectedListener(final TextView textView) {
         return new BottomNavigationView.OnNavigationItemSelectedListener() {
