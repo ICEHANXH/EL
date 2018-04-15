@@ -27,23 +27,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/navigation_content" />
+            app:menu="@menu/main_bottom_navigation_content" />
     </android.support.constraint.ConstraintLayout>
 
-    <!--<android.support.design.widget.NavigationView-->
-    <!--android:id="@+id/navigation_view"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_marginStart="8dp"-->
-    <!--android:layout_marginTop="8dp"-->
-    <!--android:fitsSystemWindows="true"-->
-    <!--android:foregroundGravity="left"-->
-    <!--app:headerLayout="@layout/main_navigation_head"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent"-->
-    <!--app:menu="@menu/navigation_menu">-->
-
-    <!--</android.support.design.widget.NavigationView>-->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/left_navigation_view_header_layout"
+        app:menu="@menu/left_navigation_view_menu"
+        tools:ignore="RtlHardcoded" />
 
 </android.support.v4.widget.DrawerLayout>
 

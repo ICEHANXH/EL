@@ -16,12 +16,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Fragment_Lib.replaceFragment(this, new MainActivityLeftFragment(), R.id.root_Frame_layout);
         BottomNavigationTask();
+        NavigationViewTask();
+
+    }
+
+    private void NavigationViewTask() {
 
     }
 
     private void BottomNavigationTask() {
+        Fragment_Lib.replaceFragment(this, new MainActivityLeftFragment(), R.id.root_Frame_layout);
         BottomNavigationView navigation = findViewById(R.id.MainActivityNavigation);
         navigation.setOnNavigationItemSelectedListener(
                 BottomNavigationView_Lib.Get_OnNavigationItemselectedListener(this));
