@@ -1,23 +1,28 @@
 package Fragments;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-
-import com.example.lenovo.elapp.R;
 
 public class Fragment_Lib extends AppCompatActivity {
 
     /**
      * @param fragment:Destination of the replacement
-     * @param idOfLayout:source    of the layout of the fragment
+     * @param fragmentActivity:the source activity
+     * @param Root_frame_layout    :the id of the fragment layout___be careful of the param!!!
      */
-    public void replaceFragment(Fragment fragment, int idOfLayout) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+    public static void replaceFragment(FragmentActivity fragmentActivity, Fragment fragment
+            , int Root_frame_layout) {
+        FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(idOfLayout, fragment);
+        fragmentTransaction.replace(Root_frame_layout, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+//
+//    public static void replaceFragment(Fragment fragment) {
+//
+//    }
 }
