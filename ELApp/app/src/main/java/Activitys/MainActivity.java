@@ -9,6 +9,8 @@ import android.view.MenuItem;
 
 import com.example.lenovo.elapp.R;
 
+import java.util.LinkedList;
+
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
 import Tmp_lib.BottomNavigationView_Lib;
@@ -26,14 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void NavigationViewTask() {
         NavigationView navigationView = findViewById(R.id.navigation_view_left);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
+        navigationView.setNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
 
-                }
-                return false;
             }
+            return false;
         });
     }
 

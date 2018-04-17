@@ -17,24 +17,20 @@ public class BottomNavigationView_Lib {
      */
     public static BottomNavigationView.OnNavigationItemSelectedListener
     Get_OnNavigationItemselectedListener(final FragmentActivity fragmentActivity) {
-        return new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        Fragment_Lib.replaceFragment(fragmentActivity, new MainActivityLeftFragment()
-                                , R.id.root_Frame_layout);
-                        return true;
-                    case R.id.navigation_dashboard:
-                        return true;
-                    case R.id.navigation_notifications:
-                        Fragment_Lib.replaceFragment(fragmentActivity, new MainActivityRightFragment()
-                                , R.id.root_Frame_layout);
-                        return true;
-                }
-                return false;
+        return item -> {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Fragment_Lib.replaceFragment(fragmentActivity, new MainActivityLeftFragment()
+                            , R.id.root_Frame_layout);
+                    return true;
+                case R.id.navigation_dashboard:
+                    return true;
+                case R.id.navigation_notifications:
+                    Fragment_Lib.replaceFragment(fragmentActivity, new MainActivityRightFragment()
+                            , R.id.root_Frame_layout);
+                    return true;
             }
+            return false;
         };
     }
 
