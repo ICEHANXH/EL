@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 
 import com.example.lenovo.elapp.R;
 
+/**
+ * The multi game scene
+ */
 public class MainActivityRightFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

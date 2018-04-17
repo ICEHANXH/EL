@@ -13,7 +13,7 @@ import Fragments.MainActivityRightFragment;
 
 public class BottomNavigationView_Lib {
     /**
-     *
+     * @param fragmentActivity :the source activity that contains the BottomNavigation
      */
     public static BottomNavigationView.OnNavigationItemSelectedListener
     Get_OnNavigationItemselectedListener(final FragmentActivity fragmentActivity) {

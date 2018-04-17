@@ -1,8 +1,11 @@
 package Activitys;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import com.example.lenovo.elapp.R;
 
@@ -17,12 +20,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationTask();
-        NavigationViewTask();
+        //       NavigationViewTask();
 
     }
 
     private void NavigationViewTask() {
+        NavigationView navigationView = findViewById(R.id.navigation_view_left);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
 
+                }
+                return false;
+            }
+        });
     }
 
     private void BottomNavigationTask() {
