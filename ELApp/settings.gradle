@@ -1,1 +1,1 @@
-include ':app', ':libofmusic', ':testoflfm', ':testofmusic', ':testlfm'
+include ':app', ':libofmusic', ':testoflfm', ':testofmusic'

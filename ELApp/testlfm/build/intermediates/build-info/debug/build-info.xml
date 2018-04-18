@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86"
+    api-level="28"
+    build-mode="HOT_WARM"
+    density="560dpi"
+    format="10"
+    plugin-version="3.1.1"
+    timestamp="1524062458746"
+    token="-373531461787291228"
+    verifier="COMPATIBLE" >
+
+    <task
+        name="javac"
+        duration="110" />
+    <task
+        name="instant-run-dex"
+        duration="61" />
+    <task
+        name="instant-run-transform"
+        duration="74" />
+    <task
+        name="verifier"
+        duration="30" />
+
+    <artifact
+        location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
+
+    <build
+        build-mode="FULL"
+        timestamp="1524060645870"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\instant-run-apk\debug\testlfm-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1524061152320"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\instant-run-apk\debug\testlfm-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1524061595198"
+        verifier="METHOD_DELETED" >
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1524062362643"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1524062458746"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="F:\EL\Meetings\ELApp\testlfm\build\intermediates\reload-dex\debug\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+
+</instant-run>
