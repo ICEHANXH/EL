@@ -1,4 +1,0 @@
-#Wed Apr 18 22:19:15 CST 2018
-base.0=F\:\\EL\\Meetings\\ELApp\\testlfm\\build\\intermediates\\transforms\\dexMerger\\debug\\4
-path.0=classes.dex
-renamed.0=classes.dex
