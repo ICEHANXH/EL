@@ -1,19 +1,19 @@
 package Activitys;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.lenovo.elapp.R;
-
-import java.util.LinkedList;
 
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
 import Tmp_lib.BottomNavigationView_Lib;
+import Tmp_lib.Music_lib;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,37 +42,20 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(
                 BottomNavigationView_Lib.Get_OnNavigationItemselectedListener(this));
     }
-//
-//    /**
-//     * Conduct the actions of the NavigationBottom.
-//     */
-//    private void NavigationView_part() {
-//        BottomNavigationView navigation = findViewById(R.id.MainActivityNavigation);
-//        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.navigation_home:
-//                        Fragment_Lib.replaceFragment(new MainActivity(), new MainActivityLeftFragment()
-//                                , R.id.root_Frame_layout);
-//                        return true;
-//                    case R.id.navigation_dashboard:
-//                        return true;
-//                    case R.id.navigation_notifications:
-//                        Fragment_Lib.replaceFragment(new MainActivity(), new MainActivityRightFragment()
-//                                , R.id.root_Frame_layout);
-//                        return true;
-//                }
-//                return false;
-//            }
-//        });
-//    }
-//
-//    private void replaceFragment(Fragment fragment) {
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.root_Frame_layout, fragment);
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-//    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Music_lib.play("");//还未确定
+                } else {
+                    Toast.makeText(this, "拒绝权限无法访问", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+            default:
+        }
+    }
 }

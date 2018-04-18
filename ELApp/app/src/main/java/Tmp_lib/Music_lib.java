@@ -2,8 +2,9 @@ package Tmp_lib;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.os.Environment;
 
-import com.example.lenovo.elapp.R;
+import java.io.File;
 
 /*
 *1. To get the source
@@ -14,39 +15,17 @@ b. 存储在SD卡或其他文件路径下的媒体文件
 c. 网络上的媒体文件
 例如：mp.setDataSource("http://www.citynorth.cn/music/confucius.mp3");
 * */
-public class Music_lib {
-    //    private static final String THEME = "java/music_buff/theme.mp3";
-//    private static final String BG1 = "../music_buff/bgm1.mp3";
-//    private static final String BG2 = "../music_buff/bgm2.mp3";
-//    private static final String BG3 = "../music_buff/bgm3.mp3";
-//    private static final String BG4 = "../music_buff/bgm4.mp3";
-//    private static final String BG5 = "../music_buff/bgm5.mp3";
-//    private static final String BG6 = "../music_buff/bgm6.mp3";
-//    private static final String BG7 = "../music_buff/bgm7.mp3";
-//    private static final String BG8 = "../music_buff/bgm8.mp3";
-//    private static final String BG9 = "../music_buff/bgm9.mp3";
-//    private static final String BG10 = "../music_buff/bgm10.mp3";
-//    private static final String BG11 = "../music_buff/bgm11.mp3";
-//    private static final String BG12 = "../music_buff/bgm12.mp3";
-//    private static final String BG13 = "../music_buff/effect4.mp3";
-//    private static final String BG14 = "../music_buff/effect1.mp3";
-//    private static final String BG15 = "../music_buff/bgm15.mp3";
-//    private static final String EFFECT1 = "../music_buff/effect.mp3";
-//    private static final String EFFECT2 = "../music_buff/eliminate1.mp3";
-//    private static final String EFFECT3 = "../music_buff/change.mp3";
-//    private static final String[] songs = {
-//            THEME, BG1, BG2, BG3, BG4, BG5, BG6,
-//            BG7, BG8, BG9, BG10, BG11, BG12, BG13,
-//            BG14, BG15, EFFECT1, EFFECT2, EFFECT3,
-//    };
-    private static MediaPlayer mediaPlayer = null;
 
+//尚未实现某一个序列音乐播放
+//暂时未考虑service  ——2018.4.18
+
+public class Music_lib {
     /**
-     * @param context   :The source of the service or activity.
-     * @param rawSource :The source of the media in R.raw.xxx
-     * @return :The specific MediaPlayer
+     * @param context     :The source of the service or activity.
+     * @param rawSource   :The source of the media in R.raw.xxx
+     * @param mediaPlayer
      */
-    public static MediaPlayer play(Context context, int rawSource) {
+    public static MediaPlayer play(Context context, int rawSource, MediaPlayer mediaPlayer) {
 
         try {
             mediaPlayer = MediaPlayer.create(context, rawSource);
@@ -59,20 +38,19 @@ public class Music_lib {
     }
 
     /**
-     * @param source :url from the service computer or native dic in the cellPhone
-     * @return :The specific MediaPlayer
+     * @param mediaPlayer
+     * @param source      :url from the service computer or native dic in the cellPhone
+     *                    ps: the source is just the name of the bgm (后缀也要加)
+     *                    ps:所有的音乐文件全部放进music  ,这里的文件目录是模拟器的目录
+     *                    查看模拟器目录，在AS里面双击shift，查找  device file explorer
      */
-    public static MediaPlayer play(String source) {
+    public static MediaPlayer play(MediaPlayer mediaPlayer, String source) {
         try {
-            mediaPlayer.reset();
-            mediaPlayer.setDataSource(source);
+            File file = new File(Environment.getExternalStorageDirectory()
+                    , "/music/" + source);
+            mediaPlayer.setDataSource(file.getPath());
             mediaPlayer.prepareAsync();
-            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    mediaPlayer.start();
-                }
-            });
+            mediaPlayer.setOnPreparedListener(mp -> mediaPlayer.start());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,15 +76,27 @@ public class Music_lib {
         }
     }
 
-    public static void setLooping(MediaPlayer mediaPlayer, Context context, boolean pro) {
+    public static void setLooping(MediaPlayer mediaPlayer, String source, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
-            if (pro) play(context, R.raw.bgm1);
+            if (pro) play(mediaPlayer, source);
             else stopAndRelease(mediaPlayer);
         });
     }
 
     public static void errorSolution(MediaPlayer mediaPlayer) {
 
+    }
+
+    public static void PermissionRequest() {
+//        if (ContextCompat.checkSelfPermission(MainActivity.this
+//                , Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(MainActivity.this
+//                    , new String[]{
+//                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+//                    }, 1);
+//        } else {
+//            initMediaPlayer();
+//        }
     }
 }
