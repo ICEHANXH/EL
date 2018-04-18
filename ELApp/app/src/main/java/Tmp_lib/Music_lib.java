@@ -29,6 +29,7 @@ public class Music_lib {
 
         try {
             mediaPlayer = MediaPlayer.create(context, rawSource);
+            mediaPlayer.reset();
             MediaPlayer finalMediaPlayer = mediaPlayer;
             mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
         } catch (Exception e) {
