@@ -48,6 +48,7 @@ public class Music_lib {
         try {
             File file = new File(Environment.getExternalStorageDirectory()
                     , "/music/" + source);
+            mediaPlayer.reset();
             mediaPlayer.setDataSource(file.getPath());
             mediaPlayer.prepareAsync();
             mediaPlayer.setOnPreparedListener(mp -> mediaPlayer.start());
@@ -88,15 +89,5 @@ public class Music_lib {
 
     }
 
-    public static void PermissionRequest() {
-//        if (ContextCompat.checkSelfPermission(MainActivity.this
-//                , Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(MainActivity.this
-//                    , new String[]{
-//                            Manifest.permission.WRITE_EXTERNAL_STORAGE
-//                    }, 1);
-//        } else {
-//            initMediaPlayer();
-//        }
-    }
+
 }
