@@ -1,4 +1,5 @@
-package Tmp_lib;
+package com.example.testlfm;
+
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,7 +13,7 @@ import java.io.IOException;
 /**
  * 保存图片的类
  */
-public class File_IO_Of_stream {
+public class Image_IO {
 
     private final static String CACHE = "/css";
 

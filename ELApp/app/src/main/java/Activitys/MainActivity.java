@@ -21,6 +21,7 @@ import Tmp_lib.Music_lib;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean IsPermitted() {
         return ContextCompat.checkSelfPermission(MainActivity.this
-                , Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED;
+                , Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
     }
 
     private void requestPermissions() {

@@ -1,1 +1,1 @@
-include ':app', ':httpdemo'
+include ':app', ':httpdemo', ':testlfm'

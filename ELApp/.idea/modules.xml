@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/ELApp.iml" filepath="$PROJECT_DIR$/ELApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/httpdemo/httpdemo.iml" filepath="$PROJECT_DIR$/httpdemo/httpdemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/httpdemo/httpdemo.iml" filepath="$PROJECT_DIR$/httpdemo/httpdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testlfm/testlfm.iml" filepath="$PROJECT_DIR$/testlfm/testlfm.iml" />
     </modules>
   </component>
 </project>
