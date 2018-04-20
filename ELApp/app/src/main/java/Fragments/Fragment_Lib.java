@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.lenovo.elapp.R;
+
 public class Fragment_Lib extends AppCompatActivity {
 
     /**
@@ -20,6 +22,7 @@ public class Fragment_Lib extends AppCompatActivity {
         fragmentTransaction.replace(Root_frame_layout, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+        int c=R.drawable.ic_launcher_background;
     }
 //
 //    public static void replaceFragment(Fragment fragment) {
