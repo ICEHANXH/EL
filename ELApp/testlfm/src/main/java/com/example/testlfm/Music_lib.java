@@ -1,4 +1,5 @@
-package Tmp_lib;
+package com.example.testlfm;
+
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Environment;
