@@ -10,28 +10,55 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
 import java.io.File;
+import java.util.Timer;
 
 public class MainActivity extends AppCompatActivity {
 
+<<<<<<< HEAD
     private MediaPlayer mediaPlayer;
 
+=======
+    private MediaPlayer mediaPlayer=new MediaPlayer();
+>>>>>>> 1e955c4079e3b242f0bcf63ee01fd9a24b4ab8a4
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (!IsPermitted()) {
-            requestPermissions();
-        } else {
-            ImageView imageView = findViewById(R.id.imageView);
-            Image_IO.SetImage(this, "java.jpg", imageView);
-        }
 
+        Button button=findViewById(R.id.image1);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!IsPermitted()){
+                    requestPermissions();
+                }else {
+                    MediaPlayer mediaPlayer=new MediaPlayer();
+
+                    Music_lib.play(mediaPlayer,"Taylor Swift-End Game.mp3");
+                        try {
+                            new timer(10);
+                            Music_lib.pause(mediaPlayer);
+                        }catch (Exception e) {
+                            e.printStackTrace();
+                    }
+                    //System.out.println(3);
+                }
+            }
+        });
+    }
+
+    public void ToImage1(View view) {
+
+    }
+
+    public void ToImage2(View view) {
     }
 
     private boolean IsPermitted() {
@@ -45,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         Manifest.permission.WRITE_EXTERNAL_STORAGE
                 }, 1);
     }
+<<<<<<< HEAD
 
     public void ToImage2(View view) {
         if (!IsPermitted()) {
@@ -134,4 +162,6 @@ public class MainActivity extends AppCompatActivity {
             this.mediaPlayer = Music_lib.stopAndRelease(mediaPlayer);
         }
     }
+=======
+>>>>>>> 1e955c4079e3b242f0bcf63ee01fd9a24b4ab8a4
 }
