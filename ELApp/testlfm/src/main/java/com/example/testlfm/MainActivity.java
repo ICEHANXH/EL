@@ -3,7 +3,6 @@ package com.example.testlfm;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -19,7 +18,6 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,29 +107,5 @@ public class MainActivity extends AppCompatActivity {
                 return "transformation" + " desiredWidth";
             }
         };
-    }
-
-    public void start_music_btn(View view) {
-        if (!IsPermitted()) {
-            requestPermissions();
-        } else {
-            try {
-                if (mediaPlayer == null) {
-                    this.mediaPlayer = Music_lib.GetMediaPlayer();
-                    this.mediaPlayer = Music_lib.play(mediaPlayer, "bgm1.mp3");
-                } else if (!mediaPlayer.isPlaying())
-                    this.mediaPlayer = Music_lib.play(mediaPlayer, "bgm1.mp3");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public void pause_music_btn(View view) {
-        if (!IsPermitted()) {
-            requestPermissions();
-        } else {
-            this.mediaPlayer = Music_lib.stopAndRelease(mediaPlayer);
-        }
     }
 }
