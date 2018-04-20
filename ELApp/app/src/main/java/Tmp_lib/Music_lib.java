@@ -1,11 +1,5 @@
 package Tmp_lib;
 
-import android.content.Context;
-import android.media.MediaPlayer;
-import android.os.Environment;
-
-import java.io.File;
-
 /*
 *1. To get the source
 * a. 用户在应用中事先自带的resource资源
@@ -19,17 +13,36 @@ c. 网络上的媒体文件
 //尚未实现某一个序列音乐播放
 //暂时未考虑service  ——2018.4.18
 
+import android.content.Context;
+import android.media.MediaPlayer;
+import android.os.Environment;
+
+import java.io.File;
+
 public class Music_lib {
+
+    public static MediaPlayer GetMediaPlayer(Context context, int rawSource) {
+        return MediaPlayer.create(context, rawSource);
+    }
+
+    public static MediaPlayer GetMediaPlayer() {
+        return new MediaPlayer();
+    }
+
     /**
-     * @param context     :The source of the service or activity.
-     * @param rawSource   :The source of the media in R.raw.xxx
      * @param mediaPlayer
      */
-    public static MediaPlayer play(Context context, int rawSource, MediaPlayer mediaPlayer) {
-
+    public static MediaPlayer play(MediaPlayer mediaPlayer, String source) {
         try {
-            mediaPlayer = MediaPlayer.create(context, rawSource);
-            mediaPlayer.reset();
+            if (mediaPlayer == null) {
+                mediaPlayer = Music_lib.GetMediaPlayer();
+            }
+            if (mediaPlayer.isPlaying())
+                mediaPlayer.reset();
+            File file = new File(Environment.getExternalStorageDirectory()
+                    , "/music/" + source);
+            mediaPlayer.setDataSource(file.getPath());
+            mediaPlayer.prepare();
             MediaPlayer finalMediaPlayer = mediaPlayer;
             mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
         } catch (Exception e) {
@@ -38,50 +51,39 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    /**
-     * @param mediaPlayer
-     * @param source      :url from the service computer or native dic in the cellPhone
-     *                    ps: the source is just the name of the bgm (后缀也要加)
-     *                    ps:所有的音乐文件全部放进music  ,这里的文件目录是模拟器的目录
-     *                    查看模拟器目录，在AS里面双击shift，查找  device file explorer
-     */
-    public static MediaPlayer play(MediaPlayer mediaPlayer, String source) {
+    public static MediaPlayer pause(MediaPlayer mediaPlayer) {
         try {
-            File file = new File(Environment.getExternalStorageDirectory()
-                    , "/music/" + source);
-            mediaPlayer.setDataSource(file.getPath());
-            mediaPlayer.prepareAsync();
-            mediaPlayer.setOnPreparedListener(mp -> mediaPlayer.start());
+            if (mediaPlayer == null)
+                return null;
+            if (isPlay(mediaPlayer))
+                mediaPlayer.pause();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return mediaPlayer;
     }
 
-    public static void pause(MediaPlayer mediaPlayer) {
-        try {
-            if (isPlay(mediaPlayer)) mediaPlayer.pause();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public static boolean isPlay(MediaPlayer mediaPlayer) {
         return mediaPlayer.isPlaying();
     }
 
-    public static void stopAndRelease(MediaPlayer mediaPlayer) {
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+    public static MediaPlayer stop(MediaPlayer mediaPlayer) {
+        if (mediaPlayer == null)
+            mediaPlayer = new MediaPlayer();
+        if (mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
-            mediaPlayer.release();
+//            mediaPlayer.release();
+            mediaPlayer.prepareAsync();
+
         }
+        return mediaPlayer;
     }
 
     public static void setLooping(MediaPlayer mediaPlayer, String source, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
             if (pro) play(mediaPlayer, source);
-            else stopAndRelease(mediaPlayer);
+            else stop(mediaPlayer);
         });
     }
 
