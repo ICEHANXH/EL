@@ -1,9 +1,5 @@
 package com.example.testlfm;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1e955c4079e3b242f0bcf63ee01fd9a24b4ab8a4
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Environment;
@@ -24,7 +20,6 @@ c. 网络上的媒体文件
 //暂时未考虑service  ——2018.4.18
 
 public class Music_lib {
-<<<<<<< HEAD
 
     public static MediaPlayer GetMediaPlayer(Context context, int rawSource) {
         return MediaPlayer.create(context, rawSource);
@@ -32,29 +27,10 @@ public class Music_lib {
 
     public static MediaPlayer GetMediaPlayer() {
         return new MediaPlayer();
-=======
-    /**
-     * @param context     :The source of the service or activity.
-     * @param rawSource   :The source of the media in R.raw.xxx
-     * @param mediaPlayer
-     */
-    public static MediaPlayer play(Context context, int rawSource, MediaPlayer mediaPlayer) {
-
-        try {
-            mediaPlayer = MediaPlayer.create(context, rawSource);
-            mediaPlayer.reset();
-            MediaPlayer finalMediaPlayer = mediaPlayer;
-            mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return mediaPlayer;
->>>>>>> 1e955c4079e3b242f0bcf63ee01fd9a24b4ab8a4
     }
 
     /**
      * @param mediaPlayer
-<<<<<<< HEAD
      */
     public static MediaPlayer play(MediaPlayer mediaPlayer, String source) {
         try {
@@ -69,27 +45,12 @@ public class Music_lib {
             mediaPlayer.prepare();
             MediaPlayer finalMediaPlayer = mediaPlayer;
             mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
-=======
-     * @param source      :url from the service computer or native dic in the cellPhone
-     *                    ps: the source is just the name of the bgm (后缀也要加)
-     *                    ps:所有的音乐文件全部放进music  ,这里的文件目录是模拟器的目录
-     *                    查看模拟器目录，在AS里面双击shift，查找  device file explorer
-     */
-    public static MediaPlayer play(MediaPlayer mediaPlayer, String source) {
-        try {
-            File file = new File(Environment.getExternalStorageDirectory()
-                    , "/music/" + source);
-            mediaPlayer.setDataSource(file.getPath());
-            mediaPlayer.prepareAsync();
-            mediaPlayer.setOnPreparedListener(mp -> mediaPlayer.start());
->>>>>>> 1e955c4079e3b242f0bcf63ee01fd9a24b4ab8a4
         } catch (Exception e) {
             e.printStackTrace();
         }
         return mediaPlayer;
     }
 
-<<<<<<< HEAD
     public static MediaPlayer pause(MediaPlayer mediaPlayer) {
         try {
             if (mediaPlayer == null)
@@ -100,21 +61,12 @@ public class Music_lib {
             e.printStackTrace();
         }
         return mediaPlayer;
-=======
-    public static void pause(MediaPlayer mediaPlayer) {
-        try {
-            if (isPlay(mediaPlayer)) mediaPlayer.pause();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
->>>>>>> 1e955c4079e3b242f0bcf63ee01fd9a24b4ab8a4
     }
 
     public static boolean isPlay(MediaPlayer mediaPlayer) {
         return mediaPlayer.isPlaying();
     }
 
-<<<<<<< HEAD
     public static MediaPlayer stop(MediaPlayer mediaPlayer) {
         if (mediaPlayer == null)
             mediaPlayer = new MediaPlayer();
@@ -125,24 +77,13 @@ public class Music_lib {
 
         }
         return mediaPlayer;
-=======
-    public static void stopAndRelease(MediaPlayer mediaPlayer) {
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
-            mediaPlayer.release();
-        }
->>>>>>> 1e955c4079e3b242f0bcf63ee01fd9a24b4ab8a4
     }
 
     public static void setLooping(MediaPlayer mediaPlayer, String source, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
             if (pro) play(mediaPlayer, source);
-<<<<<<< HEAD
             else stop(mediaPlayer);
-=======
-            else stopAndRelease(mediaPlayer);
->>>>>>> 1e955c4079e3b242f0bcf63ee01fd9a24b4ab8a4
         });
     }
 
@@ -162,7 +103,3 @@ public class Music_lib {
 //        }
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 1e955c4079e3b242f0bcf63ee01fd9a24b4ab8a4
