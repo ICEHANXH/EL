@@ -4,10 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ELApp.iml" filepath="$PROJECT_DIR$/ELApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/libofmusic/libofmusic.iml" filepath="$PROJECT_DIR$/libofmusic/libofmusic.iml" />
-      <module fileurl="file://$PROJECT_DIR$/testlfm/testlfm.iml" filepath="$PROJECT_DIR$/testlfm/testlfm.iml" />
-      <module fileurl="file://$PROJECT_DIR$/testoflfm/testoflfm.iml" filepath="$PROJECT_DIR$/testoflfm/testoflfm.iml" />
-      <module fileurl="file://$PROJECT_DIR$/testofmusic/testofmusic.iml" filepath="$PROJECT_DIR$/testofmusic/testofmusic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/httpdemo/httpdemo.iml" filepath="$PROJECT_DIR$/httpdemo/httpdemo.iml" />
     </modules>
   </component>
 </project>
