@@ -10,6 +10,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -34,9 +35,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             ImageView imageView = findViewById(R.id.imageView);
             Image_IO.SetImage(this, "java.jpg", imageView);
-            if (mediaPlayer == null)
-                this.mediaPlayer = Music_lib.GetMediaPlayer();
-            this.mediaPlayer = Music_lib.play(mediaPlayer, "bgm1.mp3");
         }
 
     }
@@ -119,24 +117,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void playMusic(View view) {
+        Button button = findViewById(R.id.play);
         if (!IsPermitted()) {
             requestPermissions();
         } else {
             if (IsPause) {
                 mediaPlayer = Music_lib.ContinueToPlay(mediaPlayer);
                 IsPause = false;
+                button.setText("正在播放中");
             } else {
                 mediaPlayer = Music_lib.pause(mediaPlayer);
                 IsPause = true;
+                button.setText("音乐已暂停");
             }
         }
     }
 
-    public void pauseMusic(View view) {
-        this.mediaPlayer = Music_lib.pause(mediaPlayer);
+    public void ToSong1(View view) {
+        if (mediaPlayer == null)
+            this.mediaPlayer = Music_lib.GetMediaPlayer();
+        this.mediaPlayer = Music_lib.stop(mediaPlayer);
+        this.mediaPlayer = Music_lib.play(mediaPlayer, "bgm1.mp3");
     }
 
-    public void stopMusic(View view) {
+    public void ToSong2(View view) {
+        if (mediaPlayer == null)
+            this.mediaPlayer = Music_lib.GetMediaPlayer();
         this.mediaPlayer = Music_lib.stop(mediaPlayer);
+        this.mediaPlayer = Music_lib.play(mediaPlayer, "bgm2.mp3");
     }
 }

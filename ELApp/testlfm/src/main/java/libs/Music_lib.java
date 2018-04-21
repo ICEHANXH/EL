@@ -97,12 +97,25 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    public static void LoopPlay(MediaPlayer mediaPlayer, String source, boolean pro) {
+    public static MediaPlayer LoopPlay(MediaPlayer mediaPlayer, String source, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
             if (pro) play(mediaPlayer, source);
             else stop(mediaPlayer);
         });
+        return mediaPlayer;
+    }
+
+    public static MediaPlayer ChangeToPlayAnother(MediaPlayer mediaPlayer, String source) {
+        mediaPlayer = Music_lib.stop(mediaPlayer);
+        mediaPlayer = Music_lib.play(mediaPlayer, source);
+        return mediaPlayer;
+    }
+
+    public static MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer, int R_source) {
+        Music_lib.stop(mediaPlayer);
+        mediaPlayer = MediaPlayer.create(context, R_source);
+        return mediaPlayer;
     }
 }
 

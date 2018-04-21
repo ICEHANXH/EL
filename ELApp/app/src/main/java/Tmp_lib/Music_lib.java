@@ -1,4 +1,5 @@
 package Tmp_lib;
+
 /*
 *1. To get the source
 * a. 用户在应用中事先自带的resource资源
@@ -28,7 +29,19 @@ public class Music_lib {
         return new MediaPlayer();
     }
 
+    public static MediaPlayer play(MediaPlayer mediaPlayer) {
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.start();
+            return mediaPlayer;
+        }
+        mediaPlayer.reset();
+        mediaPlayer.prepareAsync();
+        mediaPlayer.setOnPreparedListener(mp -> mediaPlayer.start());
+        return mediaPlayer;
+    }
+
     public static MediaPlayer play(MediaPlayer mediaPlayer, String source) {
+
         try {
             if (mediaPlayer == null) {
                 mediaPlayer = Music_lib.GetMediaPlayer();
@@ -84,11 +97,40 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    public static void LoopPlay(MediaPlayer mediaPlayer, String source, boolean pro) {
+    public static MediaPlayer LoopPlay(MediaPlayer mediaPlayer, String source, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
             if (pro) play(mediaPlayer, source);
             else stop(mediaPlayer);
         });
+        return mediaPlayer;
+    }
+
+    public static MediaPlayer ChangeToPlayAnother(MediaPlayer mediaPlayer, String source) {
+        mediaPlayer = Music_lib.stop(mediaPlayer);
+        mediaPlayer = Music_lib.play(mediaPlayer, source);
+        return mediaPlayer;
+    }
+
+    public static MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer, int R_source) {
+        Music_lib.stop(mediaPlayer);
+        mediaPlayer = MediaPlayer.create(context, R_source);
+        return mediaPlayer;
     }
 }
+
+
+/*
+*一个button同时实现暂停播放和继续播放，需要在activity里加一个private boolean字段IsPause
+* 此外，方法play不能够放在“实现暂停、继续”的回调函数或者事件监听器中（不然的话还是会从头开始播放）
+* play方法属于确定了mediaplayer的来源，并且播放，请放在有关于音乐选择的地方
+* if (IsPause) {
+                mediaPlayer = Music_lib.ContinueToPlay(mediaPlayer);
+                IsPause = false;
+            } else {
+                mediaPlayer = Music_lib.pause(mediaPlayer);
+                IsPause = true;
+            }
+*——4.21
+* 注：
+* */
