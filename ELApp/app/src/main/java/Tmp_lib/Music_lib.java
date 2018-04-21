@@ -1,5 +1,4 @@
 package Tmp_lib;
-
 /*
 *1. To get the source
 * a. 用户在应用中事先自带的resource资源
@@ -29,20 +28,20 @@ public class Music_lib {
         return new MediaPlayer();
     }
 
-    /**
-     * @param mediaPlayer
-     */
     public static MediaPlayer play(MediaPlayer mediaPlayer, String source) {
         try {
             if (mediaPlayer == null) {
                 mediaPlayer = Music_lib.GetMediaPlayer();
             }
-            if (mediaPlayer.isPlaying())
-                mediaPlayer.reset();
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.start();
+                return mediaPlayer;
+            }
             File file = new File(Environment.getExternalStorageDirectory()
                     , "/music/" + source);
+            mediaPlayer.reset();
             mediaPlayer.setDataSource(file.getPath());
-            mediaPlayer.prepare();
+            mediaPlayer.prepareAsync();
             MediaPlayer finalMediaPlayer = mediaPlayer;
             mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
         } catch (Exception e) {
@@ -51,12 +50,19 @@ public class Music_lib {
         return mediaPlayer;
     }
 
+    public static MediaPlayer ContinueToPlay(MediaPlayer mediaPlayer) {
+        if (mediaPlayer == null) {
+            mediaPlayer = Music_lib.GetMediaPlayer();
+        }
+        mediaPlayer.start();
+        return mediaPlayer;
+    }
+
     public static MediaPlayer pause(MediaPlayer mediaPlayer) {
         try {
             if (mediaPlayer == null)
                 return null;
-            if (isPlay(mediaPlayer))
-                mediaPlayer.pause();
+            mediaPlayer.pause();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -74,32 +80,15 @@ public class Music_lib {
             mediaPlayer.stop();
 //            mediaPlayer.release();
             mediaPlayer.prepareAsync();
-
         }
         return mediaPlayer;
     }
 
-    public static void setLooping(MediaPlayer mediaPlayer, String source, boolean pro) {
+    public static void LoopPlay(MediaPlayer mediaPlayer, String source, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
             if (pro) play(mediaPlayer, source);
             else stop(mediaPlayer);
         });
-    }
-
-    public static void errorSolution(MediaPlayer mediaPlayer) {
-
-    }
-
-    public static void PermissionRequest() {
-//        if (ContextCompat.checkSelfPermission(MainActivity.this
-//                , Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(MainActivity.this
-//                    , new String[]{
-//                            Manifest.permission.WRITE_EXTERNAL_STORAGE
-//                    }, 1);
-//        } else {
-//            initMediaPlayer();
-//        }
     }
 }

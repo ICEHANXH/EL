@@ -3,6 +3,7 @@ package com.example.testlfm;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -16,8 +17,13 @@ import com.squareup.picasso.Transformation;
 
 import java.io.File;
 
+import libs.Image_IO;
+import libs.Music_lib;
+
 public class MainActivity extends AppCompatActivity {
 
+    MediaPlayer mediaPlayer;
+    private boolean IsPause = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,5 +113,30 @@ public class MainActivity extends AppCompatActivity {
                 return "transformation" + " desiredWidth";
             }
         };
+    }
+
+    public void playMusic(View view) {
+        if (!IsPermitted()) {
+            requestPermissions();
+        } else {
+            if (mediaPlayer == null)
+                this.mediaPlayer = Music_lib.GetMediaPlayer();
+            this.mediaPlayer = Music_lib.play(mediaPlayer, "bgm1.mp3");
+            if (IsPause) {
+                mediaPlayer = Music_lib.ContinueToPlay(mediaPlayer);
+                IsPause = false;
+            } else {
+                mediaPlayer = Music_lib.pause(mediaPlayer);
+                IsPause = true;
+            }
+        }
+    }
+
+    public void pauseMusic(View view) {
+        this.mediaPlayer = Music_lib.pause(mediaPlayer);
+    }
+
+    public void stopMusic(View view) {
+        this.mediaPlayer = Music_lib.stop(mediaPlayer);
     }
 }

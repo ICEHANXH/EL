@@ -37,4 +37,25 @@
         android:onClick="ToImage2"
         tools:ignore="HardcodedText" />
 
+    <Button
+        android:id="@+id/play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="play"
+        android:onClick="playMusic"/>
+
+    <Button
+        android:id="@+id/pause"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="pause"
+        android:onClick="pauseMusic"/>
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="stop"
+        android:onClick="stopMusic"/>
+
 </LinearLayout>
