@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
             ImageView imageView = findViewById(R.id.imageView);
             Image_IO.SetImage(this, "java.jpg", imageView);
+            if (mediaPlayer == null)
+                this.mediaPlayer = Music_lib.GetMediaPlayer();
+            this.mediaPlayer = Music_lib.play(mediaPlayer, "bgm1.mp3");
         }
 
     }
@@ -119,9 +122,6 @@ public class MainActivity extends AppCompatActivity {
         if (!IsPermitted()) {
             requestPermissions();
         } else {
-            if (mediaPlayer == null)
-                this.mediaPlayer = Music_lib.GetMediaPlayer();
-            this.mediaPlayer = Music_lib.play(mediaPlayer, "bgm1.mp3");
             if (IsPause) {
                 mediaPlayer = Music_lib.ContinueToPlay(mediaPlayer);
                 IsPause = false;
