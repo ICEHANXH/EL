@@ -1,11 +1,5 @@
 package Tmp_lib;
 
-import android.content.Context;
-import android.media.MediaPlayer;
-import android.os.Environment;
-
-import java.io.File;
-
 /*
 *1. To get the source
 * a. 用户在应用中事先自带的resource资源
@@ -19,17 +13,48 @@ c. 网络上的媒体文件
 //尚未实现某一个序列音乐播放
 //暂时未考虑service  ——2018.4.18
 
+import android.content.Context;
+import android.media.MediaPlayer;
+import android.os.Environment;
+
+import java.io.File;
+
 public class Music_lib {
-    /**
-     * @param context     :The source of the service or activity.
-     * @param rawSource   :The source of the media in R.raw.xxx
-     * @param mediaPlayer
-     */
-    public static MediaPlayer play(Context context, int rawSource, MediaPlayer mediaPlayer) {
+
+    public static MediaPlayer GetMediaPlayer(Context context, int rawSource) {
+        return MediaPlayer.create(context, rawSource);
+    }
+
+    public static MediaPlayer GetMediaPlayer() {
+        return new MediaPlayer();
+    }
+
+    public static MediaPlayer play(MediaPlayer mediaPlayer) {
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.start();
+            return mediaPlayer;
+        }
+        mediaPlayer.reset();
+        mediaPlayer.prepareAsync();
+        mediaPlayer.setOnPreparedListener(mp -> mediaPlayer.start());
+        return mediaPlayer;
+    }
+
+    public static MediaPlayer play(MediaPlayer mediaPlayer, String source) {
 
         try {
-            mediaPlayer = MediaPlayer.create(context, rawSource);
+            if (mediaPlayer == null) {
+                mediaPlayer = Music_lib.GetMediaPlayer();
+            }
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.start();
+                return mediaPlayer;
+            }
+            File file = new File(Environment.getExternalStorageDirectory()
+                    , "/music/" + source);
             mediaPlayer.reset();
+            mediaPlayer.setDataSource(file.getPath());
+            mediaPlayer.prepareAsync();
             MediaPlayer finalMediaPlayer = mediaPlayer;
             mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
         } catch (Exception e) {
@@ -38,66 +63,74 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    /**
-     * @param mediaPlayer
-     * @param source      :url from the service computer or native dic in the cellPhone
-     *                    ps: the source is just the name of the bgm (后缀也要加)
-     *                    ps:所有的音乐文件全部放进music  ,这里的文件目录是模拟器的目录
-     *                    查看模拟器目录，在AS里面双击shift，查找  device file explorer
-     */
-    public static MediaPlayer play(MediaPlayer mediaPlayer, String source) {
+    public static MediaPlayer ContinueToPlay(MediaPlayer mediaPlayer) {
+        if (mediaPlayer == null) {
+            mediaPlayer = Music_lib.GetMediaPlayer();
+        }
+        mediaPlayer.start();
+        return mediaPlayer;
+    }
+
+    public static MediaPlayer pause(MediaPlayer mediaPlayer) {
         try {
-            File file = new File(Environment.getExternalStorageDirectory()
-                    , "/music/" + source);
-            mediaPlayer.setDataSource(file.getPath());
-            mediaPlayer.prepareAsync();
-            mediaPlayer.setOnPreparedListener(mp -> mediaPlayer.start());
+            if (mediaPlayer == null)
+                return null;
+            mediaPlayer.pause();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return mediaPlayer;
     }
 
-    public static void pause(MediaPlayer mediaPlayer) {
-        try {
-            if (isPlay(mediaPlayer)) mediaPlayer.pause();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public static boolean isPlay(MediaPlayer mediaPlayer) {
         return mediaPlayer.isPlaying();
     }
 
-    public static void stopAndRelease(MediaPlayer mediaPlayer) {
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+    public static MediaPlayer stop(MediaPlayer mediaPlayer) {
+        if (mediaPlayer == null)
+            mediaPlayer = new MediaPlayer();
+        if (mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
-            mediaPlayer.release();
+//            mediaPlayer.release();
+            mediaPlayer.prepareAsync();
         }
+        return mediaPlayer;
     }
 
-    public static void setLooping(MediaPlayer mediaPlayer, String source, boolean pro) {
+    public static MediaPlayer LoopPlay(MediaPlayer mediaPlayer, String source, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
             if (pro) play(mediaPlayer, source);
-            else stopAndRelease(mediaPlayer);
+            else stop(mediaPlayer);
         });
+        return mediaPlayer;
     }
 
-    public static void errorSolution(MediaPlayer mediaPlayer) {
-
+    public static MediaPlayer ChangeToPlayAnother(MediaPlayer mediaPlayer, String source) {
+        mediaPlayer = Music_lib.stop(mediaPlayer);
+        mediaPlayer = Music_lib.play(mediaPlayer, source);
+        return mediaPlayer;
     }
 
-    public static void PermissionRequest() {
-//        if (ContextCompat.checkSelfPermission(MainActivity.this
-//                , Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(MainActivity.this
-//                    , new String[]{
-//                            Manifest.permission.WRITE_EXTERNAL_STORAGE
-//                    }, 1);
-//        } else {
-//            initMediaPlayer();
-//        }
+    public static MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer, int R_source) {
+        Music_lib.stop(mediaPlayer);
+        mediaPlayer = MediaPlayer.create(context, R_source);
+        return mediaPlayer;
     }
 }
+
+
+/*
+*一个button同时实现暂停播放和继续播放，需要在activity里加一个private boolean字段IsPause
+* 此外，方法play不能够放在“实现暂停、继续”的回调函数或者事件监听器中（不然的话还是会从头开始播放）
+* play方法属于确定了mediaplayer的来源，并且播放，请放在有关于音乐选择的地方
+* if (IsPause) {
+                mediaPlayer = Music_lib.ContinueToPlay(mediaPlayer);
+                IsPause = false;
+            } else {
+                mediaPlayer = Music_lib.pause(mediaPlayer);
+                IsPause = true;
+            }
+*——4.21
+* 注：
+* */
