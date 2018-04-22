@@ -21,7 +21,7 @@ import java.util.Timer;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MediaPlayer mediaPlayer=new MediaPlayer();
+    private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,12 +34,21 @@ public class MainActivity extends AppCompatActivity {
                 if(!IsPermitted()){
                     requestPermissions();
                 }else {
-                    MediaPlayer mediaPlayer=new MediaPlayer();
-
+                    mediaPlayer=Music_lib.GetMediaPlayer();
                     Music_lib.play(mediaPlayer,"Taylor Swift-End Game.mp3");
                         try {
-                            new timer(10);
-                            Music_lib.pause(mediaPlayer);
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        new timer(10);
+                                        Music_lib.pause(mediaPlayer);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }).start();
+
                         }catch (Exception e) {
                             e.printStackTrace();
                     }

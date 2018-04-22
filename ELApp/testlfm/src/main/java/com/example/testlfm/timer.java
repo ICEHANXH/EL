@@ -3,7 +3,6 @@ package com.example.testlfm;
 /**
  * Created by hxh on 2018/4/20.
  */
-//Description: 倒计时实现方式2：使用java.uitl.Timer实现
 //使用两个线程
 
 import java.util.*;
