@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 appInteraction interaction = new appInteraction();
-                interaction.openApp(MainActivity.this,"com.android.chrome");
+                interaction.openApp(MainActivity.this,"com.shanbay.words");
             }
         });
 
