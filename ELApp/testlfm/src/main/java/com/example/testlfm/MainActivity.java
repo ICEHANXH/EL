@@ -15,6 +15,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
+    private boolean IsPause = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         buttonT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,Main2Activity.class);
+                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                 startActivity(intent);
             }
         });
@@ -63,12 +64,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ToImage2(View view) {
-//        mediaPlayer = Music_lib.GetMediaPlayer(MainActivity.this, File_IO_Lib.getUriAssets(""));
-//        mediaPlayer = Music_lib.play(mediaPlayer);
-
         try {
-            mediaPlayer = Music_lib.GetMediaPlayer();
-            mediaPlayer = Music_lib.playAssets(this, mediaPlayer, "bgm4.mp3");
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    if (mediaPlayer == null) {
+                        mediaPlayer = Music_lib.GetMediaPlayer();
+                        mediaPlayer = Music_lib.playExternal(mediaPlayer, "bgm6.mp3");
+                        IsPause = true;
+                    }
+
+                    if (IsPause) {
+                        mediaPlayer = Music_lib.ContinueToPlay(mediaPlayer);
+                        IsPause = false;
+                    } else {
+                        mediaPlayer = Music_lib.pause(mediaPlayer);
+                        IsPause = true;
+                    }
+                }
+            }).start();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

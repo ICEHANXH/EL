@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case 1:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Music_lib.play(new MediaPlayer(), "bgm1.mp3");//还未确定
+                    Music_lib.playExternal(new MediaPlayer(), "bgm1.mp3");//还未确定
                 } else {
                     Toast.makeText(this, "拒绝权限无法访问", Toast.LENGTH_SHORT).show();
                     finish();

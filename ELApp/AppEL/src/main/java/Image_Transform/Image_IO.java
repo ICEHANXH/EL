@@ -109,7 +109,7 @@ public class Image_IO {
      *
      * @return SDPath
      */
-    public static String getSDPath() {
+    private static String getSDPath() {
         return getSDcardDic().getAbsolutePath();
     }
 

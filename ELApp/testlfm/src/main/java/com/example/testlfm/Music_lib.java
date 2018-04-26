@@ -17,6 +17,7 @@ import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Environment;
 
 import java.io.File;
@@ -24,41 +25,25 @@ import java.io.IOException;
 
 public class Music_lib {
     /**
-     * This method cannot be used right now...
-     */
-    public static MediaPlayer GetMediaPlayer(Context context, int rawSource) {
-        return MediaPlayer.create(context, rawSource);
-    }
-
-    /**
      * Get the mediaPlayer,and you have to choose the source of the music.
      */
     public static MediaPlayer GetMediaPlayer() {
         return new MediaPlayer();
     }
 
-    /**
-     * Get the mediaPlayer from the assets/music.
-     *
-     * @param context     :The Context to play the music.
-     * @param mediaPlayer :The Target mediaPlayer.
-     * @param string      :The file name.
-     */
-    public static MediaPlayer playAssets(Context context, MediaPlayer mediaPlayer, String string) throws IOException {
-        if (mediaPlayer == null) {
-            mediaPlayer = Music_lib.GetMediaPlayer();
-        }
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.start();
-            return mediaPlayer;
-        }
-        AssetManager am = context.getAssets();
-        AssetFileDescriptor afd = am.openFd("music/" + string);
-        mediaPlayer.setDataSource(afd.getFileDescriptor());
-        mediaPlayer.prepareAsync();
-        MediaPlayer finalMediaPlayer = mediaPlayer;
-        mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
+    public static MediaPlayer play(Context context, MediaPlayer mediaPlayer, int rawFile) {
+        mediaPlayer = playRes(context, mediaPlayer, rawFile);
         return mediaPlayer;
+    }
+
+    public static MediaPlayer play(Context context, MediaPlayer mediaPlayer, String source) {
+        try {
+            mediaPlayer = playAssets(context, mediaPlayer, source);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return mediaPlayer;
+
     }
 
     /**
@@ -124,16 +109,23 @@ public class Music_lib {
     /**
      * @param pro :True if you want to play the music loop.
      */
-    public static MediaPlayer LoopPlayAssets(Context context, MediaPlayer mediaPlayer,
-                                             String source, boolean pro) {
+    public static MediaPlayer LoopPlay(Context context, MediaPlayer mediaPlayer,
+                                       String source, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
             if (pro) {
-                try {
-                    playAssets(context, mediaPlayer, source);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                play(context, mediaPlayer, source);
+            } else stop(mediaPlayer);
+        });
+        return mediaPlayer;
+    }
+
+    public static MediaPlayer LoopPlay(Context context, MediaPlayer mediaPlayer,
+                                       int rawFile, boolean pro) {
+        mediaPlayer.setLooping(pro);
+        mediaPlayer.setOnCompletionListener(mp -> {
+            if (pro) {
+                play(context, mediaPlayer, rawFile);
             } else stop(mediaPlayer);
         });
         return mediaPlayer;
@@ -154,21 +146,65 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    public static MediaPlayer ChangeToPlayAnotherAssets(Context context, MediaPlayer mediaPlayer
+    public static MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer
             , String string) {
         mediaPlayer = Music_lib.stop(mediaPlayer);
+        mediaPlayer = Music_lib.play(context, mediaPlayer, string);
+        return mediaPlayer;
+    }
+
+    public static MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer
+            , int rawFile) {
+        mediaPlayer = Music_lib.stop(mediaPlayer);
+        mediaPlayer = Music_lib.play(context, mediaPlayer, rawFile);
+        return mediaPlayer;
+    }
+
+    /**
+     * Get the mediaPlayer from the assets/music.
+     *
+     * @param context     :The Context to play the music.
+     * @param mediaPlayer :The Target mediaPlayer.
+     * @param string      :The file name.
+     */
+    private static MediaPlayer playAssets(Context context, MediaPlayer mediaPlayer, String string) throws IOException {
+        if (mediaPlayer == null) {
+            mediaPlayer = Music_lib.GetMediaPlayer();
+        }
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.start();
+            return mediaPlayer;
+        }
+        mediaPlayer.reset();
+        AssetManager am = context.getAssets();
+        AssetFileDescriptor afd = am.openFd("music/" + string);
+        mediaPlayer.setDataSource(afd.getFileDescriptor());
+        mediaPlayer.prepareAsync();
+        MediaPlayer finalMediaPlayer = mediaPlayer;
+        mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
+        return mediaPlayer;
+    }
+
+    private static MediaPlayer playRes(Context context, MediaPlayer mediaPlayer, int rawFile) {
+        if (mediaPlayer == null) {
+            mediaPlayer = Music_lib.GetMediaPlayer();
+        }
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.start();
+            return mediaPlayer;
+        }
+        mediaPlayer.reset();
         try {
-            mediaPlayer = Music_lib.playAssets(context, mediaPlayer, string);
+            Uri uri = Uri.parse("android.resource://" + context.getPackageName() + "/" + rawFile);
+            mediaPlayer.setDataSource(context, uri);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        mediaPlayer.prepareAsync();
+        MediaPlayer finalMediaPlayer = mediaPlayer;
+        mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
         return mediaPlayer;
     }
-//    public static MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer, int R_source) {
-//        Music_lib.stop(mediaPlayer);
-//        mediaPlayer = MediaPlayer.create(context, R_source);
-//        return mediaPlayer;
-//    }
 }
 
 
@@ -187,3 +223,9 @@ public class Music_lib {
 * 注：
 * */
 
+
+/*
+* 实现了一个函数Play直接同时播放assets和res内的文件
+* 同时让mediaPlayer的创建完全由一个函数完成
+* ———4.26
+* */
