@@ -23,15 +23,27 @@ import java.io.File;
 import java.io.IOException;
 
 public class Music_lib {
-
+    /**
+     * This method cannot be used right now...
+     */
     public static MediaPlayer GetMediaPlayer(Context context, int rawSource) {
         return MediaPlayer.create(context, rawSource);
     }
 
+    /**
+     * Get the mediaPlayer,and you have to choose the source of the music.
+     */
     public static MediaPlayer GetMediaPlayer() {
         return new MediaPlayer();
     }
 
+    /**
+     * Get the mediaPlayer from the assets/music.
+     *
+     * @param context     :The Context to play the music.
+     * @param mediaPlayer :The Target mediaPlayer.
+     * @param string      :The file name.
+     */
     public static MediaPlayer playAssets(Context context, MediaPlayer mediaPlayer, String string) throws IOException {
         if (mediaPlayer == null) {
             mediaPlayer = Music_lib.GetMediaPlayer();
@@ -49,6 +61,9 @@ public class Music_lib {
         return mediaPlayer;
     }
 
+    /**
+     * @param source :The external source(like in the sdcards)
+     */
     public static MediaPlayer playExternal(MediaPlayer mediaPlayer, String source) {
 
         try {
@@ -106,6 +121,9 @@ public class Music_lib {
         return mediaPlayer;
     }
 
+    /**
+     * @param pro :True if you want to play the music loop.
+     */
     public static MediaPlayer LoopPlayAssets(Context context, MediaPlayer mediaPlayer,
                                              String source, boolean pro) {
         mediaPlayer.setLooping(pro);
@@ -136,7 +154,7 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    public static MediaPlayer ChangeToPlayAnotherExternal(Context context, MediaPlayer mediaPlayer
+    public static MediaPlayer ChangeToPlayAnotherAssets(Context context, MediaPlayer mediaPlayer
             , String string) {
         mediaPlayer = Music_lib.stop(mediaPlayer);
         try {
