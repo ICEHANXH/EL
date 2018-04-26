@@ -1,5 +1,4 @@
 package Tmp_lib;
-
 /*
 *1. To get the source
 * a. 用户在应用中事先自带的resource资源
@@ -14,10 +13,13 @@ c. 网络上的媒体文件
 //暂时未考虑service  ——2018.4.18
 
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.media.MediaPlayer;
 import android.os.Environment;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Music_lib {
 
@@ -29,18 +31,24 @@ public class Music_lib {
         return new MediaPlayer();
     }
 
-    public static MediaPlayer play(MediaPlayer mediaPlayer) {
+    public static MediaPlayer playAssets(Context context, MediaPlayer mediaPlayer, String string) throws IOException {
+        if (mediaPlayer == null) {
+            mediaPlayer = Music_lib.GetMediaPlayer();
+        }
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.start();
             return mediaPlayer;
         }
-        mediaPlayer.reset();
+        AssetManager am = context.getAssets();
+        AssetFileDescriptor afd = am.openFd("music/" + string);
+        mediaPlayer.setDataSource(afd.getFileDescriptor());
         mediaPlayer.prepareAsync();
-        mediaPlayer.setOnPreparedListener(mp -> mediaPlayer.start());
+        MediaPlayer finalMediaPlayer = mediaPlayer;
+        mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
         return mediaPlayer;
     }
 
-    public static MediaPlayer play(MediaPlayer mediaPlayer, String source) {
+    public static MediaPlayer playExternal(MediaPlayer mediaPlayer, String source) {
 
         try {
             if (mediaPlayer == null) {
@@ -97,26 +105,51 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    public static MediaPlayer LoopPlay(MediaPlayer mediaPlayer, String source, boolean pro) {
+    public static MediaPlayer LoopPlayAssets(Context context, MediaPlayer mediaPlayer,
+                                             String source, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
-            if (pro) play(mediaPlayer, source);
+            if (pro) {
+                try {
+                    playAssets(context, mediaPlayer, source);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else stop(mediaPlayer);
+        });
+        return mediaPlayer;
+    }
+
+    public static MediaPlayer LoopPlayExternal(MediaPlayer mediaPlayer, String source, boolean pro) {
+        mediaPlayer.setLooping(pro);
+        mediaPlayer.setOnCompletionListener(mp -> {
+            if (pro) playExternal(mediaPlayer, source);
             else stop(mediaPlayer);
         });
         return mediaPlayer;
     }
 
-    public static MediaPlayer ChangeToPlayAnother(MediaPlayer mediaPlayer, String source) {
+    public static MediaPlayer ChangeToPlayAnotherExternal(MediaPlayer mediaPlayer, String source) {
         mediaPlayer = Music_lib.stop(mediaPlayer);
-        mediaPlayer = Music_lib.play(mediaPlayer, source);
+        mediaPlayer = Music_lib.playExternal(mediaPlayer, source);
         return mediaPlayer;
     }
 
-    public static MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer, int R_source) {
-        Music_lib.stop(mediaPlayer);
-        mediaPlayer = MediaPlayer.create(context, R_source);
+    public static MediaPlayer ChangeToPlayAnotherExternal(Context context, MediaPlayer mediaPlayer
+            , String string) {
+        mediaPlayer = Music_lib.stop(mediaPlayer);
+        try {
+            mediaPlayer = Music_lib.playAssets(context, mediaPlayer, string);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return mediaPlayer;
     }
+//    public static MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer, int R_source) {
+//        Music_lib.stop(mediaPlayer);
+//        mediaPlayer = MediaPlayer.create(context, R_source);
+//        return mediaPlayer;
+//    }
 }
 
 
@@ -134,3 +167,4 @@ public class Music_lib {
 *——4.21
 * 注：
 * */
+
