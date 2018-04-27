@@ -1,1 +1,1 @@
-include ':AppEL', ':testlfm', ':effect', ':app'
+include ':AppEL', ':testlfm', ':effect'
