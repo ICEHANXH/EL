@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AppEL/AppEL.iml" filepath="$PROJECT_DIR$/AppEL/AppEL.iml" />
       <module fileurl="file://$PROJECT_DIR$/ELApp.iml" filepath="$PROJECT_DIR$/ELApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/libofmusic/libofmusic.iml" filepath="$PROJECT_DIR$/libofmusic/libofmusic.iml" />
-      <module fileurl="file://$PROJECT_DIR$/testoflfm/testoflfm.iml" filepath="$PROJECT_DIR$/testoflfm/testoflfm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AppEL/app.iml" filepath="$PROJECT_DIR$/AppEL/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/effect/effect.iml" filepath="$PROJECT_DIR$/effect/effect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testlfm/testlfm.iml" filepath="$PROJECT_DIR$/testlfm/testlfm.iml" />
     </modules>
   </component>
 </project>

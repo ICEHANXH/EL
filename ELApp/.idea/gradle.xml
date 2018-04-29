@@ -8,9 +8,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/libofmusic" />
-            <option value="$PROJECT_DIR$/testoflfm" />
+            <option value="$PROJECT_DIR$/AppEL" />
+            <option value="$PROJECT_DIR$/effect" />
+            <option value="$PROJECT_DIR$/testlfm" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
