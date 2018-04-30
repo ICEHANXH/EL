@@ -66,6 +66,27 @@ public class Music_lib {
 
     }
 
+    public static MediaPlayer playExternalAbsolutePath(MediaPlayer mediaPlayer, String source) {
+        try {
+            if (mediaPlayer == null) {
+                mediaPlayer = Music_lib.GetMediaPlayer();
+            }
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.start();
+                return mediaPlayer;
+            }
+            File file = new File(source);
+            mediaPlayer.reset();
+            mediaPlayer.setDataSource(file.getPath());
+            mediaPlayer.prepareAsync();
+            MediaPlayer finalMediaPlayer = mediaPlayer;
+            mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mediaPlayer;
+    }
+
     /**
      * @param source :The external source(like in the sdcards)
      */
@@ -93,9 +114,6 @@ public class Music_lib {
     }
 
     public static MediaPlayer ContinueToPlay(MediaPlayer mediaPlayer) {
-        if (mediaPlayer == null) {
-            mediaPlayer = Music_lib.GetMediaPlayer();
-        }
         mediaPlayer.start();
         return mediaPlayer;
     }
@@ -199,7 +217,8 @@ public class Music_lib {
         mediaPlayer.reset();
         AssetManager am = context.getAssets();
         AssetFileDescriptor afd = am.openFd("music/" + string);
-        mediaPlayer.setDataSource(afd.getFileDescriptor());
+        mediaPlayer.setDataSource(afd.getFileDescriptor()
+                , afd.getStartOffset(), afd.getLength());
         mediaPlayer.prepareAsync();
         MediaPlayer finalMediaPlayer = mediaPlayer;
         mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
