@@ -31,12 +31,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="timer.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/timer.java">
+      <file leaf-file-name="Image_IO.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/Image_IO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="-2954">
+              <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+              <folding>
+                <element signature="method#getTransformation#0;class#Image_IO#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -3932,12 +3934,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/AppEL/src/main/java/Tmp_lib/File_IO_Lib.java" />
-        <option value="$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/Music_lib.java" />
         <option value="$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/File_IO_Lib.java" />
+        <option value="$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/Music_lib.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="128" />
     <option name="y" value="57" />
     <option name="width" value="1572" />
@@ -4268,7 +4270,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -4374,25 +4376,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/Music_lib.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-146">
-          <caret line="213" column="57" lean-forward="false" selection-start-line="213" selection-start-column="57" selection-end-line="213" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/File_IO_Lib.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2752">
-          <caret line="153" column="5" lean-forward="true" selection-start-line="153" selection-start-column="5" selection-end-line="153" selection-end-column="5" />
-          <folding>
-            <element signature="method#copyFilesFassets#0;class#File_IO_Lib#0" expanded="false" />
-            <element signature="method#getSuffixFile#0;class#File_IO_Lib#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -4401,21 +4384,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/Image_IO.java">
+    <entry file="file://$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/timer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3510">
-          <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+        <state relative-caret-position="-27">
+          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/File_IO_Lib.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4347">
+          <caret line="202" column="7" lean-forward="true" selection-start-line="202" selection-start-column="7" selection-end-line="202" selection-end-column="7" />
           <folding>
-            <element signature="method#getTransformation#0;class#Image_IO#0" expanded="false" />
+            <element signature="method#getSuffixFile#0;class#File_IO_Lib#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/timer.java">
+    <entry file="file://$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/Music_lib.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="1350">
+          <caret line="227" column="4" lean-forward="false" selection-start-line="227" selection-start-column="4" selection-end-line="227" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#4005#4006#0" expanded="true" />
+            <element signature="e#4051#4052#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testlfm/src/main/java/com/example/testlfm/Image_IO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2954">
+          <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+          <folding>
+            <element signature="method#getTransformation#0;class#Image_IO#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

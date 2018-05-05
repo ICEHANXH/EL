@@ -33,6 +33,13 @@ c. 网络上的媒体文件
  * ———4.26
  * */
 
+/*
+ * 我再也不敢了,一定好好地同步remote，好好地写文档
+ * ...orz
+ *       ——5.5
+ * */
+
+
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
@@ -212,6 +219,17 @@ public class Music_lib {
                                                                       String source) {
         mediaPlayer = Music_lib.stop(mediaPlayer);
         mediaPlayer = Music_lib.playExternalAbsolutePath(mediaPlayer, source);
+        return mediaPlayer;
+    }
+
+    /**
+     * @param left:The  left road volume.
+     * @param right:The right road volume.
+     */
+    public static MediaPlayer ChangeVolume(MediaPlayer mediaPlayer, double left, double right) {
+        float leftRate = (float) left;
+        float rightRate = (float) right;
+        mediaPlayer.setVolume(leftRate, rightRate);
         return mediaPlayer;
     }
 

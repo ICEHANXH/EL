@@ -22,16 +22,14 @@ import java.util.List;
 
 public class File_IO_Lib {
     /**
-     * 获取sd卡的缓存路径， 一般在卡中sdCard就是这个目录
-     *
-     * @return SDPath
+     * @return SDcard Absolute Path of String
      */
     public static String getSDPath() {
         return getSDFile().getAbsolutePath();
     }
 
     /**
-     * @return SDcardDic
+     * @return SDcard rootPath's file
      */
     public static File getSDFile() {
         File sdDir = null;
@@ -76,31 +74,6 @@ public class File_IO_Lib {
             e.printStackTrace();
         }
         return null;
-    }
-
-    private static byte[] InputStreamToByte(InputStream is) throws IOException {
-        ByteArrayOutputStream bytestream = new ByteArrayOutputStream();
-        int ch;
-        while ((ch = is.read()) != -1) {
-            bytestream.write(ch);
-        }
-        byte imgdata[] = bytestream.toByteArray();
-        bytestream.close();
-        return imgdata;
-    }
-
-    /**
-     * 获取缓存文件夹目录 如果不存在创建 否则则创建文件夹
-     *
-     * @return filePath
-     */
-    public static String isExistsFilePath() {
-        String filePath = getSDPath();
-        File file = new File(filePath);
-        if (!file.exists()) {
-            file.mkdirs();
-        }
-        return filePath;
     }
 
     /**
@@ -153,11 +126,15 @@ public class File_IO_Lib {
         return copyFromList(des.getAbsolutePath(), data);
     }
 
+    /**
+     * You have to ask for permission the first time
+     * you are going to visit the storage of the sdCard.
+     *
+     * */
     public boolean IsPermitted(Context context) {
         return ContextCompat.checkSelfPermission(context
                 , Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
     }
-
     public void requestPermissions(Activity context) {
         ActivityCompat.requestPermissions(context, new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -207,4 +184,29 @@ public class File_IO_Lib {
         return file;
     }
 
+
+    private static byte[] InputStreamToByte(InputStream is) throws IOException {
+        ByteArrayOutputStream bytestream = new ByteArrayOutputStream();
+        int ch;
+        while ((ch = is.read()) != -1) {
+            bytestream.write(ch);
+        }
+        byte imgdata[] = bytestream.toByteArray();
+        bytestream.close();
+        return imgdata;
+    }
+
+    /**
+     * 获取缓存文件夹目录 如果不存在创建 否则则创建文件夹
+     *
+     * @return filePath
+     */
+    private static String isExistsFilePath() {
+        String filePath = getSDPath();
+        File file = new File(filePath);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        return filePath;
+    }
 }
