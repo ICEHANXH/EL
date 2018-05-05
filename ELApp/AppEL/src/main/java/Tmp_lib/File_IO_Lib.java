@@ -11,6 +11,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/*
+* 得到SD卡，APP路径和文件
+* 得到指定后缀的文件并且进行buff缓存
+* */
+
 public class File_IO_Lib {
 //    public static String[] getAssetsAbsolutePath(Context context, String string) {
 //
