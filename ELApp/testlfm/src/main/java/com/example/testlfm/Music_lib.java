@@ -178,6 +178,16 @@ public class Music_lib {
         return mediaPlayer;
     }
 
+    public static MediaPlayer LoopPlayExternalAbsolutePath(MediaPlayer mediaPlayer,
+                                                           String source, boolean pro) {
+        mediaPlayer.setLooping(pro);
+        mediaPlayer.setOnCompletionListener(mp -> {
+            if (pro) playExternalAbsolutePath(mediaPlayer, source);
+            else stop(mediaPlayer);
+        });
+        return mediaPlayer;
+    }
+
     public static MediaPlayer ChangeToPlayAnotherExternal(MediaPlayer mediaPlayer, String source) {
         mediaPlayer = Music_lib.stop(mediaPlayer);
         mediaPlayer = Music_lib.playExternal(mediaPlayer, source);
@@ -195,6 +205,13 @@ public class Music_lib {
             , int rawFile) {
         mediaPlayer = Music_lib.stop(mediaPlayer);
         mediaPlayer = Music_lib.play(context, mediaPlayer, rawFile);
+        return mediaPlayer;
+    }
+
+    public static MediaPlayer ChangeToPlayAnotherExternalAbsolutePath(MediaPlayer mediaPlayer,
+                                                                      String source) {
+        mediaPlayer = Music_lib.stop(mediaPlayer);
+        mediaPlayer = Music_lib.playExternalAbsolutePath(mediaPlayer, source);
         return mediaPlayer;
     }
 

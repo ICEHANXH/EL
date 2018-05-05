@@ -1,8 +1,13 @@
 package com.example.testlfm;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import java.io.BufferedWriter;
@@ -136,16 +141,27 @@ public class File_IO_Lib {
     /**
      * The buffPath is in the appPath.
      */
-    public static File getAllSameSuffixPath(Context context, String suffix, String buffFilePath, boolean sd_app) throws IOException {
+    public static File getAllSameSuffixPath(Context context, String suffix, String bufferedFile, boolean sd_app) throws IOException {
         List<String> data = new LinkedList<>();
         File targetDic;
         if (sd_app)
             targetDic = new File(getSDPath());
         else
             targetDic = new File(getAppPath(context));
-        File des = new File(getAppPath(context) + buffFilePath);
+        File des = new File(getAppPath(context) + bufferedFile);
         data = getSuffixFile(data, targetDic.getAbsolutePath(), suffix);
         return copyFromList(des.getAbsolutePath(), data);
+    }
+
+    public boolean IsPermitted(Context context) {
+        return ContextCompat.checkSelfPermission(context
+                , Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    public void requestPermissions(Activity context) {
+        ActivityCompat.requestPermissions(context, new String[]{
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+        }, 1);
     }
 
     /**
