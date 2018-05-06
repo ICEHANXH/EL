@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,15 +82,16 @@
 
         />
     <io.github.yuweiguocn.lib.squareloading.SquareLoading
+        android:id="@+id/squareLoading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E91E63"
+        android:background="#180d10"
         app:squareColor="@android:color/white"
-        app:squareSize="12dp"
+        app:squareSize="18dp"
         app:squareCorner="2dp"
         app:dividerSize="2dp"
         app:xCount="4"
-        app:yCount="3"
+        app:yCount="4"
         />
 
 </LinearLayout>
