@@ -131,11 +131,11 @@ public class File_IO_Lib {
      * you are going to visit the storage of the sdCard.
      *
      * */
-    public boolean IsPermitted(Context context) {
+    public static boolean IsPermitted(Context context) {
         return ContextCompat.checkSelfPermission(context
                 , Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
     }
-    public void requestPermissions(Activity context) {
+    public static void requestPermissions(Activity context) {
         ActivityCompat.requestPermissions(context, new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         }, 1);

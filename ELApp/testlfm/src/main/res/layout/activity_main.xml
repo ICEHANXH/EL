@@ -13,21 +13,34 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="157dp"
+        <cn.iwgang.countdownview.CountdownView
+            android:id="@+id/countingDown"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            app:srcCompat="@mipmap/ic_launcher" />
+            app:isHideTimeBackground="true"
+            app:isShowDay="true"
+            app:isShowHour="true"
+            app:isShowMillisecond="true"
+            app:isShowMinute="true"
+            app:isShowSecond="true"
+            app:isTimeTextBold="true"
+            app:suffixGravity="bottom"
+            app:suffixHour="时"
+            app:suffixMillisecond="毫秒"
+            app:suffixMinute="分"
+            app:suffixSecond="秒"
+            app:suffixTextColor="#000000"
+            app:suffixTextSize="12sp"
+            app:timeTextColor="#000000"
+            app:timeTextSize="22sp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/play"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="playAndCount"
         android:text="play"
-            android:onClick="play"
         tools:ignore="HardcodedText" />
 
     <Button
@@ -42,8 +55,8 @@
         android:id="@+id/getInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="getInfo"
-        android:onClick="getInfo"/>
+        android:onClick="getInfo"
+        android:text="getInfo" />
 
     <TextView
         android:id="@+id/text"
