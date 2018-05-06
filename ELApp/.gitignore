@@ -10,3 +10,8 @@
 .externalNativeBuild
 .idea/workspace.xml
 .idea/
+*.class
+*.apk
+bin/
+gen/
+.settings/
