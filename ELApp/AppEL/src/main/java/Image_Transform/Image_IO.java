@@ -7,7 +7,6 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.example.lenovo.elapp.R;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
@@ -16,7 +15,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
+/**compile 'com.sunfusheng:glideimageview:1.0.0'
  * 保存图片的类
  */
 public class Image_IO {
