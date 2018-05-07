@@ -1,5 +1,6 @@
 package com.example.testlfm;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,9 +8,6 @@ import android.view.View;
 
 import cn.iwgang.countdownview.CountdownView;
 import io.github.yuweiguocn.lib.squareloading.SquareLoading;
-import site.gemus.openingstartanimation.NormalDrawStrategy;
-import site.gemus.openingstartanimation.OpeningStartAnimation;
-import site.gemus.openingstartanimation.RotationDrawStrategy;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,16 +69,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btn2Event(View view) {
-        OpeningStartAnimation openingStartAnimation = new OpeningStartAnimation.Builder(this)
-                .setDrawStategy(new NormalDrawStrategy())
-                .create();
-        openingStartAnimation.show(this);
+
     }
 
     public void btn3Event(View view) {
-        OpeningStartAnimation openingStartAnimation3 = new OpeningStartAnimation.Builder(this)
-                .setDrawStategy(new RotationDrawStrategy())
-                .create();
-        openingStartAnimation3.show(this);
+        Intent intent = new Intent(this, Another.class);
+        startActivity(intent);
     }
 }
