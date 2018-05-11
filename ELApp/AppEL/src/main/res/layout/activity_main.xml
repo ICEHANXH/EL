@@ -7,49 +7,94 @@
     android:layout_height="match_parent"
     tools:context="Activitys.MainActivity">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/root_Frame_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+    </FrameLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/MainActivityNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:background="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/main_bottom_navigation_content" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/left_navigation_view_header_layout"
+        app:menu="@menu/left_navigation_view_menu"
+        tools:ignore="RtlHardcoded" />
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:context="com.example.hxh.myapplication.MainActivity">
 
-        <Button
-            android:id="@+id/titleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="今日内容"
-            android:textSize="20sp"
-            android:textColor="@color/title"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:text="2/5"
-                android:textColor="@color/title"
-                android:textSize="50sp"
-                android:gravity="center"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:layout_weight="2"
-                android:text="任务按重要性分"
-                android:textSize="30sp"
-                android:gravity="center"/>
-        </LinearLayout>
-
-        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/container"
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.example.hxh.myapplication.MainActivity">
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/titleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="今日内容"
+                android:textSize="20sp"
+                android:textColor="@color/title"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:text="2/5"
+                    android:textColor="@color/title"
+                    android:textSize="50sp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="2"
+                    android:text="任务按重要性分"
+                    android:textSize="30sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="未完成:"
+                android:textSize="40sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="已完成:"
+                android:textSize="40sp"/>
 
             <android.support.design.widget.BottomNavigationView
                 android:id="@+id/navigation"
@@ -62,18 +107,10 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:menu="@menu/main_bottom_navigation_content" />
-        </android.support.constraint.ConstraintLayout>
-    </LinearLayout>
-
-    <fragment
-        android:id="@+id/id_left_menu"
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="left"
-        android:tag="Left" />
 
 
-
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
     <com.yalantis.phoenix.PullToRefreshView
         android:id="@+id/pull_to_refresh"
