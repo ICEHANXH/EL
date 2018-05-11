@@ -51,11 +51,21 @@ import java.io.File;
 import java.io.IOException;
 
 public class MusicManager {
+    private MediaPlayer mediaPlayer;
+
+    private MusicManager() {
+        mediaPlayer = new MediaPlayer();
+    }
+
+    public static MusicManager getMusicManager() {
+        return new MusicManager();
+    }
+
     /**
      * Get the mediaPlayer,and you have to choose the source of the music.
      */
     public MediaPlayer GetMediaPlayer() {
-        return new MediaPlayer();
+        return mediaPlayer;
     }
 
     public MediaPlayer play(Context context, MediaPlayer mediaPlayer, int rawFile) {

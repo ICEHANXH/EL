@@ -1,6 +1,8 @@
 package Managers;
 
 
+import android.content.Context;
+
 //任务名，重要性（颜色：四种颜色）
 //开始时间，完成时间
 //所需交互APP
@@ -12,14 +14,14 @@ public class TaskManager {
     private MusicManager music_manager;
     private FileManager file_manager;
 
-    private TaskManager() {
-        achievementManager = AchievementManager.getAchievementManager();
-        music_manager = new MusicManager();
+    private TaskManager(Context context) {
+        achievementManager = AchievementManager.getAchievementManager(context);
+        music_manager = MusicManager.getMusicManager();
         file_manager = FileManager.getFileManager();
     }
 
-    public static TaskManager getTaskManager() {
-        return new TaskManager();
+    public static TaskManager getTaskManager(Context context) {
+        return new TaskManager(context);
     }
 
     public boolean addTask(Tasks tasks) {

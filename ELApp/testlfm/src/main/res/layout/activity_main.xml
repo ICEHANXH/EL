@@ -59,38 +59,10 @@
         android:text="getInfo"
         tools:ignore="HardcodedText" />
 
-    <scut.carson_ho.kawaii_loadingview.Kawaii_LoadingView
-
-        android:id="@+id/Kawaii_LoadingView"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="132dp"
-
-        android:background="#161943"
-        app:blockColor="#ffffff"
-
-        app:blockInterval="8dp"
-        app:fixBlock_Angle="5"
-        app:half_BlockWidth="15dp"
-
-        app:initPosition="0"
-        app:isClock_Wise="false"
-        app:lineNumber="3"
-
-        app:moveBlock_Angle="20"
-        app:moveSpeed="500"
-        app:move_Interpolator="@android:anim/bounce_interpolator"
-
-        />
-    <io.github.yuweiguocn.lib.squareloading.SquareLoading
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#E91E63"
-        app:squareColor="@android:color/white"
-        app:squareSize="12dp"
-        app:squareCorner="2dp"
-        app:dividerSize="2dp"
-        app:xCount="4"
-        app:yCount="3"
-        />
+        android:layout_height="118dp"
+        android:text="TextView" />
 
 </LinearLayout>

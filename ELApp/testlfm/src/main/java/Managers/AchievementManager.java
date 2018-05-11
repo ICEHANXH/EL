@@ -1,15 +1,19 @@
 package Managers;
 
+import android.content.Context;
+
 public class AchievementManager {
     private String AchievementFilePath;
     private FileManager file_manager;
+    private Achievement achievement;
 
-
-    private AchievementManager() {
-        file_manager = new FileManager();
+    private AchievementManager(Context context) {
+        achievement = Achievement.getAchievement(context);
+        file_manager = FileManager.getFileManager();
     }
 
-    public static AchievementManager getAchievementManager() {
-        return new AchievementManager();
+    public static AchievementManager getAchievementManager(Context context) {
+        return new AchievementManager(context);
     }
+
 }

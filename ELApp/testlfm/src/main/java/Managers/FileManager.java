@@ -123,14 +123,14 @@ public class FileManager {
     /**
      * The buffPath is in the appPath.
      */
-    public File getAllSameSuffixPath(Context context, String suffix, String bufferedFile, boolean sd_app) throws IOException {
+    public File getAllSameSuffixPath(Context context, String suffix, String targetDicPath, boolean sd_app) throws IOException {
         List<String> data = new LinkedList<>();
         File targetDic;
         if (sd_app)
-            targetDic = new File(getSDPath());
+            targetDic = new File(getSDPath() + targetDicPath);
         else
-            targetDic = new File(getAppPath(context));
-        File des = new File(getAppPath(context) + bufferedFile);
+            targetDic = new File(getAppPath(context) + targetDicPath);
+        File des = new File(getAppPath(context) + "SameSuffixBuff.txt");
         data = getSuffixFile(data, targetDic.getAbsolutePath(), suffix);
         return copyFromList(des.getAbsolutePath(), data);
     }
