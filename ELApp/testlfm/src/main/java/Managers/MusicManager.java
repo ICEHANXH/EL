@@ -198,29 +198,33 @@ public class MusicManager {
     }
 
     public MediaPlayer ChangeToPlayAnotherExternal(MediaPlayer mediaPlayer, String source) {
-        mediaPlayer = MusicManager.stop(mediaPlayer);
-        mediaPlayer = MusicManager.playExternal(mediaPlayer, source);
+        MusicManager musicManager = new MusicManager();
+        mediaPlayer = musicManager.stop(mediaPlayer);
+        mediaPlayer = musicManager.playExternal(mediaPlayer, source);
         return mediaPlayer;
     }
 
     public MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer
             , String string) {
-        mediaPlayer = MusicManager.stop(mediaPlayer);
-        mediaPlayer = MusicManager.play(context, mediaPlayer, string);
+        MusicManager musicManager = new MusicManager();
+        mediaPlayer = musicManager.stop(mediaPlayer);
+        mediaPlayer = musicManager.play(context, mediaPlayer, string);
         return mediaPlayer;
     }
 
     public MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer
             , int rawFile) {
-        mediaPlayer = MusicManager.stop(mediaPlayer);
-        mediaPlayer = MusicManager.play(context, mediaPlayer, rawFile);
+        MusicManager musicManager = new MusicManager();
+        mediaPlayer = musicManager.stop(mediaPlayer);
+        mediaPlayer = musicManager.play(context, mediaPlayer, rawFile);
         return mediaPlayer;
     }
 
     public MediaPlayer ChangeToPlayAnotherExternalAbsolutePath(MediaPlayer mediaPlayer,
                                                                String source) {
-        mediaPlayer = MusicManager.stop(mediaPlayer);
-        mediaPlayer = MusicManager.playExternalAbsolutePath(mediaPlayer, source);
+        MusicManager musicManager = new MusicManager();
+        mediaPlayer = musicManager.stop(mediaPlayer);
+        mediaPlayer = musicManager.playExternalAbsolutePath(mediaPlayer, source);
         return mediaPlayer;
     }
 
@@ -245,7 +249,8 @@ public class MusicManager {
     private MediaPlayer playAssets(Context context, MediaPlayer mediaPlayer, String string)
             throws IOException {
         if (mediaPlayer == null) {
-            mediaPlayer = MusicManager.GetMediaPlayer();
+            MusicManager musicManager = new MusicManager();
+            mediaPlayer = musicManager.GetMediaPlayer();
         }
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.start();
@@ -264,7 +269,8 @@ public class MusicManager {
 
     private MediaPlayer playRes(Context context, MediaPlayer mediaPlayer, int rawFile) {
         if (mediaPlayer == null) {
-            mediaPlayer = MusicManager.GetMediaPlayer();
+            MusicManager musicManager = new MusicManager();
+            mediaPlayer = musicManager.GetMediaPlayer();
         }
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.start();
