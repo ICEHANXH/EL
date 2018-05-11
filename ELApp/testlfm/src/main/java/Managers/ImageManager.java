@@ -1,4 +1,4 @@
-package com.example.testlfm;
+package Managers;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -7,6 +7,8 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.example.testlfm.CircleTransform;
+import com.example.testlfm.R;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
@@ -15,19 +17,28 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**compile 'com.sunfusheng:glideimageview:1.0.0'
+/**
+ * compile 'com.sunfusheng:glideimageview:1.0.0'
  * 保存图片的类
  */
-public class Image_IO {
+public class ImageManager {
 
     private final static String CACHE = "/css";
+
+    private ImageManager() {
+
+    }
+
+    public static ImageManager getImageManager() {
+        return new ImageManager();
+    }
 
     /**
      * @param context:The context to include the imageView
      * @param source      :The source in the  sdcard/pictures/...
      * @param imageView   :the ImageView that contains the picture
      */
-    public static void SetImageExternal(Context context, String source, ImageView imageView) {
+    public void SetImageExternal(Context context, String source, ImageView imageView) {
         //placeHolder  error.  image waiting
         File file = new File(Environment.getExternalStorageDirectory()
                 , "/pictures/" + source);
@@ -45,7 +56,7 @@ public class Image_IO {
      * @param imageView :The ImageView Target to place the image
      */
 
-    public static void SetImage(Context context, int R_Source, ImageView imageView) {
+    public void SetImage(Context context, int R_Source, ImageView imageView) {
         Picasso.with(context)
                 .load(R_Source)
                 .transform(getTransformation(imageView))
@@ -53,7 +64,7 @@ public class Image_IO {
                 .into(imageView);
     }
 
-    public static void SetImage(Context context, String source, ImageView imageView) {
+    public void SetImage(Context context, String source, ImageView imageView) {
         try {
             InputStream inputStream = null;
             inputStream = context.getAssets().open("pictures/" + source);
@@ -65,7 +76,7 @@ public class Image_IO {
         }
     }
 
-    public static void SetImageExternal_Circlize(Context context, String source, ImageView imageView) {
+    public void SetImageExternal_Circlize(Context context, String source, ImageView imageView) {
         File file = new File(Environment.getExternalStorageDirectory()
                 , "/pictures/" + source);
 
@@ -76,7 +87,7 @@ public class Image_IO {
                 .into(imageView);
     }
 
-    public static void SetImage_Circlize(Context context, int R_Source, ImageView imageView) {
+    public void SetImage_Circlize(Context context, int R_Source, ImageView imageView) {
         Picasso.with(context)
                 .load(R_Source)
                 .transform(getTransformation(imageView))
@@ -90,7 +101,7 @@ public class Image_IO {
      *
      * @throws Exception
      */
-    public static void saveImage(Bitmap bitmap, String imageName)
+    public void saveImage(Bitmap bitmap, String imageName)
             throws Exception {
         String filePath = isExistsFilePath();
         FileOutputStream fos;
@@ -108,7 +119,7 @@ public class Image_IO {
     /**
      * @return SDcardDic
      */
-    public static File getSDcardDic() {
+    public File getSDcardDic() {
         File sdDir = null;
         boolean sdCardExist = Environment.getExternalStorageState().equals(
                 android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
@@ -125,7 +136,7 @@ public class Image_IO {
      *
      * @return SDPath
      */
-    public static String getSDPath() {
+    public String getSDPath() {
         return getSDcardDic().getAbsolutePath();
     }
 
@@ -134,7 +145,7 @@ public class Image_IO {
      *
      * @return filePath
      */
-    private static String isExistsFilePath() {
+    private String isExistsFilePath() {
         String filePath = getSDPath() + CACHE;
         File file = new File(filePath);
         if (!file.exists()) {
@@ -143,7 +154,7 @@ public class Image_IO {
         return filePath;
     }
 
-    private static Transformation getTransformation(final ImageView view) {
+    private Transformation getTransformation(final ImageView view) {
         return new Transformation() {
             @Override
             public Bitmap transform(Bitmap source) {

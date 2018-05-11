@@ -1,34 +1,42 @@
-package com.example.testlfm;
+package Managers;
 
 import android.app.Activity;
 
 import io.github.yuweiguocn.lib.squareloading.SquareLoading;
 import scut.carson_ho.kawaii_loadingview.Kawaii_LoadingView;
 
-public class loading_lib {
-    public static Kawaii_LoadingView getkawaii_loadingView(Activity activity, int R_id) {
+public class LoadingManager {
+    private LoadingManager() {
+
+    }
+
+    public static LoadingManager getLoadingManager() {
+        return new LoadingManager();
+    }
+
+    public Kawaii_LoadingView getkawaii_loadingView(Activity activity, int R_id) {
         return (Kawaii_LoadingView) activity.findViewById(R_id);
     }
 
-    public static Kawaii_LoadingView kawaii_loading_start(Kawaii_LoadingView kawaii_loadingView) {
+    public Kawaii_LoadingView kawaii_loading_start(Kawaii_LoadingView kawaii_loadingView) {
         kawaii_loadingView.setVisibility(Kawaii_LoadingView.VISIBLE);
         kawaii_loadingView.startMoving();
         kawaii_loadingView.setTop(1);
         return kawaii_loadingView;
     }
 
-    public static Kawaii_LoadingView kawaii_loading_stop(Kawaii_LoadingView kawaii_loadingView) {
+    public Kawaii_LoadingView kawaii_loading_stop(Kawaii_LoadingView kawaii_loadingView) {
         kawaii_loadingView.setVisibility(Kawaii_LoadingView.INVISIBLE);
         kawaii_loadingView.stopMoving();
         kawaii_loadingView.setTop(0);
         return kawaii_loadingView;
     }
 
-    public static SquareLoading getSquareLoading(Activity activity, int R_id) {
+    public SquareLoading getSquareLoading(Activity activity, int R_id) {
         return (SquareLoading) activity.findViewById(R_id);
     }
 
-    public static SquareLoading square_loading_start(SquareLoading squareLoading) {
+    public SquareLoading square_loading_start(SquareLoading squareLoading) {
         squareLoading.setVisibility(SquareLoading.VISIBLE);
         squareLoading.setTop(1);
         squareLoading.startLayoutAnimation();
@@ -36,7 +44,7 @@ public class loading_lib {
         return squareLoading;
     }
 
-    public static SquareLoading square_loading_stop(SquareLoading squareLoading) {
+    public SquareLoading square_loading_stop(SquareLoading squareLoading) {
         squareLoading.setVisibility(SquareLoading.INVISIBLE);
         squareLoading.setTop(0);
         squareLoading.setClipToPadding(true);

@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import Managers.Achievement;
+import Managers.FileManager;
+import Managers.LoadingManager;
+import Managers.MusicManager;
 import cn.iwgang.countdownview.CountdownView;
 import io.github.yuweiguocn.lib.squareloading.SquareLoading;
 
@@ -15,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean IsPause = false;
     private CountdownView countdownView;
     private SquareLoading squareLoading;
+    private LoadingManager loadingManager;
     // 1. 定义控件变量
     private scut.carson_ho.kawaii_loadingview.Kawaii_LoadingView kawai;
 
@@ -31,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        squareLoading = loading_lib.getSquareLoading(this, R.id.squareLoading);
 //        squareLoading = loading_lib.square_loading_stop(squareLoading);
-        kawai = loading_lib.getkawaii_loadingView(this, R.id.Kawaii_LoadingView);
+        loadingManager = LoadingManager.getLoadingManager();
+        kawai = loadingManager.getkawaii_loadingView(this, R.id.Kawaii_LoadingView);
 
 
     }
@@ -39,30 +45,30 @@ public class MainActivity extends AppCompatActivity {
     public void playAndCount(View view) {
 //        squareLoading=loading_lib.square_loading_start(squareLoading);
         if (countdownView == null) {
-            countdownView = CountingDown.getCountingDown(MainActivity.this, R.id.countingDown);
+            countdownView = Achievement.CountingDown.getCountingDown(MainActivity.this, R.id.countingDown);
         }
-        countdownView = CountingDown.start(3, 5, countdownView);
+        countdownView = Achievement.CountingDown.start(3, 5, countdownView);
         countdownView.setOnCountdownEndListener(cv -> {
-            mediaPlayer = Music_lib.pause(mediaPlayer);
+            mediaPlayer = MusicManager.pause(mediaPlayer);
             IsPause = true;
         });
-        if (!File_IO_Lib.IsPermitted(MainActivity.this)) {
-            File_IO_Lib.requestPermissions(MainActivity.this);
+        if (!FileManager.IsPermitted(MainActivity.this)) {
+            FileManager.requestPermissions(MainActivity.this);
         } else {
             if (mediaPlayer == null) {
-                mediaPlayer = Music_lib.GetMediaPlayer();
-                mediaPlayer = Music_lib.play(MainActivity.this, mediaPlayer, "bgm2.mp3");
+                mediaPlayer = MusicManager.GetMediaPlayer();
+                mediaPlayer = MusicManager.play(MainActivity.this, mediaPlayer, "bgm2.mp3");
                 IsPause = false;
-                loading_lib.kawaii_loading_start(kawai);
+                loadingManager.kawaii_loading_start(kawai);
             } else if (IsPause) {
-                mediaPlayer = Music_lib.ContinueToPlay(mediaPlayer);
+                mediaPlayer = MusicManager.ContinueToPlay(mediaPlayer);
                 IsPause = false;
-                loading_lib.kawaii_loading_start(kawai);
+                loadingManager.kawaii_loading_start(kawai);
             } else {
-                mediaPlayer = Music_lib.pause(mediaPlayer);
+                mediaPlayer = MusicManager.pause(mediaPlayer);
                 IsPause = true;
-                loading_lib.kawaii_loading_stop(kawai);
-                countdownView = CountingDown.pause(countdownView);
+                loadingManager.kawaii_loading_stop(kawai);
+                countdownView = Achievement.CountingDown.pause(countdownView);
             }
         }
     }

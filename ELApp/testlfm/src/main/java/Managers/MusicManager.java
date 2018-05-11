@@ -1,4 +1,4 @@
-package com.example.testlfm;
+package Managers;
 /*
 *1. To get the source
 * a. 用户在应用中事先自带的resource资源
@@ -17,10 +17,10 @@ c. 网络上的媒体文件
 * 此外，方法play不能够放在“实现暂停、继续”的回调函数或者事件监听器中（不然的话还是会从头开始播放）
 * play方法属于确定了mediaplayer的来源，并且播放，请放在有关于音乐选择的地方
 * if (IsPause) {
-                mediaPlayer = Music_lib.ContinueToPlay(mediaPlayer);
+                mediaPlayer = MusicManager.ContinueToPlay(mediaPlayer);
                 IsPause = false;
             } else {
-                mediaPlayer = Music_lib.pause(mediaPlayer);
+                mediaPlayer = MusicManager.pause(mediaPlayer);
                 IsPause = true;
             }
 *——4.21
@@ -50,20 +50,20 @@ import android.os.Environment;
 import java.io.File;
 import java.io.IOException;
 
-public class Music_lib {
+public class MusicManager {
     /**
      * Get the mediaPlayer,and you have to choose the source of the music.
      */
-    public static MediaPlayer GetMediaPlayer() {
+    public MediaPlayer GetMediaPlayer() {
         return new MediaPlayer();
     }
 
-    public static MediaPlayer play(Context context, MediaPlayer mediaPlayer, int rawFile) {
+    public MediaPlayer play(Context context, MediaPlayer mediaPlayer, int rawFile) {
         mediaPlayer = playRes(context, mediaPlayer, rawFile);
         return mediaPlayer;
     }
 
-    public static MediaPlayer play(Context context, MediaPlayer mediaPlayer, String source) {
+    public MediaPlayer play(Context context, MediaPlayer mediaPlayer, String source) {
         try {
             mediaPlayer = playAssets(context, mediaPlayer, source);
         } catch (IOException e) {
@@ -73,10 +73,11 @@ public class Music_lib {
 
     }
 
-    public static MediaPlayer playExternalAbsolutePath(MediaPlayer mediaPlayer, String source) {
+    public MediaPlayer playExternalAbsolutePath(MediaPlayer mediaPlayer, String source) {
         try {
             if (mediaPlayer == null) {
-                mediaPlayer = Music_lib.GetMediaPlayer();
+                MusicManager musicManager = new MusicManager();
+                mediaPlayer = musicManager.GetMediaPlayer();
             }
             if (mediaPlayer.isPlaying()) {
                 mediaPlayer.start();
@@ -97,11 +98,12 @@ public class Music_lib {
     /**
      * @param source :The external source(like in the sdcards)
      */
-    public static MediaPlayer playExternal(MediaPlayer mediaPlayer, String source) {
+    public MediaPlayer playExternal(MediaPlayer mediaPlayer, String source) {
 
         try {
             if (mediaPlayer == null) {
-                mediaPlayer = Music_lib.GetMediaPlayer();
+                MusicManager musicManager = new MusicManager();
+                mediaPlayer = musicManager.GetMediaPlayer();
             }
             if (mediaPlayer.isPlaying()) {
                 mediaPlayer.start();
@@ -120,12 +122,12 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    public static MediaPlayer ContinueToPlay(MediaPlayer mediaPlayer) {
+    public MediaPlayer ContinueToPlay(MediaPlayer mediaPlayer) {
         mediaPlayer.start();
         return mediaPlayer;
     }
 
-    public static MediaPlayer pause(MediaPlayer mediaPlayer) {
+    public MediaPlayer pause(MediaPlayer mediaPlayer) {
         try {
             if (mediaPlayer == null)
                 return null;
@@ -136,11 +138,11 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    public static boolean isPlay(MediaPlayer mediaPlayer) {
+    public boolean isPlay(MediaPlayer mediaPlayer) {
         return mediaPlayer.isPlaying();
     }
 
-    public static MediaPlayer stop(MediaPlayer mediaPlayer) {
+    public MediaPlayer stop(MediaPlayer mediaPlayer) {
         if (mediaPlayer == null)
             mediaPlayer = new MediaPlayer();
         if (mediaPlayer.isPlaying()) {
@@ -154,8 +156,8 @@ public class Music_lib {
     /**
      * @param pro :True if you want to play the music loop.
      */
-    public static MediaPlayer LoopPlay(Context context, MediaPlayer mediaPlayer,
-                                       String source, boolean pro) {
+    public MediaPlayer LoopPlay(Context context, MediaPlayer mediaPlayer,
+                                String source, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
             if (pro) {
@@ -165,8 +167,8 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    public static MediaPlayer LoopPlay(Context context, MediaPlayer mediaPlayer,
-                                       int rawFile, boolean pro) {
+    public MediaPlayer LoopPlay(Context context, MediaPlayer mediaPlayer,
+                                int rawFile, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
             if (pro) {
@@ -176,7 +178,7 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    public static MediaPlayer LoopPlayExternal(MediaPlayer mediaPlayer, String source, boolean pro) {
+    public MediaPlayer LoopPlayExternal(MediaPlayer mediaPlayer, String source, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
             if (pro) playExternal(mediaPlayer, source);
@@ -185,8 +187,8 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    public static MediaPlayer LoopPlayExternalAbsolutePath(MediaPlayer mediaPlayer,
-                                                           String source, boolean pro) {
+    public MediaPlayer LoopPlayExternalAbsolutePath(MediaPlayer mediaPlayer,
+                                                    String source, boolean pro) {
         mediaPlayer.setLooping(pro);
         mediaPlayer.setOnCompletionListener(mp -> {
             if (pro) playExternalAbsolutePath(mediaPlayer, source);
@@ -195,30 +197,30 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    public static MediaPlayer ChangeToPlayAnotherExternal(MediaPlayer mediaPlayer, String source) {
-        mediaPlayer = Music_lib.stop(mediaPlayer);
-        mediaPlayer = Music_lib.playExternal(mediaPlayer, source);
+    public MediaPlayer ChangeToPlayAnotherExternal(MediaPlayer mediaPlayer, String source) {
+        mediaPlayer = MusicManager.stop(mediaPlayer);
+        mediaPlayer = MusicManager.playExternal(mediaPlayer, source);
         return mediaPlayer;
     }
 
-    public static MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer
+    public MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer
             , String string) {
-        mediaPlayer = Music_lib.stop(mediaPlayer);
-        mediaPlayer = Music_lib.play(context, mediaPlayer, string);
+        mediaPlayer = MusicManager.stop(mediaPlayer);
+        mediaPlayer = MusicManager.play(context, mediaPlayer, string);
         return mediaPlayer;
     }
 
-    public static MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer
+    public MediaPlayer ChangeToPlayAnother(Context context, MediaPlayer mediaPlayer
             , int rawFile) {
-        mediaPlayer = Music_lib.stop(mediaPlayer);
-        mediaPlayer = Music_lib.play(context, mediaPlayer, rawFile);
+        mediaPlayer = MusicManager.stop(mediaPlayer);
+        mediaPlayer = MusicManager.play(context, mediaPlayer, rawFile);
         return mediaPlayer;
     }
 
-    public static MediaPlayer ChangeToPlayAnotherExternalAbsolutePath(MediaPlayer mediaPlayer,
-                                                                      String source) {
-        mediaPlayer = Music_lib.stop(mediaPlayer);
-        mediaPlayer = Music_lib.playExternalAbsolutePath(mediaPlayer, source);
+    public MediaPlayer ChangeToPlayAnotherExternalAbsolutePath(MediaPlayer mediaPlayer,
+                                                               String source) {
+        mediaPlayer = MusicManager.stop(mediaPlayer);
+        mediaPlayer = MusicManager.playExternalAbsolutePath(mediaPlayer, source);
         return mediaPlayer;
     }
 
@@ -226,7 +228,7 @@ public class Music_lib {
      * @param left:The  left road volume.
      * @param right:The right road volume.
      */
-    public static MediaPlayer ChangeVolume(MediaPlayer mediaPlayer, double left, double right) {
+    public MediaPlayer ChangeVolume(MediaPlayer mediaPlayer, double left, double right) {
         float leftRate = (float) left;
         float rightRate = (float) right;
         mediaPlayer.setVolume(leftRate, rightRate);
@@ -240,10 +242,10 @@ public class Music_lib {
      * @param mediaPlayer :The Target mediaPlayer.
      * @param string      :The file name.
      */
-    private static MediaPlayer playAssets(Context context, MediaPlayer mediaPlayer, String string)
+    private MediaPlayer playAssets(Context context, MediaPlayer mediaPlayer, String string)
             throws IOException {
         if (mediaPlayer == null) {
-            mediaPlayer = Music_lib.GetMediaPlayer();
+            mediaPlayer = MusicManager.GetMediaPlayer();
         }
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.start();
@@ -260,9 +262,9 @@ public class Music_lib {
         return mediaPlayer;
     }
 
-    private static MediaPlayer playRes(Context context, MediaPlayer mediaPlayer, int rawFile) {
+    private MediaPlayer playRes(Context context, MediaPlayer mediaPlayer, int rawFile) {
         if (mediaPlayer == null) {
-            mediaPlayer = Music_lib.GetMediaPlayer();
+            mediaPlayer = MusicManager.GetMediaPlayer();
         }
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.start();

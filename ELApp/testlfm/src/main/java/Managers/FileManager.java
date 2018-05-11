@@ -1,4 +1,4 @@
-package com.example.testlfm;
+package Managers;
 
 import android.Manifest;
 import android.app.Activity;
@@ -20,18 +20,27 @@ import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
 
-public class File_IO_Lib {
+public class FileManager {
+
+    private FileManager() {
+
+    }
+
+    public static FileManager getFileManager() {
+        return new FileManager();
+    }
+
     /**
      * @return SDcard Absolute Path of String
      */
-    public static String getSDPath() {
+    public String getSDPath() {
         return getSDFile().getAbsolutePath();
     }
 
     /**
      * @return SDcard rootPath's file
      */
-    public static File getSDFile() {
+    public File getSDFile() {
         File sdDir = null;
         boolean sdCardExist = Environment.getExternalStorageState().equals(
                 android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
@@ -44,11 +53,11 @@ public class File_IO_Lib {
     }
 
 
-    public static File getAppFile(Context context) {
+    public File getAppFile(Context context) {
         return context.getApplicationContext().getFilesDir();
     }
 
-    public static String getAppPath(Context context) {
+    public String getAppPath(Context context) {
         return getAppFile(context).getAbsolutePath();
     }
 
@@ -56,18 +65,18 @@ public class File_IO_Lib {
      * Get the inputStream of the assets file
      * You could use this to get the info from the files
      */
-    public static InputStream getAssets(Context context, String string) throws IOException {
+    public InputStream getAssets(Context context, String string) throws IOException {
         return context.getResources()
                 .getAssets()
                 .open(string);
 
     }
 
-    public static Uri getUriRes(Context context, int rawFile) {
+    public Uri getUriRes(Context context, int rawFile) {
         return Uri.parse("android.resource://" + context.getPackageName() + "/" + rawFile);
     }
 
-    public static String getAssetsInfo(Context context, String string) {
+    public String getAssetsInfo(Context context, String string) {
         try {
             return new String(InputStreamToByte(getAssets(context, string)));
         } catch (IOException e) {
@@ -114,7 +123,7 @@ public class File_IO_Lib {
     /**
      * The buffPath is in the appPath.
      */
-    public static File getAllSameSuffixPath(Context context, String suffix, String bufferedFile, boolean sd_app) throws IOException {
+    public File getAllSameSuffixPath(Context context, String suffix, String bufferedFile, boolean sd_app) throws IOException {
         List<String> data = new LinkedList<>();
         File targetDic;
         if (sd_app)
@@ -129,12 +138,12 @@ public class File_IO_Lib {
     /**
      * You have to ask for permission the first time
      * you are going to visit the storage of the sdCard.
-     *
-     * */
+     */
     public static boolean IsPermitted(Context context) {
         return ContextCompat.checkSelfPermission(context
                 , Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
     }
+
     public static void requestPermissions(Activity context) {
         ActivityCompat.requestPermissions(context, new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -149,7 +158,7 @@ public class File_IO_Lib {
      * @param suffere  后缀名称 比如 .gif
      * @return
      */
-    private static List<String> getSuffixFile(List<String> files, String filePath, String suffere) {
+    private List<String> getSuffixFile(List<String> files, String filePath, String suffere) {
 
         File f = new File(filePath);
 
@@ -172,7 +181,7 @@ public class File_IO_Lib {
         return files;
     }
 
-    private static File copyFromList(String path, List<String> list) throws IOException {
+    private File copyFromList(String path, List<String> list) throws IOException {
         File file = new File(path);
         BufferedWriter bufferedWriter =
                 new BufferedWriter(new FileWriter(file));
@@ -185,7 +194,7 @@ public class File_IO_Lib {
     }
 
 
-    private static byte[] InputStreamToByte(InputStream is) throws IOException {
+    private byte[] InputStreamToByte(InputStream is) throws IOException {
         ByteArrayOutputStream bytestream = new ByteArrayOutputStream();
         int ch;
         while ((ch = is.read()) != -1) {
@@ -201,7 +210,7 @@ public class File_IO_Lib {
      *
      * @return filePath
      */
-    private static String isExistsFilePath() {
+    private String isExistsFilePath() {
         String filePath = getSDPath();
         File file = new File(filePath);
         if (!file.exists()) {
