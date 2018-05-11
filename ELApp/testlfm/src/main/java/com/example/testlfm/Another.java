@@ -20,6 +20,6 @@ public class Another extends AppCompatActivity {
 
         circleBar.setShaderColor(mColors);
         circleBar.update(100, 10000);
-        circleBar.set
+
     }
 }
