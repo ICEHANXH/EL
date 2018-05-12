@@ -5,13 +5,13 @@ import android.content.Context;
 
 import com.alibaba.fastjson.JSON;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -71,15 +71,14 @@ public class TaskManager {
     private List<Task> getTasksFormFile() throws IOException {
         BufferedOutputStream bufferedOutputStream =
                 new BufferedOutputStream(new FileOutputStream(getBuffFile(), true));
-        BufferedInputStream bufferedInputStream =
-                new BufferedInputStream(new FileInputStream(getBuffFile()));
-        StringBuilder stringBuilder = new StringBuilder();
-        byte[] bytes = new byte[1024];
-        while ((bufferedInputStream.read(bytes)) != -1) {
-            stringBuilder.append(Arrays.toString(bytes));
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(getBuffFile())));
+        StringBuilder tmp = new StringBuilder();
+        String result;
+        while ((result = br.readLine()) != null) {
+            tmp.append(result);
         }
-        String result = stringBuilder.toString();
-        bufferedInputStream.close();
+        result = tmp.toString();
+        br.close();
         bufferedOutputStream.close();
         return JSON.parseArray(result, Task.class);
     }
@@ -92,14 +91,25 @@ public class TaskManager {
 
         BufferedOutputStream bufferedOutputStream =
                 new BufferedOutputStream(new FileOutputStream(getBuffFile()));
-        String output = JSON.toJSONString(jsonArray);
+        String output = JSON.toJSONString(jsonArray, true);
         bufferedOutputStream.write(output.getBytes());
         bufferedOutputStream.flush();
         bufferedOutputStream.close();
     }
 
     public void deleteTask(Task task) {
-
+        try {
+            this.taskList.remove(task);
+            writeObjFile(taskList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                this.taskList = flushTask();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void TaskBegin(Task task) {

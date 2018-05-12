@@ -24,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
         t1.setBeginTime("begin");
         t1.setDuration("hahaha");
         taskManager.addTask(t1);
+        Task t3 = Task.getTask();
+        t3.setImportance("imp");
+        taskManager.addTask(t3);
+        taskManager.deleteTask(t3);
+        textView.setText(taskManager.getTaskList().get(1).getBeginTime());
     }
 
 
