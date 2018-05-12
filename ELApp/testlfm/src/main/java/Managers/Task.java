@@ -26,6 +26,9 @@ public class Task {
         taskName = "";
         remarks = "";
         importance = "";
+        beginTime = "";
+        endTime = "";
+        frequency = "";
     }
 
     public static Task getTask() {

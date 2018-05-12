@@ -7,15 +7,25 @@ import android.view.View;
 import android.widget.TextView;
 
 import Managers.Achievement;
+import Managers.Task;
+import Managers.TaskManager;
 
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView textView = findViewById(R.id.textView);
 
 
+        TaskManager taskManager = TaskManager.getTaskManager(this);
+        taskManager.addTask(Task.getTask());
+        Task t1 = Task.getTask();
+        t1.setBeginTime("begin");
+        t1.setDuration("hahaha");
+        taskManager.addTask(t1);
     }
+
 
     public void playAndCount(View view) {
         Achievement a = Achievement.getAchievement(this);

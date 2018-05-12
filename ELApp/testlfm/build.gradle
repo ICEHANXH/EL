@@ -43,6 +43,7 @@ dependencies {
     compile 'com.github.yhaolpz:FloatWindow:1.0.6'//悬浮按钮
     compile 'com.coder:circlebar:1.0.0'//进度条1
     compile 'com.github.idic779:monthweekmaterialcalendarview:1.5'//日历组件
+    compile 'com.alibaba:fastjson:1.1.55.android'//Json依赖
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
