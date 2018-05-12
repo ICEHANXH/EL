@@ -64,10 +64,6 @@ public class Achievement {
         AchievementFilePath = fileManager.getAppPath(context) + "achievement.txt";
     }
 
-    private Achievement() {
-
-    }
-
     public static Achievement getAchievement(Context context) {
         Achievement achievement = new Achievement(context);
         stringIntegerHashMap = new HashMap<>();
@@ -131,12 +127,6 @@ public class Achievement {
         }
         stringIntegerHashMap.put("coin", coinInt);
         stringIntegerHashMap.put("accomplishment", accInt);
-        return stringIntegerHashMap;
-    }
-
-    private HashMap<String, Integer> flushMap(int coinInt, int accomplishmentInt, HashMap<String, Integer> stringIntegerHashMap) {
-        stringIntegerHashMap.put("coin", coinInt);
-        stringIntegerHashMap.put("accomplishment", accomplishmentInt);
         return stringIntegerHashMap;
     }
 

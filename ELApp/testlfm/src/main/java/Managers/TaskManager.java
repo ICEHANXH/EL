@@ -10,21 +10,21 @@ import android.content.Context;
 //提醒时间
 //备注
 public class TaskManager {
-    private AchievementManager achievementManager;
     private MusicManager music_manager;
     private FileManager file_manager;
+    private Achievement achievement;
 
     private TaskManager(Context context) {
-        achievementManager = AchievementManager.getAchievementManager(context);
         music_manager = MusicManager.getMusicManager();
         file_manager = FileManager.getFileManager();
+        achievement = Achievement.getAchievement(context);
     }
 
     public static TaskManager getTaskManager(Context context) {
         return new TaskManager(context);
     }
 
-    public boolean addTask(Tasks tasks) {
+    public boolean addTask(Task task) {
         try {
             return true;
         } catch (Exception e) {
@@ -32,15 +32,15 @@ public class TaskManager {
         }
     }
 
-    public void deleteTask(Tasks tasks) {
+    public void deleteTask(Task task) {
 
     }
 
-    public void TaskBegin(Tasks tasks) {
+    public void TaskBegin(Task task) {
 
     }
 
-    public void TaskEnd(Tasks tasks) {
+    public void TaskFinish(Task task) {
 
     }
 }
