@@ -63,6 +63,45 @@ public class TaskManager {
         return this.taskList;
     }
 
+    public void deleteTask(Task task) {
+        try {
+            this.taskList.remove(task);
+            writeObjFile(taskList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                this.taskList = flushTask();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void TaskReady(Task task) {
+        task.setCondition("ready");
+    }
+
+    public void TaskBegin(Task task) {
+        task.setCondition("begin");
+    }
+
+    public void TaskFinish(Task task) {
+        task.setCondition("finish");
+    }
+
+    public boolean IsReady(Task task) {
+        return task.getCondition().equals("ready");
+    }
+
+    public boolean IsBegin(Task task) {
+        return task.getCondition().equals("begin");
+    }
+
+    public boolean IsFinish(Task task) {
+        return task.getCondition().equals("finish");
+    }
+
     private List<Task> flushTask() throws IOException {
         this.taskList = getTasksFormFile();
         return this.taskList;
@@ -95,28 +134,5 @@ public class TaskManager {
         bufferedOutputStream.write(output.getBytes());
         bufferedOutputStream.flush();
         bufferedOutputStream.close();
-    }
-
-    public void deleteTask(Task task) {
-        try {
-            this.taskList.remove(task);
-            writeObjFile(taskList);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                this.taskList = flushTask();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public void TaskBegin(Task task) {
-
-    }
-
-    public void TaskFinish(Task task) {
-
     }
 }

@@ -6,9 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 import Managers.Achievement;
-import Managers.Task;
-import Managers.TaskManager;
+import Managers.TimeManager;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -18,17 +19,20 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView);
 
 
-        TaskManager taskManager = TaskManager.getTaskManager(this);
-        taskManager.addTask(Task.getTask());
-        Task t1 = Task.getTask();
-        t1.setBeginTime("begin");
-        t1.setDuration("hahaha");
-        taskManager.addTask(t1);
-        Task t3 = Task.getTask();
-        t3.setImportance("imp");
-        taskManager.addTask(t3);
-        taskManager.deleteTask(t3);
-        textView.setText(taskManager.getTaskList().get(1).getBeginTime());
+//        TaskManager taskManager = TaskManager.getTaskManager(this);
+//        taskManager.addTask(Task.getTask());
+//        Task t1 = Task.getTask();
+//        t1.setBeginTime("begin");
+//        t1.setDuration("hahaha");
+//        taskManager.addTask(t1);
+//        Task t3 = Task.getTask();
+//        t3.setImportance("imp");
+//        taskManager.addTask(t3);;
+//        taskManager.deleteTask(t3);
+        TimeManager timeManager = TimeManager.getTimeManager();
+        Calendar a = Calendar.getInstance();
+        Calendar b = Calendar.getInstance();
+        textView.setText((int) timeManager.getTimeStick(a,b));
     }
 
 

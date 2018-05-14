@@ -20,6 +20,7 @@ public class Task {
     private String duration;
     private String endTime;
     private String frequency;
+    private String condition;
 
     private Task() {
         timer = new Timer();
@@ -29,6 +30,7 @@ public class Task {
         beginTime = "";
         endTime = "";
         frequency = "";
+        condition = "";
     }
 
     public static Task getTask() {
@@ -89,5 +91,25 @@ public class Task {
 
     public void setFrequency(String frequency) {
         this.frequency = frequency;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public boolean IsReady() {
+        return condition.equals("ready");
+    }
+
+    public boolean IsBegin() {
+        return condition.equals("begin");
+    }
+
+    public boolean IsFinish() {
+        return condition.equals("finish");
     }
 }
