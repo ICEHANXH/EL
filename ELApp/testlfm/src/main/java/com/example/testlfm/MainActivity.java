@@ -17,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textView = findViewById(R.id.textView);
-
-
 //        TaskManager taskManager = TaskManager.getTaskManager(this);
 //        taskManager.addTask(Task.getTask());
 //        Task t1 = Task.getTask();
@@ -30,9 +28,13 @@ public class MainActivity extends AppCompatActivity {
 //        taskManager.addTask(t3);;
 //        taskManager.deleteTask(t3);
         TimeManager timeManager = TimeManager.getTimeManager();
-        Calendar a = Calendar.getInstance();
-        Calendar b = Calendar.getInstance();
-        textView.setText((int) timeManager.getTimeStick(a,b));
+        new Thread(() -> {
+            Calendar a = Calendar.getInstance();
+            Calendar b = Calendar.getInstance();
+            textView.setText(String.valueOf(timeManager.getTimeStick(a, b)));
+        }).start();
+
+
     }
 
 

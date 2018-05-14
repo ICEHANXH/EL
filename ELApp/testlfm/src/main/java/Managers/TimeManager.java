@@ -1,5 +1,6 @@
 package Managers;
 //5.14 一期时间模块实现
+
 import java.time.LocalDateTime;
 import java.util.Calendar;
 
@@ -16,9 +17,8 @@ public class TimeManager {
     }
 
 
-    public long getTimeStick(Calendar begin, Calendar end) {
-
-        return end.getTimeInMillis() / 1000 - begin.getTimeInMillis() / 1000;
+    public String getTimeStick(Calendar begin, Calendar end) {
+        return String.valueOf(end.getTimeInMillis()-begin.getTimeInMillis());
     }
 
     public String getYear() {
