@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewTaskActivity">
+
+    <include
+        layout="@layout/new_task_title"></include>
+
+    <EditText
+        android:id="@+id/editTaskName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/taskName"
+        android:textColor="@color/taskName"
+        android:textColorHint="@color/taskName"/>
+
+    <include
+        layout="@layout/new_task_level"></include>
+
+    <include
+        layout="@layout/new_task_repeat"></include>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="备注："
+        android:textSize="22sp"/>
+
+
+
+
+
+</LinearLayout>

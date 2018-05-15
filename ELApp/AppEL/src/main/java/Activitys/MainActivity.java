@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         if (actionBar!=null){
             actionBar.hide();
         }
-        PullToRefreshView mPullToRefreshView = (PullToRefreshView) findViewById(R.id.pull_to_refresh);
+        /*PullToRefreshView mPullToRefreshView = (PullToRefreshView) findViewById(R.id.pull_to_refresh);
         mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 },1);
             }
-        });
+        });*/
     }
 
     private void NavigationViewTask() {
