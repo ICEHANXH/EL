@@ -80,16 +80,24 @@ public class ClockManager {
         RepeatingClock(context, cls, hour, minute, second, interval);
     }
 
-    public void setGoodMorning() {
-
+    public void setGoodMorning(Context context, Class<?> cls, int hour, int minute, int second, String id) {
+        addClock(context, cls, hour, minute, second, id);
     }
 
-    public void setGoodEvening() {
-
+    public void setGoodEvening(Context context, Class<?> cls, int hour, int minute, int second, String id) {
+        addClock(context, cls, hour, minute, second, id);
     }
 
-    private void addClock() {
+    private void addClock(Context context, Class<?> cls, int hour, int minute, int second, String id) {
+        Intent i = new Intent(context, cls);
+        PendingIntent pi = PendingIntent.getBroadcast(context, Integer.valueOf(id), i, 0);
 
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.HOUR, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, second);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);//设置闹铃
     }
 
     private void ToClock(Context context, Class<?> cls, int hour, int minute, int second) {
