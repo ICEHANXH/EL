@@ -19,8 +19,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".Another"></activity>
+        <receiver android:name=".myReceiver" />
+
+        <activity android:name=".ClockActivity" />
+        <activity android:name=".Another" />
     </application>
 
 </manifest>

@@ -18,7 +18,7 @@ public class TimeManager {
 
 
     public String getTimeStick(Calendar begin, Calendar end) {
-        return String.valueOf(end.getTimeInMillis()-begin.getTimeInMillis());
+        return String.valueOf(end.getTimeInMillis() - begin.getTimeInMillis());
     }
 
     public String getYear() {
@@ -54,4 +54,7 @@ public class TimeManager {
         return String.valueOf(LocalDateTime.now().getMinute());
     }
 
+    public String getSecond() {
+        return String.valueOf(LocalDateTime.now().getSecond());
+    }
 }
