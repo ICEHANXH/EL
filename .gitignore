@@ -11,6 +11,14 @@ ELAPP/.idea/
 /local.properties
 .DS_Store
 /captures
+
+.externalNativeBuild
+*.bin
+ELApp/local.properties
+ELApp/ELApp.iml
+ELApp/ELApp.iml
+ELApp/local.properties
+
 # OSX
 
 *.DS_Store
@@ -52,3 +60,4 @@ local.properties
 
 # Log Files
 *.log
+
