@@ -8,6 +8,15 @@ import android.content.Intent;
 import java.util.Calendar;
 
 //设置闹钟
+/*
+* cancel 取消闹钟
+* set 设置闹钟。输入可有三种形式，输入的设置时间为指定手机的时间
+* repeating 设置反复闹钟，其他与set一样，多一个参数interval，单位为分钟，可输入小数
+* delay 设置延时闹钟。输入可有三种形式，输入的设置时间指：闹钟设置之后过了这段时间自动进行动作
+* 参数：Class<?> cls 之后细讲
+*
+* */
+
 public class ClockManager {
     private TimeManager timeManager;
     private AlarmManager alarmManager;

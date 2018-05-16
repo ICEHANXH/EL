@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.PowerManager;
 
-/**
- * screen状态广播接收者
- */
+/*
+* 检查手机状态，只需要关注的是内部接口ScreenStateListener
+* */
+
+
 public class ScreenManager {
     private Context context;
     private ScreenBroadcastReceiver screenBroadcastReceiver;

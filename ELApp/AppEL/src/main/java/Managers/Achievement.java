@@ -19,6 +19,9 @@ public class Achievement {
     private LoadingManager loadingManager;
     private String separator = System.getProperty("line.separator");
 
+    /**
+     * @return :The coins that we have
+     * */
     public String getCoin() {
         String value = "0";
         try {
@@ -30,7 +33,9 @@ public class Achievement {
         }
         return value;
     }
-
+    /**
+     * @return The accomplishment that we have
+     * */
     public String getAccomplishment() {
         String value = "0";
         try {
@@ -43,6 +48,9 @@ public class Achievement {
         return value;
     }
 
+    /**
+     * You have to input the string and set the coins
+    * */
     public void setCoin(String coin) {
         this.coin = coin;
         stringIntegerHashMap = flushMap();

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import Managers.ClockManager;
+import Managers.WinStrategy;
 
 public class Another extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,6 +36,7 @@ public class Another extends AppCompatActivity implements View.OnClickListener {
 
         btn_set.setOnClickListener(this);
         btn_cancel.setOnClickListener(this);
+        new WinStrategy().WinStragegyOn(this);
 
 
 //        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);//获取AlarmManager实例

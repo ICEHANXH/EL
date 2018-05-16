@@ -24,6 +24,18 @@ import java.util.List;
 
 
 //Json解析
+
+
+/*
+* 任务处理类
+*
+* 以Task类封装任务的所有信息
+* 当已有多个任务时，可用获取任务的链表（下已有方法实现）
+* 已经实现任务的增删，
+* 任务的状态现有的是开始与结束，届时根据情况添加
+*
+* */
+
 public class TaskManager {
     private String tasksPath;
     private List<Task> taskList;

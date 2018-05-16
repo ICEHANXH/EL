@@ -7,6 +7,11 @@ import android.os.Message;
 
 import cn.iwgang.countdownview.CountdownView;
 
+/*
+* 区别于闹钟，此处的counting up 用于短时间（相对）的正计时。
+* 模板在最下方
+* */
+
 //compile 'com.github.iwgang:countdownview:2.1.6'
 public class CountingDown {
     private Handler handler;

@@ -10,6 +10,7 @@ import java.util.Calendar;
 
 import Managers.Achievement;
 import Managers.TimeManager;
+import Managers.WinStrategy;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             Calendar b = Calendar.getInstance();
             textView.setText(String.valueOf(timeManager.getTimeStick(a, b)));
         }).start();
+
 
     }
 
