@@ -40,6 +40,8 @@ dependencies {
     //开场动画啦啦啦
     compile 'com.github.florent37:expansionpanel:1.0.0'
     //折叠
+    compile 'com.alibaba:fastjson:1.1.55.android'
+    //Json依赖
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'

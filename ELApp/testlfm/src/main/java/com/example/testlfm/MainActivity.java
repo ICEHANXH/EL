@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(String.valueOf(timeManager.getTimeStick(a, b)));
         }).start();
 
-
     }
 
 
