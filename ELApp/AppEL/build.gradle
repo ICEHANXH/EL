@@ -54,7 +54,8 @@ dependencies {
     //compile 'com.github.ozodrukh:CircularReveal:(latest-release)@aar'
     compile 'com.yalantis:phoenix:1.2.3'
     //刷新动画
-    compile 'com.android.support:design:27.1.1'//侧滑设计
+    compile 'com.android.support:design:27.1.1'
+    //侧滑设计
 }
 repositories {
     mavenCentral()
