@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
-import com.yalantis.phoenix.PullToRefreshView;
 
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void NavigationViewTask() {
         NavigationView navigationView = findViewById(R.id.navigation_view_left);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
 
@@ -73,8 +73,10 @@ public class MainActivity extends AppCompatActivity {
     private void BottomNavigationTask() {
         Fragment_Lib.replaceFragment(this, new MainActivityLeftFragment(), R.id.root_Frame_layout);
         BottomNavigationView navigation = findViewById(R.id.MainActivityNavigation);
+        navigation.setItemIconTintList(null);
         navigation.setOnNavigationItemSelectedListener(
                 BottomNavigationView_Lib.Get_OnNavigationItemselectedListener(this));
+        navigation.setItemIconTintList(null);
     }
 
     @Override
