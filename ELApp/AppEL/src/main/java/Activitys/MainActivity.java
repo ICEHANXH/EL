@@ -1,6 +1,7 @@
 package Activitys;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -11,8 +12,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
 import com.yalantis.phoenix.PullToRefreshView;
 
@@ -46,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
                 },1);
             }
         });*/
+        Button button1 = findViewById(R.id.titleButton);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NewTaskActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void NavigationViewTask() {
