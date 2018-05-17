@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void NavigationViewTask() {
         NavigationView navigationView = findViewById(R.id.navigation_view_left);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
 
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.MainActivityNavigation);
         navigation.setOnNavigationItemSelectedListener(
                 BottomNavigationView_Lib.Get_OnNavigationItemselectedListener(this));
+        navigation.setItemIconTintList(null);
     }
 
     @Override
