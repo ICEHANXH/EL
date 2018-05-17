@@ -12,4 +12,5 @@
     <color name="yellow">#f9e6fb00</color>
     <color name="green">#cc03e40f</color>
     <color name="toolbar">#064fad</color>
+    <color name="stroke">#00ffee</color>
 </resources>
