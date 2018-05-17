@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
-import com.yalantis.phoenix.PullToRefreshView;
 
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;

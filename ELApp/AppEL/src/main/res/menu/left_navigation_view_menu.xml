@@ -1,32 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-    <group android:id="@+id/g1">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
         <item
-            android:id="@+id/item1"
-            android:icon="@mipmap/ic_launcher"
-            android:title="item1"
-            tools:ignore="HardcodedText" />
-    </group>
-    <group android:id="@+id/g2">
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_new_task_monday"
+            android:title="金币"/>
         <item
-            android:id="@+id/item2"
-            android:icon="@mipmap/ic_launcher"
-            android:title="item2"
-            tools:ignore="HardcodedText" />
-    </group>
-    <group android:id="@+id/g3">
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_new_task_monday"
+            android:title="成就"/>
         <item
-            android:id="@+id/item3"
-            android:icon="@mipmap/ic_launcher"
-            android:title="item3"
-            tools:ignore="HardcodedText" />
-    </group>
-    <group android:id="@+id/g4">
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_new_task_monday"
+            android:title="早晚安问候"/>
         <item
-            android:id="@+id/item4"
-            android:icon="@mipmap/ic_launcher"
-            android:title="item4"
-            tools:ignore="HardcodedText" />
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_new_task_monday"
+            android:title="帮助与反馈"/>
     </group>
+
+    <item android:title="模式">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_new_task_monday"
+                android:title="兑换（解锁）"/>
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_new_task_monday"
+                android:title="设置"/>
+        </menu>
+    </item>
+
 </menu>
