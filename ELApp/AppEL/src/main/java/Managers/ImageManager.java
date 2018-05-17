@@ -77,6 +77,7 @@ public class ImageManager {
         }
     }
 
+
     public void SetImageExternal_Circlize(Context context, String source, ImageView imageView) {
         File file = new File(Environment.getExternalStorageDirectory()
                 , "/pictures/" + source);

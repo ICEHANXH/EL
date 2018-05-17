@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private void BottomNavigationTask() {
         Fragment_Lib.replaceFragment(this, new MainActivityLeftFragment(), R.id.root_Frame_layout);
         BottomNavigationView navigation = findViewById(R.id.MainActivityNavigation);
+        navigation.setItemIconTintList(null);
         navigation.setOnNavigationItemSelectedListener(
                 BottomNavigationView_Lib.Get_OnNavigationItemselectedListener(this));
         navigation.setItemIconTintList(null);
