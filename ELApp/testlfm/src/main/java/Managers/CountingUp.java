@@ -33,7 +33,7 @@ public class CountingUp implements Runnable {
     @Override
     public void run() {
         count = 0;
-        while (ifStop) {
+        while (ifStop && count <= MaxDelay) {
             count++;
             msg = new Message();
             msg.arg1 = Math.toIntExact(count);

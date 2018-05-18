@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import BackManagers.WinStrategy;
 import Managers.ClockManager;
-import Managers.NickNameManager;
 import Managers.Task;
-import Managers.WinStrategy;
 
 public class Another extends AppCompatActivity implements View.OnClickListener {
 
@@ -40,16 +38,9 @@ public class Another extends AppCompatActivity implements View.OnClickListener {
         btn_set.setOnClickListener(this);
         btn_cancel.setOnClickListener(this);
         WinStrategy winStrategy = WinStrategy.getWinStrategy(this);
-        winStrategy.setMaxDelay(10);
+        winStrategy.setMaxDelay(3);
+        winStrategy.setMusicPathList(this, ".m4a", "kgmusic");
         winStrategy.WinStrategyOn(this, Task.getTask());
-
-
-        TextView textView = findViewById(R.id.Nick);
-        NickNameManager nickNameManager = NickNameManager.getNickNameManager(this);
-        nickNameManager.setNickName("javanever");
-        textView.setText(nickNameManager.getNickName());
-
-
     }
 
 

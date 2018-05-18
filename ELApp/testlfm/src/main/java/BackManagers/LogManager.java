@@ -1,6 +1,10 @@
-package Managers;
+package BackManagers;
 
 import android.content.Context;
+
+import Managers.ClockManager;
+import Managers.TaskManager;
+import Managers.TimeManager;
 
 public class LogManager {
     private TaskManager taskManager;

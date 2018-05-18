@@ -109,8 +109,11 @@ public class TaskManager {
     }
 
     public void TaskFail(Task task) {
-        task.setAccession("failed");
-        addTask(task);
+
+        synchronized (this) {
+            task.setAccession("failed");
+            addTask(task);
+        }
     }
 
     private List<Task> flushTask() throws IOException {
@@ -138,12 +141,13 @@ public class TaskManager {
     }
 
     private void writeObjFile(List<Task> jsonArray) throws IOException {
-
-        BufferedOutputStream bufferedOutputStream =
-                new BufferedOutputStream(new FileOutputStream(getBuffFile()));
-        String output = JSON.toJSONString(jsonArray, true);
-        bufferedOutputStream.write(output.getBytes());
-        bufferedOutputStream.flush();
-        bufferedOutputStream.close();
+        synchronized (this) {
+            BufferedOutputStream bufferedOutputStream =
+                    new BufferedOutputStream(new FileOutputStream(getBuffFile()));
+            String output = JSON.toJSONString(jsonArray, true);
+            bufferedOutputStream.write(output.getBytes());
+            bufferedOutputStream.flush();
+            bufferedOutputStream.close();
+        }
     }
 }

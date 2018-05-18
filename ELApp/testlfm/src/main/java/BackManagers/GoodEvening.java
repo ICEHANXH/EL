@@ -1,4 +1,4 @@
-package Managers;
+package BackManagers;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -6,8 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.testlfm.R;
 
-public class GoodMorning extends AppCompatActivity {
+import Managers.MusicManager;
 
+public class GoodEvening extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
 
     @Override
