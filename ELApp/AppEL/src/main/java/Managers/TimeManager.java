@@ -1,18 +1,20 @@
 package Managers;
 //5.14 一期时间模块实现
 
+import android.content.Context;
+
 import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class TimeManager {
     private CountingDown countingDown;
 
-    private TimeManager() {
-        countingDown = CountingDown.getCountingDown();
+    private TimeManager(Context context) {
+        countingDown = CountingDown.getCountingDown(context);
     }
 
-    public static TimeManager getTimeManager() {
-        return new TimeManager();
+    public static TimeManager getTimeManager(Context context) {
+        return new TimeManager(context);
 
     }
 

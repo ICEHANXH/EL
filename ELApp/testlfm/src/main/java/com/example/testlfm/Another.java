@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import Managers.ClockManager;
 import Managers.NickNameManager;
+import Managers.Task;
 import Managers.WinStrategy;
 
 public class Another extends AppCompatActivity implements View.OnClickListener {
@@ -40,7 +41,7 @@ public class Another extends AppCompatActivity implements View.OnClickListener {
         btn_cancel.setOnClickListener(this);
         WinStrategy winStrategy = WinStrategy.getWinStrategy(this);
         winStrategy.setMaxDelay(10);
-        winStrategy.WinStrategyOn(this);
+        winStrategy.WinStrategyOn(this, Task.getTask());
 
 
         TextView textView = findViewById(R.id.Nick);

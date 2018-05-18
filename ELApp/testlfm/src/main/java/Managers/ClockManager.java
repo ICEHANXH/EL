@@ -24,7 +24,7 @@ public class ClockManager {
 
     private ClockManager(Context context) {
 
-        timeManager = TimeManager.getTimeManager();
+        timeManager = TimeManager.getTimeManager(context);
         alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Hour = Integer.parseInt(timeManager.getHour());
         Minute = Integer.parseInt(timeManager.getMinute());

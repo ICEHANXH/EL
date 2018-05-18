@@ -10,7 +10,7 @@ public class LogManager {
     private LogManager(Context context) {
         taskManager = TaskManager.getTaskManager(context);
         clockManager = ClockManager.getClockManager(context);
-        timeManager = TimeManager.getTimeManager();
+        timeManager = TimeManager.getTimeManager(context);
     }
 
     private LogManager() {
