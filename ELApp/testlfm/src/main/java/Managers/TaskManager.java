@@ -45,7 +45,8 @@ public class TaskManager {
 
     public Task addTask(Task task) {
         try {
-            taskList.add(task);
+            if (!taskList.contains(task))
+                taskList.add(task);
             writeObjFile(taskList);
         } catch (IOException e) {
             e.printStackTrace();
@@ -100,6 +101,16 @@ public class TaskManager {
 
     public boolean IsFinish(Task task) {
         return task.getCondition().equals("finish");
+    }
+
+    public void TaskSuccess(Task task) {
+        task.setAccession("succeeded");
+        addTask(task);
+    }
+
+    public void TaskFail(Task task) {
+        task.setAccession("failed");
+        addTask(task);
     }
 
     private List<Task> flushTask() throws IOException {

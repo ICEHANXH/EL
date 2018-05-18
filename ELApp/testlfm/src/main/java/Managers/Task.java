@@ -21,16 +21,18 @@ public class Task {
     private String endTime;
     private String frequency;
     private String condition;
+    private String Accession;
 
     private Task() {
         timer = new Timer();
-        taskName = "";
-        remarks = "";
-        importance = "";
-        beginTime = "";
-        endTime = "";
-        frequency = "";
-        condition = "";
+        taskName = "None";
+        remarks = "None";
+        importance = "None";
+        beginTime = "None";
+        endTime = "None";
+        frequency = "None";
+        condition = "None";
+        Accession = "None";
     }
 
     public static Task getTask() {
@@ -111,5 +113,13 @@ public class Task {
 
     public boolean IsFinish() {
         return condition.equals("finish");
+    }
+
+    public String getAccession() {
+        return Accession;
+    }
+
+    public void setAccession(String accession) {
+        Accession = accession;
     }
 }

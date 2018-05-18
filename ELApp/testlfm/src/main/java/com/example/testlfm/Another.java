@@ -38,7 +38,10 @@ public class Another extends AppCompatActivity implements View.OnClickListener {
 
         btn_set.setOnClickListener(this);
         btn_cancel.setOnClickListener(this);
-        new WinStrategy().WinStrategyOn(this);
+        WinStrategy winStrategy = WinStrategy.getWinStrategy(this);
+        winStrategy.setMaxDelay(10);
+        winStrategy.WinStrategyOn(this);
+
 
         TextView textView = findViewById(R.id.Nick);
         NickNameManager nickNameManager = NickNameManager.getNickNameManager(this);
@@ -46,12 +49,6 @@ public class Another extends AppCompatActivity implements View.OnClickListener {
         textView.setText(nickNameManager.getNickName());
 
 
-//        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);//获取AlarmManager实例
-//        Intent intent1 = new Intent(this, myReceiver.class);
-//        PendingIntent p = PendingIntent.getActivity(this, 0, intent, 0);
-//        int anHour =  6 * 1000 ;  // 6秒
-//        long triggerAtTime = SystemClock.elapsedRealtime() + anHour;
-//        manager.set(AlarmManager.RTC_WAKEUP,);
     }
 
 

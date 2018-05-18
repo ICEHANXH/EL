@@ -26,14 +26,12 @@ public class WinStrategy {
     private MusicManager musicManager;
     private FileManager fileManager;
     private TaskManager taskManager;
-    private Achievement achievement;
     private Task task;
     private List<String> musicPathList;
     private boolean IsPause;
     private int MaxDelay;
 
     private WinStrategy(Context context) {
-
         this.fileManager = FileManager.getFileManager();
         this.musicManager = MusicManager.getMusicManager();
         this.mediaPlayer = musicManager.GetMediaPlayer();
@@ -42,7 +40,6 @@ public class WinStrategy {
         this.lockScreenManager = ScreenManager.getScreenManager(context);
         this.IsPause = false;
         this.MaxDelay = 5;
-        this.achievement = Achievement.getAchievement(context);
         this.musicPathList = new LinkedList<>();
         try {
             File musicBuffFile = fileManager.getAllSameSuffixPath(context, ".m4a", "/kgmusic/download", true);
@@ -61,11 +58,10 @@ public class WinStrategy {
         return new WinStrategy(context);
     }
 
-    public void WinStrategyOn(Context context, Task task) {
-        this.task = task;
+    public void WinStrategyOn(Context context) {
         Toast.makeText(context, "任务已经开始\n请少侠放下手机 开始静心专注吧~~~", Toast.LENGTH_LONG).show();
         PlayInArray();
-        CountingPart(context, this.MaxDelay, this.task);
+        CountingPart(context, this.MaxDelay);
         ScreenListenerPart(context);
     }
 
@@ -82,7 +78,7 @@ public class WinStrategy {
     }
 
     private void ScreenListenerPart(Context context) {
-        ScreenManager l = new ScreenManager(context);
+        ScreenManager l = ScreenManager.getScreenManager(context);
         l.begin(new ScreenManager.ScreenStateListener() {
 
             @Override
@@ -106,7 +102,7 @@ public class WinStrategy {
         });
     }
 
-    private void CountingPart(Context context, int Max, Task task) {
+    private void CountingPart(Context context, int Max) {
         @SuppressLint("HandlerLeak") Handler handler = new Handler() {
             //重写handleMessage方法获得子线程传来的数据
             @Override
@@ -115,8 +111,6 @@ public class WinStrategy {
                 int ms = msg.arg1;
                 if (ms == Max) {
                     Toast.makeText(context, "任务失败", Toast.LENGTH_LONG).show();
-                    taskManager.TaskFail(task);
-
                 }
             }
         };

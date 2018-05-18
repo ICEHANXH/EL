@@ -7,8 +7,8 @@ import android.content.IntentFilter;
 import android.os.PowerManager;
 
 /*
-* 检查手机状态，只需要关注的是内部接口ScreenStateListener
-* */
+ * 检查手机状态，只需要关注的是内部接口ScreenStateListener
+ * */
 
 
 public class ScreenManager {
@@ -16,12 +16,18 @@ public class ScreenManager {
     private ScreenBroadcastReceiver screenBroadcastReceiver;
     private ScreenStateListener listener;
 
+    public static ScreenManager getScreenManager(Context context) {
+        return new ScreenManager(context);
+    }
+
     public interface ScreenStateListener {// 返回给调用者屏幕状态信息
 
         //屏幕点亮
         void onScreenOn();
+
         //屏幕关闭
         void onScreenOff();
+
         //用户解锁
         void onUserPresent();
     }
