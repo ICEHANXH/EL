@@ -38,7 +38,7 @@ public class Another extends AppCompatActivity implements View.OnClickListener {
 
         btn_set.setOnClickListener(this);
         btn_cancel.setOnClickListener(this);
-        new WinStrategy().WinStragegyOn(this);
+        new WinStrategy().WinStrategyOn(this);
 
         TextView textView = findViewById(R.id.Nick);
         NickNameManager nickNameManager = NickNameManager.getNickNameManager(this);

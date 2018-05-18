@@ -9,7 +9,7 @@ import com.example.testlfm.R;
 
 //
 public class WinStrategy {
-    public void WinStragegyOn(Context context) {
+    public void WinStrategyOn(Context context) {
         ScreenManager l = new ScreenManager(context);
         l.begin(new ScreenManager.ScreenStateListener() {
 
@@ -22,7 +22,6 @@ public class WinStrategy {
             @Override
             public void onScreenOn() {
                 Toast.makeText(context, "onScreenOn", Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
