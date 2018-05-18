@@ -35,7 +35,7 @@ public class WinStrategy {
         this.fileManager = FileManager.getFileManager();
         this.musicManager = MusicManager.getMusicManager();
         this.mediaPlayer = musicManager.GetMediaPlayer();
-        this.timeManager = TimeManager.getTimeManager(context);
+        this.timeManager = TimeManager.getTimeManager();
         this.clockManager = ClockManager.getClockManager(context);
         this.lockScreenManager = ScreenManager.getScreenManager(context);
         this.IsPause = false;
