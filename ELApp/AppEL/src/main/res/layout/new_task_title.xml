@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="50dp">
 
-
-
-    <Button
-        android:id="@+id/cancel_action"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="取消"/>
+        android:layout_height="50dp"
+        android:background="?attr/colorPrimary">
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="0dp"
+            android:background="@drawable/ic_new_task_title_left"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/title"
+            android:text="@string/titleName"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
 
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:gravity="center"
-        android:text="新建任务"
-        android:textSize="20sp"
-        android:textColor="@color/colorFont"/>
-
-    <Button
-        android:id="@+id/finish_action"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:background="@drawable/bluebutton"/>
+        <Button
+            android:id="@+id/btnRight"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="0dp"
+            android:background="@drawable/ic_new_task_title_right_24dp"/>
+    </android.support.v7.widget.Toolbar>
 
 
-
-</LinearLayout>
-
+</RelativeLayout>
 

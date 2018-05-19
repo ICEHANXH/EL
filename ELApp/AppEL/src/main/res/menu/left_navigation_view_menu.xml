@@ -12,7 +12,8 @@
         <item
             android:id="@+id/nav_achievement"
             android:icon="@mipmap/achievement"
-            android:title="成就"/>
+            android:title="成就"
+            android:checkable="true"/>
         <item
             android:id="@+id/nav_greeting"
             android:icon="@mipmap/greeting"

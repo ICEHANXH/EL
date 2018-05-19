@@ -15,6 +15,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -64,16 +65,17 @@ public class MainActivity extends AppCompatActivity {
         slideshow.setTextColor(getResources().getColor(R.color.colorAccent));
         slideshow.setText("7");
 
-        navigationView.setNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.nav_achievement:
-                    Intent intent = new Intent(MainActivity.this, AchievementActivity.class);
-                    startActivity(intent);
-                default:
-                    //
-            }
-            return false;
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                /*switch(item.getItemId()){
+                    case R.id.nav_achievement:
+                        Intent intent1 = new Intent(MainActivity.this,NewTaskActivity.class);
+                        startActivity(intent1);
+                }*/
 
+                return true;
+            }
         });
 
     }
