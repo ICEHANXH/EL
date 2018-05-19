@@ -5,10 +5,8 @@ import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class TimeManager {
-    private CountingDown countingDown;
 
     private TimeManager() {
-        countingDown = CountingDown.getCountingDown();
     }
 
     public static TimeManager getTimeManager() {

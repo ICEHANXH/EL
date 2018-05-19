@@ -21,6 +21,7 @@ public class Task {
     private String endTime;
     private String frequency;
     private String condition;
+    private String Accession;
 
     private Task() {
         timer = new Timer();
@@ -111,5 +112,13 @@ public class Task {
 
     public boolean IsFinish() {
         return condition.equals("finish");
+    }
+
+    public String getAccession() {
+        return Accession;
+    }
+
+    public void setAccession(String accession) {
+        Accession = accession;
     }
 }

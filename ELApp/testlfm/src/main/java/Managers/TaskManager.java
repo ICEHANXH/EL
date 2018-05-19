@@ -45,7 +45,8 @@ public class TaskManager {
 
     public Task addTask(Task task) {
         try {
-            taskList.add(task);
+            if (!taskList.contains(task))
+                taskList.add(task);
             writeObjFile(taskList);
         } catch (IOException e) {
             e.printStackTrace();
@@ -102,6 +103,19 @@ public class TaskManager {
         return task.getCondition().equals("finish");
     }
 
+    public void TaskSuccess(Task task) {
+        task.setAccession("succeeded");
+        addTask(task);
+    }
+
+    public void TaskFail(Task task) {
+
+        synchronized (this) {
+            task.setAccession("failed");
+            addTask(task);
+        }
+    }
+
     private List<Task> flushTask() throws IOException {
         this.taskList = getTasksFormFile();
         return this.taskList;
@@ -127,12 +141,13 @@ public class TaskManager {
     }
 
     private void writeObjFile(List<Task> jsonArray) throws IOException {
-
-        BufferedOutputStream bufferedOutputStream =
-                new BufferedOutputStream(new FileOutputStream(getBuffFile()));
-        String output = JSON.toJSONString(jsonArray, true);
-        bufferedOutputStream.write(output.getBytes());
-        bufferedOutputStream.flush();
-        bufferedOutputStream.close();
+        synchronized (this) {
+            BufferedOutputStream bufferedOutputStream =
+                    new BufferedOutputStream(new FileOutputStream(getBuffFile()));
+            String output = JSON.toJSONString(jsonArray, true);
+            bufferedOutputStream.write(output.getBytes());
+            bufferedOutputStream.flush();
+            bufferedOutputStream.close();
+        }
     }
 }

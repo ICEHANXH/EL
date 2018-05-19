@@ -9,15 +9,19 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 import Managers.Achievement;
+import Managers.FileManager;
 import Managers.TimeManager;
-import Managers.WinStrategy;
 
 public class MainActivity extends AppCompatActivity {
+    private FileManager fileManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textView = findViewById(R.id.textView);
+        fileManager=FileManager.getFileManager();
+        if(!FileManager.IsPermitted(this))
+            FileManager.requestPermissions(this);
 //        TaskManager taskManager = TaskManager.getTaskManager(this);
 //        taskManager.addTask(Task.getTask());
 //        Task t1 = Task.getTask();

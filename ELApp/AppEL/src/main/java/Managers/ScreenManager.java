@@ -14,6 +14,10 @@ public class ScreenManager {
     private ScreenBroadcastReceiver screenBroadcastReceiver;
     private ScreenStateListener listener;
 
+    public static ScreenManager getScreenManager(Context context) {
+        return new ScreenManager(context);
+    }
+
     public interface ScreenStateListener {// 返回给调用者屏幕状态信息
 
         //屏幕点亮
@@ -26,7 +30,7 @@ public class ScreenManager {
         void onUserPresent();
     }
 
-    public ScreenManager(Context context) {
+    private ScreenManager(Context context) {
         this.context = context;
         screenBroadcastReceiver = new ScreenBroadcastReceiver();
     }

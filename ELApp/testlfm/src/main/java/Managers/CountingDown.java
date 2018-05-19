@@ -2,21 +2,22 @@ package Managers;
 
 
 import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
+import android.content.Context;
 
 import cn.iwgang.countdownview.CountdownView;
 
 //compile 'com.github.iwgang:countdownview:2.1.6'
 public class CountingDown {
-    private Handler handler;
+    private CountdownView countdownView;
 
-    private CountingDown() {
-
+    private CountingDown(Context context) {
+        countdownView = new CountdownView(context);
     }
 
-    public static CountingDown getCountingDown() {
-        return new CountingDown();
+
+    public static CountingDown getCountingDown(Context context) {
+
+        return new CountingDown(context);
     }
 
     public CountdownView getCountingView(Activity activity, int R_id) {
@@ -56,37 +57,6 @@ public class CountingDown {
         return countdownView;
     }
 
-
-}
-
-
-//多线程进行正计时的模板
-//handler处理交互信息，message的arg1属性为正计时的时间，必须要获取String.valueOf才可以用（本身是int型）
-class CountingUp implements Runnable {
-    private long count = 0;
-    private boolean ifStop = true;
-    private Handler handler;
-    Message msg;
-
-    public CountingUp(Handler handler) {
-        this.handler = handler;
-    }
-
-    @Override
-    public void run() {
-        count = 0;
-        while (ifStop) {
-            count++;
-            msg = new Message();
-            msg.arg1 = Math.toIntExact(count);
-            handler.sendMessage(msg);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
 }
 
