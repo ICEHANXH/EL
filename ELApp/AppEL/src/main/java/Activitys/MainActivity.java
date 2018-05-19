@@ -3,11 +3,7 @@ package Activitys;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-<<<<<<< HEAD
 import android.graphics.Typeface;
-=======
-import android.graphics.drawable.Drawable;
->>>>>>> 0c8fbf9b2dbdbc5d1b1d06ac8699ac5ba769dd31
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,27 +17,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-<<<<<<< HEAD
 import android.widget.TextView;
-=======
-import android.widget.ImageView;
->>>>>>> 0c8fbf9b2dbdbc5d1b1d06ac8699ac5ba769dd31
 import android.widget.Toast;
 
 import com.example.lenovo.elapp.AchievementActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
-import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
 import Tmp_lib.BottomNavigationView_Lib;
 import Tmp_lib.Music_lib;
+
 
 public class MainActivity extends AppCompatActivity {
 
