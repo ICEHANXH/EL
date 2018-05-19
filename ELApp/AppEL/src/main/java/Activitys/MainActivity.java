@@ -3,6 +3,7 @@ package Activitys;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,10 +11,13 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.elapp.NewTaskActivity;
@@ -62,12 +66,20 @@ public class MainActivity extends AppCompatActivity {
     private void NavigationViewTask() {
         NavigationView navigationView = findViewById(R.id.navigation_view_left);
         navigationView.setItemIconTintList(null);
+        TextView slideshow=(TextView) MenuItemCompat.getActionView(navigationView.getMenu().
+                findItem(R.id.nav_camera));
+        slideshow.setGravity(Gravity.CENTER_VERTICAL);
+        slideshow.setTypeface(null, Typeface.BOLD);
+        slideshow.setTextColor(getResources().getColor(R.color.colorAccent));
+        slideshow.setText("7");
+
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
 
             }
             return false;
         });
+
     }
 
     private void BottomNavigationTask() {
