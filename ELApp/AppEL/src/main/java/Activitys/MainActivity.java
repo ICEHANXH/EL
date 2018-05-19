@@ -3,7 +3,11 @@ package Activitys;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+<<<<<<< HEAD
 import android.graphics.Typeface;
+=======
+import android.graphics.drawable.Drawable;
+>>>>>>> 0c8fbf9b2dbdbc5d1b1d06ac8699ac5ba769dd31
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,11 +21,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.TextView;
+=======
+import android.widget.ImageView;
+>>>>>>> 0c8fbf9b2dbdbc5d1b1d06ac8699ac5ba769dd31
 import android.widget.Toast;
 
+import com.example.lenovo.elapp.AchievementActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
@@ -41,26 +56,15 @@ public class MainActivity extends AppCompatActivity {
         if (actionBar!=null){
             actionBar.hide();
         }
-        /*PullToRefreshView mPullToRefreshView = (PullToRefreshView) findViewById(R.id.pull_to_refresh);
-        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mPullToRefreshView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mPullToRefreshView.setRefreshing(false);
-                    }
-                },1);
-            }
-        });*/
-        Button button1 = findViewById(R.id.titleButton);
-        button1.setOnClickListener(new View.OnClickListener() {
+        Button button_ = findViewById(R.id.titleButton);
+        button_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NewTaskActivity.class);
                 startActivity(intent);
             }
         });
+
     }
 
     private void NavigationViewTask() {
@@ -75,9 +79,14 @@ public class MainActivity extends AppCompatActivity {
 
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
-
+                case R.id.nav_achievement:
+                    Intent intent = new Intent(MainActivity.this, AchievementActivity.class);
+                    startActivity(intent);
+                default:
+                    //
             }
             return false;
+
         });
 
     }

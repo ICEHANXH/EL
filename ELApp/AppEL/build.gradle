@@ -58,6 +58,11 @@ dependencies {
     //侧滑设计
     compile 'com.github.youngkaaa:circleview:0.1.0'//把图片变圆
     implementation 'com.github.WelliJohn:ASwipeLayout:0.0.2'
+    compile ('com.github.huburt-Hu:NewbieGuide:v2.1.0') {
+        exclude group: 'com.android.support'
+    }//透明指示层
+    compile 'me.jahirfiquitiva:FABsMenu:1.0.3'
+
 }
 repositories {
     mavenCentral()
