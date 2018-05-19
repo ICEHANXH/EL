@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.navigation_view_left);
         navigationView.setItemIconTintList(null);
         TextView slideshow=(TextView) MenuItemCompat.getActionView(navigationView.getMenu().
-                findItem(R.id.nav_camera));
+                findItem(R.id.nav_coin));
         slideshow.setGravity(Gravity.CENTER_VERTICAL);
         slideshow.setTypeface(null, Typeface.BOLD);
         slideshow.setTextColor(getResources().getColor(R.color.colorAccent));

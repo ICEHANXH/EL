@@ -2,15 +2,14 @@ package com.example.testlfm;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import BackManagers.WinStrategy;
-import Managers.ClockManager;
+import BackManagers.TaskFailed;
+import BackManagers.WinJudgement;
 import Managers.Task;
 
 public class Another extends AppCompatActivity implements View.OnClickListener {
@@ -30,17 +29,11 @@ public class Another extends AppCompatActivity implements View.OnClickListener {
     private void bindViews() {
         btn_set = findViewById(R.id.btn_set);
         btn_cancel = findViewById(R.id.btn_cancel);
-        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-        Intent intent = new Intent(this, myReceiver.class);
-        pi = PendingIntent.getBroadcast(this, 0, intent, 0);
-
+        WinJudgement winJudgement = WinJudgement.getWinJudgement(this, Task.getTask(), 5);
+        winJudgement.setMusicPathList(this, ".mp3", "music");
+        winJudgement.JudgementStart(this, TaskFailed.class);
         btn_set.setOnClickListener(this);
         btn_cancel.setOnClickListener(this);
-        WinStrategy winStrategy = WinStrategy.getWinStrategy(this);
-        winStrategy.setMaxDelay(3);
-        winStrategy.setMusicPathList(this, ".m4a", "kgmusic");
-        winStrategy.WinStrategyOn(this, Task.getTask());
     }
 
 
@@ -79,8 +72,7 @@ public class Another extends AppCompatActivity implements View.OnClickListener {
 //                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
 //                ClockManager clockManager = ClockManager.getClockManager(this);
 //                clockManager.setClock(this, myReceiver.class, 0);
-                ClockManager clockManager = ClockManager.getClockManager(this);
-                clockManager.setRepeating(this, myReceiver.class, 47, 0, 0.5);
+
                 break;
             case R.id.btn_cancel:
                 alarmManager.cancel(pi);

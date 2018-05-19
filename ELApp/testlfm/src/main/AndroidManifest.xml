@@ -21,7 +21,10 @@
             </intent-filter>
 
         </activity>
+
         <receiver android:name=".myReceiver" />
+        <receiver android:name="BackManagers.TaskFailed" />
+        <receiver android:name="BackManagers.PlayInOrder" />
 
         <activity android:name=".ClockActivity" />
         <activity android:name=".Another" />

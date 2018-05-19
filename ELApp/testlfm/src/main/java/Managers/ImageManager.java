@@ -87,6 +87,7 @@ public class ImageManager {
                 .into(imageView);
     }
 
+
     public void SetImage_Circlize(Context context, int R_Source, ImageView imageView) {
         Picasso.with(context)
                 .load(R_Source)

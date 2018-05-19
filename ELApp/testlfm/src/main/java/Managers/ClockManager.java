@@ -18,7 +18,6 @@ public class ClockManager {
 
     private Calendar getCalender() {
         Calendar calendar = Calendar.getInstance();
-
         return calendar;
     }
 
@@ -36,60 +35,60 @@ public class ClockManager {
         return new ClockManager(context);
     }
 
-    public void cancelClock(Context context, Class<?> cls) {
+    public synchronized void cancelClock(Context context, Class<?> cls) {
         Intent intent = new Intent(context, cls);
         pi = PendingIntent.getBroadcast(context, 0, intent, 0);
         alarmManager.cancel(pi);
     }
 
-    public void cancelMorningEvening(Context context, Class<?> cls, String id) {
+    public synchronized void cancelMorningEvening(Context context, Class<?> cls, String id) {
         Intent intent = new Intent(context, cls);
         pi = PendingIntent.getBroadcast(context, Integer.valueOf(id), intent, 0);
         alarmManager.cancel(pi);
     }
 
-    public void setClock(Context context, Class<?> cls, int second) {
+    public synchronized void setClock(Context context, Class<?> cls, int second) {
         ToClock(context, cls, this.Hour, this.Minute, second);
     }
 
-    public void setClock(Context context, Class<?> cls, int minute, int second) {
+    public synchronized void setClock(Context context, Class<?> cls, int minute, int second) {
         ToClock(context, cls, this.Hour, minute, second);
     }
 
-    public void setClock(Context context, Class<?> cls, int hour, int minute, int second) {
+    public synchronized void setClock(Context context, Class<?> cls, int hour, int minute, int second) {
         ToClock(context, cls, hour, minute, second);
     }
 
 
-    public void setDelay(Context context, Class<?> cls, int second) {
+    public synchronized void setDelay(Context context, Class<?> cls, int second) {
         DelayClock(context, cls, 0, 0, second);
     }
 
-    public void setDelay(Context context, Class<?> cls, int minute, int second) {
+    public synchronized void setDelay(Context context, Class<?> cls, int minute, int second) {
         DelayClock(context, cls, 0, minute, second);
     }
 
-    public void setDelay(Context context, Class<?> cls, int hour, int minute, int second) {
+    public synchronized void setDelay(Context context, Class<?> cls, int hour, int minute, int second) {
         DelayClock(context, cls, hour, minute, second);
     }
 
-    public void setRepeating(Context context, Class<?> cls, int second, double interval) {
+    public synchronized void setRepeating(Context context, Class<?> cls, int second, double interval) {
         RepeatingClock(context, cls, this.Hour, this.Minute, second, interval);
     }
 
-    public void setRepeating(Context context, Class<?> cls, int minute, int second, double interval) {
+    public synchronized void setRepeating(Context context, Class<?> cls, int minute, int second, double interval) {
         RepeatingClock(context, cls, this.Hour, minute, second, interval);
     }
 
-    public void setRepeating(Context context, Class<?> cls, int hour, int minute, int second, double interval) {
+    public synchronized void setRepeating(Context context, Class<?> cls, int hour, int minute, int second, double interval) {
         RepeatingClock(context, cls, hour, minute, second, interval);
     }
 
-    public void setGoodMorning(Context context, Class<?> cls, int hour, int minute, int second, String id) {
+    public synchronized void setGoodMorning(Context context, Class<?> cls, int hour, int minute, int second, String id) {
         addClock(context, cls, hour, minute, second, id);
     }
 
-    public void setGoodEvening(Context context, Class<?> cls, int hour, int minute, int second, String id) {
+    public synchronized void setGoodEvening(Context context, Class<?> cls, int hour, int minute, int second, String id) {
         addClock(context, cls, hour, minute, second, id);
     }
 
@@ -102,7 +101,7 @@ public class ClockManager {
         calendar.set(Calendar.HOUR, hour);
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, second);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);//设置闹铃
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);//设置闹铃
     }
 
 
@@ -115,7 +114,7 @@ public class ClockManager {
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, second);
 
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
     }
 
     private void DelayClock(Context context, Class<?> cls, int hour, int minute, int second) {
@@ -126,7 +125,7 @@ public class ClockManager {
         calendar.set(Calendar.HOUR, this.Hour + hour);
         calendar.set(Calendar.MINUTE, this.Minute + minute);
         calendar.set(Calendar.SECOND, this.Second + second);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
     }
 
     private void RepeatingClock(Context context, Class<?> cls, int hour, int minute, int second, double Repeating) {
