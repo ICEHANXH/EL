@@ -4,7 +4,7 @@ public class NickName {
     private String nickName;
 
     private NickName() {
-        
+
     }
 
     private NickName(String string) {

@@ -1,4 +1,4 @@
-package BackManagers;
+package BackUps;
 
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -14,12 +14,6 @@ import java.util.ListIterator;
 import java.util.concurrent.atomic.AtomicReference;
 
 import Managers.Achievement;
-import Managers.ClockManager;
-import Managers.FileManager;
-import Managers.MusicManager;
-import Managers.ScreenManager;
-import Managers.Task;
-import Managers.TaskManager;
 
 public class WinJudgement {
     private volatile MediaPlayer mediaPlayer;

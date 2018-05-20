@@ -2,6 +2,7 @@ package com.example.testlfm;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import BackManagers.TaskFailed;
 import BackManagers.WinJudgement;
+import Managers.MusicManager;
 import Managers.Task;
 
 public class Another extends AppCompatActivity implements View.OnClickListener {
@@ -18,20 +20,27 @@ public class Another extends AppCompatActivity implements View.OnClickListener {
     private Button btn_cancel;
     private AlarmManager alarmManager;
     private PendingIntent pi;
+    private TaskFailed taskFailed;
+    private MediaPlayer mediaPlayer;
+    private MusicManager musicManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_another);
+        musicManager = MusicManager.getMusicManager();
+        mediaPlayer = musicManager.GetMediaPlayer();
+        taskFailed = new TaskFailed();
         bindViews();
     }
 
     private void bindViews() {
         btn_set = findViewById(R.id.btn_set);
         btn_cancel = findViewById(R.id.btn_cancel);
-        WinJudgement winJudgement = WinJudgement.getWinJudgement(this, Task.getTask(), 5);
-        winJudgement.setMusicPathList(this, ".mp3", "music");
-        winJudgement.JudgementStart(this, TaskFailed.class);
+        WinJudgement winJudgement = WinJudgement.getWinJudgement(Another.this, Task.getTask(), mediaPlayer, 10);
+        winJudgement.setMusicPathList(Another.this, ".mp3", "music");
+        winJudgement.JudgementStart(Another.this);
+
         btn_set.setOnClickListener(this);
         btn_cancel.setOnClickListener(this);
     }

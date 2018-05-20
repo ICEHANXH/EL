@@ -1,4 +1,4 @@
-package BackManagers;
+package BackUps;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,14 +17,6 @@ import java.util.ListIterator;
 import java.util.concurrent.atomic.AtomicReference;
 
 import Managers.Achievement;
-import Managers.ClockManager;
-import Managers.CountingUp;
-import Managers.FileManager;
-import Managers.MusicManager;
-import Managers.ScreenManager;
-import Managers.Task;
-import Managers.TaskManager;
-import Managers.TimeManager;
 
 
 public class WinStrategy {

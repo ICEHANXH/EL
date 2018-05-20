@@ -7,7 +7,8 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.example.lenovo.elapp.R;
+import com.example.testlfm.CircleTransform;
+import com.example.testlfm.R;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
@@ -15,8 +16,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import Image_Transform.CircleTransform;
 
 /**
  * compile 'com.sunfusheng:glideimageview:1.0.0'
@@ -77,7 +76,6 @@ public class ImageManager {
         }
     }
 
-
     public void SetImageExternal_Circlize(Context context, String source, ImageView imageView) {
         File file = new File(Environment.getExternalStorageDirectory()
                 , "/pictures/" + source);
@@ -88,6 +86,7 @@ public class ImageManager {
                 .transform(new CircleTransform())
                 .into(imageView);
     }
+
 
     public void SetImage_Circlize(Context context, int R_Source, ImageView imageView) {
         Picasso.with(context)
@@ -124,7 +123,7 @@ public class ImageManager {
     public File getSDcardDic() {
         File sdDir = null;
         boolean sdCardExist = Environment.getExternalStorageState().equals(
-                android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
+                Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
         if (sdCardExist) {
             sdDir = Environment.getExternalStorageDirectory().getAbsoluteFile();// 获取根目录
         } else {
