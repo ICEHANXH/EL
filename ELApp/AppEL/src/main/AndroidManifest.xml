@@ -22,7 +22,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewTaskActivity" />
-        <activity android:name=".AchievementActivity"></activity>
+        <activity android:name=".AchievementActivity" />
+        <activity android:name="BackUps.GoodEvening" />
+        <activity android:name="BackUps.GoodMorning" />
+
+        <receiver android:name="BackUps.TaskFailed" />
+
     </application>
 
 </manifest>
