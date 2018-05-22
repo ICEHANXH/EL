@@ -13,4 +13,9 @@
     <color name="green">#cc03e40f</color>
     <color name="toolbar">#064fad</color>
     <color name="stroke">#00ffee</color>
+    <color name="pink">#FFF2A3CB</color>
+    <color name="darkpink">#CCCC3359</color>
+    <color name="maincolor">#cc70bbdf</color>
+    <color name="maincolor2">#CCF1BF29</color>
+    <color name="background">#ccf4f4f2</color>
 </resources>
