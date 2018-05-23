@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,7 +15,10 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +59,36 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //通过菜单加载器获得菜单的布局
+        getMenuInflater().inflate(R.menu.left_navigation_view_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    /**
+     * 重写的父类方法（用作点击事件）
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //判断item的id
+        switch (item.getItemId()){
+            case R.id.nav_achievement:
+                Intent intent = new Intent(MainActivity.this, AchievementActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_greeting:
+                Toast.makeText(this, "ROOM!!", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_store:
+                Toast.makeText(this, "斯摩格", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void NavigationViewTask() {
