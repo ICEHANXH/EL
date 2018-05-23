@@ -1,29 +1,21 @@
-
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-
-
-
     defaultConfig {
-        applicationId "com.example.testlfm"
+        applicationId "com.example.lenovo.elapp"
         minSdkVersion 26
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -32,6 +24,9 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    configurations {
+        all*.exclude group: 'com.android.support', module: 'support-v13'
+    }
     compile 'com.github.jlmd:AnimatedCircleLoadingView:1.1.5@aar'
     compile 'com.github.iwgang:countdownview:2.1.6'
     //计时器
@@ -48,12 +43,6 @@ dependencies {
     //开场动画啦啦啦
     compile 'com.github.florent37:expansionpanel:1.0.0'
     //折叠
-    compile 'com.github.yhaolpz:FloatWindow:1.0.6'
-    //悬浮按钮
-    compile 'com.coder:circlebar:1.0.0'
-    //进度条1
-    compile 'com.github.idic779:monthweekmaterialcalendarview:1.5'
-    //日历组件
     compile 'com.alibaba:fastjson:1.1.55.android'
     //Json依赖
     implementation 'com.android.support:appcompat-v7:27.1.1'
@@ -63,6 +52,21 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     // https://mvnrepository.com/artifact/com.squareup.picasso/picasso
     compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.android.support:design:27.1.1'
+    //compile 'com.github.yalantis:Side-Menu.Android:1.0.1'
+    //compile 'com.github.ozodrukh:CircularReveal:(latest-release)@aar'
+    compile 'com.yalantis:phoenix:1.2.3'
+    //刷新动画
+    compile 'com.android.support:design:27.1.1'
+    //侧滑设计
+    compile 'com.github.youngkaaa:circleview:0.1.0'
+    //把图片变圆
+    implementation 'com.github.WelliJohn:ASwipeLayout:0.0.2'
+    //    compile ('com.github.huburt-Hu:NewbieGuide:v2.1.0') {
+    //        exclude group: 'com.android.support'
+    //    }//透明指示层
+    //    compile 'me.jahirfiquitiva:FABsMenu:1.0.3'
+
 }
 repositories {
     mavenCentral()
@@ -74,3 +78,8 @@ repositories {
 repositories {
     maven { url "https://jitpack.io" }
 }
+/*repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}*/

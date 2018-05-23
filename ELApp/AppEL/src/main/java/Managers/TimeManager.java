@@ -4,6 +4,11 @@ package Managers;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 
+/*
+ * 时间类
+ * 得到手机的年月日小时分钟秒数
+ * */
+
 public class TimeManager {
 
     private TimeManager() {

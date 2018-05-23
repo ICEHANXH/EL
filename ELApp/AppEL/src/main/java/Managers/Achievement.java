@@ -19,9 +19,6 @@ public class Achievement {
     private LoadingManager loadingManager;
     private String separator = System.getProperty("line.separator");
 
-    /**
-     * @return :The coins that we have
-     * */
     public String getCoin() {
         String value = "0";
         try {
@@ -33,79 +30,89 @@ public class Achievement {
         }
         return value;
     }
-    /**
-     * @return The accomplishment that we have
-     * */
+
     public String getAccomplishment() {
-        String value = "0";
-        try {
-            HashMap<String, Integer> tmpHashMap = getDataMap();
-            value = String.valueOf(tmpHashMap.get("accomplishment"));
-            this.accomplishment = value;
-        } catch (IOException e) {
-            e.printStackTrace();
+        synchronized (this) {
+            String value = "0";
+            try {
+                HashMap<String, Integer> tmpHashMap = getDataMap();
+                value = String.valueOf(tmpHashMap.get("accomplishment"));
+                this.accomplishment = value;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return value;
         }
-        return value;
     }
 
-    /**
-     * You have to input the string and set the coins
-    * */
     public void setCoin(String coin) {
-        this.coin = coin;
-        stringIntegerHashMap = flushMap();
-        stringIntegerHashMap = writeAchievement(this.coin, this.accomplishment);
+        synchronized (this) {
+            this.coin = coin;
+            stringIntegerHashMap = flushMap();
+            stringIntegerHashMap = writeAchievement(this.coin, this.accomplishment);
+        }
     }
 
     public void setAccomplishment(String accomplishment) {
-        this.accomplishment = accomplishment;
-        stringIntegerHashMap = flushMap();
-        stringIntegerHashMap = writeAchievement(this.coin, this.accomplishment);
+        synchronized (this) {
+            this.accomplishment = accomplishment;
+            stringIntegerHashMap = flushMap();
+            stringIntegerHashMap = writeAchievement(this.coin, this.accomplishment);
+        }
     }
 
 
     private Achievement(Context context) {
-        coin = "0";
-        accomplishment = "0";
-        loadingManager = LoadingManager.getLoadingManager();
-        fileManager = FileManager.getFileManager();
-        AchievementFilePath = fileManager.getAppPath(context) + "achievement.txt";
+        synchronized (this) {
+            coin = "0";
+            accomplishment = "0";
+            loadingManager = LoadingManager.getLoadingManager();
+            fileManager = FileManager.getFileManager();
+            AchievementFilePath = fileManager.getAppPath(context) + "achievement.txt";
+        }
     }
 
     public static Achievement getAchievement(Context context) {
-        Achievement achievement = new Achievement(context);
-        stringIntegerHashMap = new HashMap<>();
-        try {
-            stringIntegerHashMap = achievement.getDataMap();
-            achievement.coin = String.valueOf(stringIntegerHashMap.get("coin"));
-            achievement.accomplishment = String.valueOf(stringIntegerHashMap.get("accomplishment"));
-        } catch (IOException e) {
-            e.printStackTrace();
+        synchronized (Achievement.class) {
+            Achievement achievement = new Achievement(context);
+            stringIntegerHashMap = new HashMap<>();
+            try {
+                stringIntegerHashMap = achievement.getDataMap();
+                achievement.coin = String.valueOf(stringIntegerHashMap.get("coin"));
+                achievement.accomplishment = String.valueOf(stringIntegerHashMap.get("accomplishment"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return achievement;
         }
-        return achievement;
     }
 
 
     private File getAchievementFile() throws IOException {
-        File achievementFile = new File(AchievementFilePath);
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(achievementFile, true));
-        bufferedWriter.close();
-        return achievementFile;
+        synchronized (this) {
+
+            File achievementFile = new File(AchievementFilePath);
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(achievementFile, true));
+            bufferedWriter.close();
+            return achievementFile;
+        }
     }
 
     private HashMap<String, Integer> getDataMap() throws IOException {
-        File achievementFile = getAchievementFile();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(achievementFile));
-        String data;
-        while ((data = bufferedReader.readLine()) != null) {
-            String[] Key_Value = data.split("=");
-            stringIntegerHashMap.put(Key_Value[0], Integer.parseInt(Key_Value[1]));
+        synchronized (this) {
+            File achievementFile = getAchievementFile();
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(achievementFile));
+            String data;
+            while ((data = bufferedReader.readLine()) != null) {
+                String[] Key_Value = data.split("=");
+                stringIntegerHashMap.put(Key_Value[0], Integer.parseInt(Key_Value[1]));
+            }
+            bufferedReader.close();
+            return stringIntegerHashMap;
         }
-        bufferedReader.close();
-        return stringIntegerHashMap;
     }
 
-    private HashMap<String, Integer> writeAchievement(String coin, String accomplishment) {
+    private synchronized HashMap<String, Integer> writeAchievement(String coin, String accomplishment) {
         try {
             File targetFile = getAchievementFile();
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(targetFile, false));
@@ -122,7 +129,7 @@ public class Achievement {
         return stringIntegerHashMap;
     }
 
-    private HashMap<String, Integer> flushMap() {
+    private synchronized HashMap<String, Integer> flushMap() {
         int coinInt = 0;
         int accInt = 0;
         try {

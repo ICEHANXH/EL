@@ -17,15 +17,15 @@
         android:layout_height="50dp"
         android:text="任务名称"
         android:textSize="24sp"
-        android:textColor="@color/taskLevel"/>
+        android:textColor="@color/maincolor"/>
 
     <EditText
         android:id="@+id/editTaskName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="@string/taskName"
-        android:textColor="@color/taskName"
-        android:textColorHint="@color/taskName"/>
+        android:textColor="@color/maincolor2"
+        android:textColorHint="@color/maincolor2"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
         android:gravity="center|start"
         android:text="@string/taskLevel"
         android:textSize="24sp"
-        android:textColor="@color/taskLevel"/>
+        android:textColor="@color/maincolor"/>
 
     <include
         layout="@layout/new_task_level"></include>
@@ -44,7 +44,7 @@
         android:gravity="center|start"
         android:text="重复"
         android:textSize="24sp"
-        android:textColor="@color/taskLevel"/>
+        android:textColor="@color/maincolor"/>
 
     <include layout="@layout/new_task_repeat"></include>
 
@@ -55,7 +55,7 @@
         android:gravity="center|start"
         android:text="任务时间"
         android:textSize="24sp"
-        android:textColor="@color/taskLevel"/>
+        android:textColor="@color/maincolor"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -63,7 +63,7 @@
         android:gravity="center|start"
         android:text="提醒时间"
         android:textSize="24sp"
-        android:textColor="@color/taskLevel"/>
+        android:textColor="@color/maincolor"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -71,14 +71,14 @@
         android:gravity="center|start"
         android:text="打开App"
         android:textSize="24sp"
-        android:textColor="@color/taskLevel"/>
+        android:textColor="@color/maincolor"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="备注："
         android:textSize="24sp"
-        android:textColor="@color/taskLevel"/>
+        android:textColor="@color/maincolor"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

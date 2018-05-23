@@ -22,20 +22,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/title"
-            android:text="@string/titleName"
+            android:text="提醒设置"
             android:textSize="25sp"
             android:textStyle="bold"/>
 
-
-        <Button
-            android:id="@+id/btnRight"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="0dp"
-            android:background="@drawable/ic_new_task_title_right_24dp"/>
     </android.support.v7.widget.Toolbar>
 
 
 </RelativeLayout>
-

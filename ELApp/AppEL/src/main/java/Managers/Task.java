@@ -25,13 +25,14 @@ public class Task {
 
     private Task() {
         timer = new Timer();
-        taskName = "";
-        remarks = "";
-        importance = "";
-        beginTime = "";
-        endTime = "";
-        frequency = "";
-        condition = "";
+        taskName = "None";
+        remarks = "None";
+        importance = "None";
+        beginTime = "None";
+        endTime = "None";
+        frequency = "None";
+        condition = "None";
+        Accession = "None";
     }
 
     public static Task getTask() {
