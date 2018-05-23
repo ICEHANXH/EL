@@ -28,7 +28,7 @@ public class RemindActivity extends AppCompatActivity implements CompoundButton.
             actionBar.hide();
         }
         aSwitch = (Switch) findViewById(R.id.morning_switch);
-        aSwitchCompat = (SwitchCompat) findViewById(R.id.switch_compat);
+        aSwitchCompat = (SwitchCompat) findViewById(R.id.goodnight_switch);
         text1 = (TextView) findViewById(R.id.text);
         text2 = (TextView) findViewById(R.id.text1);
         //设置Switch事件监听
@@ -50,14 +50,14 @@ public class RemindActivity extends AppCompatActivity implements CompoundButton.
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         switch (buttonView.getId()){
-            case R.id.switch1:
+            case R.id.morning_switch:
                 if(isChecked){
                     text1.setText("开");
                 }else {
                     text1.setText("关");
                 }
                 break;
-            case R.id.switch_compat:
+            case R.id.goodnight_switch:
                 if(isChecked){
                     text2.setText("开");
                 }else {

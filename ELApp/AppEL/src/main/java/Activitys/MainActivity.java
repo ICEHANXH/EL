@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         slideshow.setGravity(Gravity.CENTER_VERTICAL);
         slideshow.setTypeface(null, Typeface.BOLD);
         slideshow.setTextColor(getResources().getColor(R.color.colorAccent));
-        slideshow.setText("123");
+        slideshow.setText("1");
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

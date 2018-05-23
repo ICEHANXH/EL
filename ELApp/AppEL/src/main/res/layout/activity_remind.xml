@@ -40,7 +40,7 @@
         android:textSize="24sp"
         android:textColor="@color/taskLevel"/>
 
-    <Switch
+    <android.support.v7.widget.SwitchCompat
         android:id="@+id/goodnight_switch"
         android:layout_width="match_parent"
         android:layout_height="50dp"
