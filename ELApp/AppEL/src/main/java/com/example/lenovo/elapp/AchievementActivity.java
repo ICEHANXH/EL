@@ -1,14 +1,13 @@
 package com.example.lenovo.elapp;
 
-
-
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,14 @@ public class AchievementActivity extends AppCompatActivity {
         if(actionBar!=null){
             actionBar.hide();
         }
-
+        //实现点击按钮返回
+        Button backBtn = (Button) findViewById(R.id.achievement_back);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initItems(){

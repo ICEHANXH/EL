@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -13,14 +15,14 @@ import android.widget.TextView;
  * Created by hxh on 2018/5/22.
  */
 
-public class remind extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
+public class RemindActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
     private Switch aSwitch;
     private SwitchCompat aSwitchCompat;
     private TextView text1,text2,switchText,switchCompatText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.remind);
+        setContentView(R.layout.activity_remind);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
@@ -32,6 +34,14 @@ public class remind extends AppCompatActivity implements CompoundButton.OnChecke
         //设置Switch事件监听
         aSwitch.setOnCheckedChangeListener(this);
         aSwitchCompat.setOnCheckedChangeListener(this);
+
+        Button backBtn = (Button) findViewById(R.id.remind_btdButton);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     /*

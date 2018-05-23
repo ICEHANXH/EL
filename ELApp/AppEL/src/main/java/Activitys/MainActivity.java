@@ -28,6 +28,7 @@ import com.example.lenovo.elapp.R;
 
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
+import Managers.Achievement;
 import Tmp_lib.BottomNavigationView_Lib;
 import Tmp_lib.Music_lib;
 
@@ -65,16 +66,16 @@ public class MainActivity extends AppCompatActivity {
         slideshow.setGravity(Gravity.CENTER_VERTICAL);
         slideshow.setTypeface(null, Typeface.BOLD);
         slideshow.setTextColor(getResources().getColor(R.color.colorAccent));
-        slideshow.setText("7");
+        slideshow.setText("123");
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                /*switch(item.getItemId()){
+                switch(item.getItemId()){
                     case R.id.nav_achievement:
                         Intent intent1 = new Intent(MainActivity.this,NewTaskActivity.class);
                         startActivity(intent1);
-                }*/
+                }
 
                 return true;
             }
