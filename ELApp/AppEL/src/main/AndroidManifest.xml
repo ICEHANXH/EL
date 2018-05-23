@@ -24,8 +24,8 @@
         <activity android:name=".NewTaskActivity" />
         <activity android:name=".AchievementActivity" />
         <activity android:name=".StartActivity"/>
-        <activity android:name=".remind"/>
-        <activity android:name=".help"/>
+        <activity android:name=".RemindActivity"/>
+        <activity android:name=".HelpActivity"/>
         <activity android:name="BackUps.GoodEvening" />
         <activity android:name="BackUps.GoodMorning" />
 

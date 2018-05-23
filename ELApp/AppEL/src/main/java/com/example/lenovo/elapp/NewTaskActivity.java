@@ -3,6 +3,8 @@ package com.example.lenovo.elapp;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
@@ -83,6 +85,13 @@ public class NewTaskActivity extends AppCompatActivity {
             }
         });
 
+        Button backBtn = (Button) findViewById(R.id.newTask_btdBack);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 
