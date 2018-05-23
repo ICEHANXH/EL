@@ -1,9 +1,14 @@
 package com.example.lenovo.elapp;
 
+
+
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +16,24 @@ import java.util.List;
 
 public class AchievementActivity extends AppCompatActivity {
 
-    private List<Achievement_item> itemList = new ArrayList<>();
+    private List<Achievement_item> itemList = new ArrayList<Achievement_item>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achievement);
+        //设置瀑布流
         initItems();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         Achievement_Adapter adapter=new Achievement_Adapter(itemList);
         recyclerView.setAdapter(adapter);
+        //隐藏actionbar
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.hide();
+        }
 
     }
 
