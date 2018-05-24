@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ImageView imageView = new ImageView(getApplicationContext());
-        imageView.setImageResource(R.drawable.cat);
+        imageView.setImageResource(R.drawable.cat);//修改悬浮图标的icon
         new FloatingPlayer().floatStart(MainActivity.this, imageView);
     }
 
