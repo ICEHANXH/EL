@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,14 +31,12 @@ import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
 import com.example.lenovo.elapp.RemindActivity;
-import com.example.lenovo.elapp.StartActivity;
-import Story.*;
 
+import BackUps.FloatingPlayer;
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
-import Tmp_lib.BottomNavigationView_Lib;
+import Story.storyMainActivity;
 import Tmp_lib.Music_lib;
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -54,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
-        Button button = (Button)findViewById(R.id.main_return);
+        Button button = (Button) findViewById(R.id.main_return);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.cat);
+        new FloatingPlayer().floatStart(MainActivity.this, imageView);
     }
 
     @Override
@@ -148,13 +150,13 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.navigation_dashboard:
-                        Intent intent1 = new Intent(MainActivity.this,NewTaskActivity.class);
+                        Intent intent1 = new Intent(MainActivity.this, NewTaskActivity.class);
                         startActivity(intent1);
                         break;
                     case R.id.navigation_notifications:
-                        Intent intent2 = new Intent(MainActivity.this,storyMainActivity.class);
+                        Intent intent2 = new Intent(MainActivity.this, storyMainActivity.class);
                         startActivity(intent2);
                         break;
                 }

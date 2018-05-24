@@ -14,13 +14,8 @@ public class ProcessBar {
     }
 
     public void processBegin(int second) {
-        roundProgressBar.startCountDownTime(new RoundProgressBar.OnProgressFinishListener() {
-            @Override
-            public void progressFinished() {
-
-            }
+        roundProgressBar.startCountDownTime(() -> {
         }, 322.5, 100, second);
-
     }
 
     public void processBegin(int minute, int second) {
