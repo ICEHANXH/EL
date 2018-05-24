@@ -1,30 +1,17 @@
 package com.mycompany.story;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.EditText;
-import android.widget.TextView;
 /**
  * The first Shot
  * enter the Game(Story)
  *
  * Button to the task--> Simply time countdown*/
-public class MainActivity extends AppCompatActivity {
+public class storyMainActivity extends AppCompatActivity {
 
 //    /**
 //     * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -44,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
         protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.story_activity_main);
 
 //        /**
 //         * do not use Toolbar
@@ -156,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     /**Called when the user clicks the Send button*/
     public void sendMessage(View view){
 
-        Intent intent =  new Intent(this,secondActivity.class);
+        Intent intent =  new Intent(this,storySecondActivity.class);
         startActivity(intent);
     }
 }

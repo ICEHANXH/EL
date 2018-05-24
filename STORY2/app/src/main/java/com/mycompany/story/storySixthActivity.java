@@ -9,17 +9,17 @@ import android.view.View;
  * Do task(time Countdown && Input own task && music)
  * button(Next!)-->Done
  * */
-public class sixthActivity extends AppCompatActivity {
+public class storySixthActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sixth);
+        setContentView(R.layout.story_activity_sixth);
     }
 
     /**Called when the user clicks the Send button*/
     public void sendMessage(View view){
-        Intent intent =  new Intent(this,seventhActivity.class);
+        Intent intent =  new Intent(this,storySeventhActivity.class);
         startActivity(intent);
     }
 }

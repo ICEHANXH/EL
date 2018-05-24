@@ -6,20 +6,20 @@ import android.os.Bundle;
 import android.view.View;
 
 /**
- * The second Shot
- *
- * Button to the task-->time countdown && input your own task */
-public class thirdActivity extends AppCompatActivity {
+ * Do task(time Countdown && Input own task)
+ * button(Next!)-->The last shot
+ * */
+public class storyFourthActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_third);
+        setContentView(R.layout.story_activity_fourth);
     }
 
     /**Called when the user clicks the Send button*/
     public void sendMessage(View view){
-        Intent intent =  new Intent(this,fourthActivity.class);
+        Intent intent =  new Intent(this,storyFifthActivity.class);
         startActivity(intent);
     }
 }
