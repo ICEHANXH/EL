@@ -13,6 +13,7 @@
         android:text="Go Next!"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="422dp"
-        android:onClick="sendMessage"/>
+        android:onClick="sendMessage"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
 
 </android.support.constraint.ConstraintLayout>

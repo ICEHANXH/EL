@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * The second Shot
+ *
+ * Button to the task-->time countdown && input your own task */
 public class thirdActivity extends AppCompatActivity {
 
     @Override

@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * Do task(time Countdown && Input own task && music)
+ * button(Next!)-->Done
+ * */
 public class sixthActivity extends AppCompatActivity {
 
     @Override
