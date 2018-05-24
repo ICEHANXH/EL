@@ -110,12 +110,15 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_achievement:
                         Intent intent1 = new Intent(MainActivity.this, AchievementActivity.class);
                         startActivity(intent1);
+                        break;
                     case R.id.nav_greeting:
                         Intent intent2 = new Intent(MainActivity.this, RemindActivity.class);
                         startActivity(intent2);
+                        break;
                     case R.id.nav_help:
                         Intent intent3 = new Intent(MainActivity.this, HelpActivity.class);
                         startActivity(intent3);
+                        break;
                 }
 
                 return true;
