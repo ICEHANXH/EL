@@ -15,7 +15,8 @@
     <color name="stroke">#00ffee</color>
     <color name="pink">#FFF2A3CB</color>
     <color name="darkpink">#CCCC3359</color>
-    <color name="maincolor">#cc70bbdf</color>
+    <color name="maincolor">#7da7be</color>
     <color name="maincolor2">#CCF1BF29</color>
     <color name="background">#ccf4f4f2</color>
+    <color name="white">#f7f7f7</color>
 </resources>
