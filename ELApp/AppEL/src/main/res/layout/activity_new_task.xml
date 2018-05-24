@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewTaskActivity">
+
+    <include
+        layout="@layout/new_task_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/taskName"
+                android:textColor="@color/maincolor"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/editTaskName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/taskName"
+                android:gravity="center"
+                android:padding="5dp"
+                android:inputType=""
+                android:textColor="@color/maincolor"
+                android:background="@drawable/new_task_edittext"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center|start"
+                android:text="@string/taskLevel"
+                android:textColor="@color/maincolor"
+                android:textSize="24sp" />
+
+            <include
+                layout="@layout/new_task_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </include>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center|start"
+                android:text="@string/repetition"
+                android:textColor="@color/maincolor"
+                android:textSize="24sp" />
+
+            <include
+                layout="@layout/new_task_repeat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </include>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center|start"
+                android:text="@string/taskTime"
+                android:textColor="@color/maincolor"
+                android:textSize="24sp" />
+
+            <include
+                layout="@layout/new_task_task_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </include>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center|start"
+                android:text="@string/ringTime"
+                android:textColor="@color/maincolor"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center|start"
+                android:text="@string/anotherApp"
+                android:textColor="@color/maincolor"
+                android:textSize="24sp" />
+
+            <include
+                layout="@layout/new_task_on_app"
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+
+            </include>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/remark"
+                android:textColor="@color/maincolor"
+                android:textSize="24sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/remarkHint"
+                android:padding="5dp"
+                android:inputType=""
+                android:background="@drawable/new_task_edittext"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
