@@ -5,7 +5,7 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-import com.example.testlfm.R;
+import com.example.yhao.fixedfloatwindow.R;
 import com.squareup.picasso.Transformation;
 
 public class CircleTransform implements Transformation {

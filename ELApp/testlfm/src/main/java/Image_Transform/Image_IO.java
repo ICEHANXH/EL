@@ -7,7 +7,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.example.testlfm.R;
+import com.example.yhao.fixedfloatwindow.R;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
