@@ -11,13 +11,12 @@ tools:context="com.mycompany.story.MainActivity">
 
 
     <Button
-        android:layout_width="112dp"
-        android:layout_height="178dp"
+        android:layout_width="140dp"
+        android:layout_height="214dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="90dp"
-        android:background="@android:color/transparent"
-        android:backgroundTint="@android:color/transparent"
         android:onClick="sendMessage"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
 
 </android.support.design.widget.CoordinatorLayout>
