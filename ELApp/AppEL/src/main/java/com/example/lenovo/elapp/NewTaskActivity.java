@@ -30,10 +30,11 @@ public class NewTaskActivity extends AppCompatActivity {
                 if(isChecked) {
                     for (int i = 0; i < checkBoxes.length; i++) {
                         //不等于当前选中的就变成false
-                        if (checkBoxes[i].getText().toString().equals(buttonView.getText().toString())) {
+                        if (checkBoxes[i].getId()==(buttonView.getId())) {
                             checkBoxes[i].setChecked(true);
                         } else {
                             checkBoxes[i].setChecked(false);
+
                         }
                     }
                 }
@@ -45,7 +46,7 @@ public class NewTaskActivity extends AppCompatActivity {
                 if(isChecked) {
                     for (int i = 0; i < checkBoxes.length; i++) {
                         //不等于当前选中的就变成false
-                        if (checkBoxes[i].getText().toString().equals(buttonView.getText().toString())) {
+                        if (checkBoxes[i].getId()==(buttonView.getId())) {
                             checkBoxes[i].setChecked(true);
                         } else {
                             checkBoxes[i].setChecked(false);
@@ -60,7 +61,7 @@ public class NewTaskActivity extends AppCompatActivity {
                 if(isChecked) {
                     for (int i = 0; i < checkBoxes.length; i++) {
                         //不等于当前选中的就变成false
-                        if (checkBoxes[i].getText().toString().equals(buttonView.getText().toString())) {
+                        if (checkBoxes[i].getId()==(buttonView.getId())) {
                             checkBoxes[i].setChecked(true);
                         } else {
                             checkBoxes[i].setChecked(false);
@@ -75,7 +76,7 @@ public class NewTaskActivity extends AppCompatActivity {
                 if(isChecked) {
                     for (int i = 0; i < checkBoxes.length; i++) {
                         //不等于当前选中的就变成false
-                        if (checkBoxes[i].getText().toString().equals(buttonView.getText().toString())) {
+                        if (checkBoxes[i].getId()==(buttonView.getId())) {
                             checkBoxes[i].setChecked(true);
                         } else {
                             checkBoxes[i].setChecked(false);

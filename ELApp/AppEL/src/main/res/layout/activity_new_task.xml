@@ -35,8 +35,7 @@
                 android:layout_height="50dp"
                 android:hint="@string/taskName"
                 android:inputType=""
-                android:textColor="@color/maincolor2"
-                android:textColorHint="@color/maincolor2" />
+                android:textColor="@color/maincolor"/>
 
             <TextView
                 android:layout_width="match_parent"
