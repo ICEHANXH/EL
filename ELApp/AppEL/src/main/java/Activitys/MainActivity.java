@@ -35,13 +35,14 @@ import com.example.lenovo.elapp.RemindActivity;
 import BackUps.FloatingPlayer;
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
+import Managers.ImageManager;
 import Story.storyMainActivity;
 import Tmp_lib.Music_lib;
 
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout linearLayout;
-
+    private ImageManager imageManager=ImageManager.getImageManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickDialog dialog = new DatePickDialog(MainActivity.this);
+                /*DatePickDialog dialog = new DatePickDialog(MainActivity.this);
                 //设置上下年分限制
                 dialog.setYearLimt(5);
                 //设置标题
@@ -70,11 +71,14 @@ public class MainActivity extends AppCompatActivity {
                 dialog.setOnChangeLisener(null);
                 //设置点击确定按钮回调
                 dialog.setOnSureLisener(null);
-                dialog.show();
+                dialog.show();*/
+                Intent intent = new Intent(MainActivity.this, AchievementActivity.class);
+                startActivity(intent);
+
             }
         });
         ImageView imageView = new ImageView(getApplicationContext());
-        imageView.setImageResource(R.drawable.cat);
+        imageView.setImageResource(R.drawable.floatingbutton);
         new FloatingPlayer().floatStart(MainActivity.this, imageView);
     }
 
