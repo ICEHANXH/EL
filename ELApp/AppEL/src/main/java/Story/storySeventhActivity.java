@@ -1,10 +1,14 @@
 package Story;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.example.lenovo.elapp.R;
+
+import Activitys.MainActivity;
 
 public class storySeventhActivity extends AppCompatActivity {
 
@@ -16,5 +20,11 @@ public class storySeventhActivity extends AppCompatActivity {
         if(actionBar!=null){
             actionBar.hide();
         }
+    }
+
+    /**Called when the user clicks the Send button*/
+    public void sendMessage(View view){
+        Intent intent =  new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
