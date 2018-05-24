@@ -24,8 +24,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.codbking.widget.DatePickDialog;
-import com.codbking.widget.bean.DateType;
 import com.example.lenovo.elapp.AchievementActivity;
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
@@ -42,7 +40,8 @@ import Tmp_lib.Music_lib;
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout linearLayout;
-    private ImageManager imageManager=ImageManager.getImageManager();
+    private ImageManager imageManager = ImageManager.getImageManager();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = new ImageView(getApplicationContext());
         imageView.setImageResource(R.drawable.floatingbutton);
         new FloatingPlayer().floatStart(MainActivity.this, imageView);
+
     }
 
     @Override

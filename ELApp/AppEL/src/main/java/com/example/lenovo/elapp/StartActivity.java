@@ -12,8 +12,10 @@ import android.widget.ImageView;
 import Activitys.MainActivity;
 
 public class StartActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         //隐藏标题栏
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -22,6 +24,7 @@ public class StartActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.start);
         initImage();
+
     }
 
     private void initImage() {
