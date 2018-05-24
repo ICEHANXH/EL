@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.codbking.widget.DatePickDialog;
 import com.codbking.widget.bean.DateType;
 import com.example.lenovo.elapp.AchievementActivity;
+import com.example.lenovo.elapp.ClockActivity;
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
@@ -38,6 +39,7 @@ import Fragments.MainActivityLeftFragment;
 import Managers.ImageManager;
 import Story.storyMainActivity;
 import Tmp_lib.Music_lib;
+import Tmp_lib.myDatePickDialog;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*DatePickDialog dialog = new DatePickDialog(MainActivity.this);
+                DatePickDialog dialog = new DatePickDialog(MainActivity.this);
                 //设置上下年分限制
                 dialog.setYearLimt(5);
                 //设置标题
@@ -71,9 +73,12 @@ public class MainActivity extends AppCompatActivity {
                 dialog.setOnChangeLisener(null);
                 //设置点击确定按钮回调
                 dialog.setOnSureLisener(null);
-                dialog.show();*/
-                Intent intent = new Intent(MainActivity.this, AchievementActivity.class);
-                startActivity(intent);
+                dialog.show();
+                myDatePickDialog dialog1 = new myDatePickDialog(MainActivity.this);
+                Toast.makeText(getApplicationContext(),dialog1.getText(),
+                        Toast.LENGTH_SHORT).show();
+                /*Intent intent = new Intent(MainActivity.this, ClockActivity.class);
+                startActivity(intent);*/
 
             }
         });
