@@ -1,8 +1,8 @@
 package Managers;
 
-
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.widget.DatePicker;
 
 import com.alibaba.fastjson.JSON;
 
@@ -16,30 +16,35 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 
-//任务名，重要性（颜色：四种颜色）
-//开始时间，完成时间
-//所需交互APP
-//单次事项or每周每天
-//提醒时间
-//备注
-
-
-//Json解析
-public class TaskManager {
+public class TaskPicker {
+    private DatePicker datePicker;
+    private TaskManager taskManager;
+    private String datOfMonth;
     private String tasksPath;
     private List<Task> taskList;
     private FileManager file_manager;
     private Achievement achievement;
+    private TimeManager timeManager;
 
-    private TaskManager(Context context) {
-        taskList = new LinkedList<>();
-        file_manager = FileManager.getFileManager();
-        achievement = Achievement.getAchievement(context);
-        tasksPath = file_manager.getAppPath(context) + "tasks.txt";
+    private TaskPicker(Context context, DatePicker datePicker) {
+        this.file_manager = FileManager.getFileManager();
+        this.datePicker = datePicker;
+        this.datOfMonth = String.valueOf(datePicker.getDayOfMonth());
+        this.tasksPath = file_manager.getAppPath(context) + "tasks" + this.datOfMonth + ".txt";
     }
 
-    public static TaskManager getTaskManager(Context context) {
-        return new TaskManager(context);
+    private TaskPicker() {
+        this.file_manager = FileManager.getFileManager();
+        this.timeManager = TimeManager.getTimeManager();
+        this.datOfMonth = timeManager.getDayOfMonth();
+    }
+
+    public static TaskPicker getTaskPicker(Context context, DatePicker datePicker) {
+        return new TaskPicker(context, datePicker);
+    }
+
+    public static TaskPicker getTaskPicker() {
+        return new TaskPicker();
     }
 
     public Task addTask(Task task) {
