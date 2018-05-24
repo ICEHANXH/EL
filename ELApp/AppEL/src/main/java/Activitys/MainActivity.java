@@ -29,11 +29,13 @@ import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
 import com.example.lenovo.elapp.RemindActivity;
 import com.example.lenovo.elapp.StartActivity;
+import Story.*;
 
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
 import Tmp_lib.BottomNavigationView_Lib;
 import Tmp_lib.Music_lib;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -122,9 +124,23 @@ public class MainActivity extends AppCompatActivity {
         Fragment_Lib.replaceFragment(this, new MainActivityLeftFragment(), R.id.root_Frame_layout);
         BottomNavigationView navigation = findViewById(R.id.MainActivityNavigation);
         navigation.setItemIconTintList(null);
-        navigation.setOnNavigationItemSelectedListener(
-                BottomNavigationView_Lib.Get_OnNavigationItemselectedListener(this));
-        navigation.setItemIconTintList(null);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.navigation_dashboard:
+                        Intent intent1 = new Intent(MainActivity.this,NewTaskActivity.class);
+                        startActivity(intent1);
+                        break;
+                    case R.id.navigation_notifications:
+                        Intent intent2 = new Intent(MainActivity.this,storyMainActivity.class);
+                        startActivity(intent2);
+                        break;
+                }
+                return true;
+            }
+        });
+
     }
 
     @Override
