@@ -24,10 +24,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.codbking.widget.DatePickDialog;
-import com.codbking.widget.bean.DateType;
 import com.example.lenovo.elapp.AchievementActivity;
+<<<<<<< HEAD
 import com.example.lenovo.elapp.ClockActivity;
+=======
+import com.example.lenovo.elapp.CalendarActivity;
+>>>>>>> ced23a90957bb2c2d755342dab865854fe5a0518
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
@@ -44,7 +46,8 @@ import Tmp_lib.myDatePickDialog;
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout linearLayout;
-    private ImageManager imageManager=ImageManager.getImageManager();
+    private ImageManager imageManager = ImageManager.getImageManager();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickDialog dialog = new DatePickDialog(MainActivity.this);
+                /*DatePickDialog dialog = new DatePickDialog(MainActivity.this);
                 //设置上下年分限制
                 dialog.setYearLimt(5);
                 //设置标题
@@ -80,11 +83,16 @@ public class MainActivity extends AppCompatActivity {
                 /*Intent intent = new Intent(MainActivity.this, ClockActivity.class);
                 startActivity(intent);*/
 
+                Intent intent = new Intent(MainActivity.this,CalendarActivity.class);
+                startActivity(intent);
+
+
             }
         });
         ImageView imageView = new ImageView(getApplicationContext());
         imageView.setImageResource(R.drawable.floatingbutton);
         new FloatingPlayer().floatStart(MainActivity.this, imageView);
+
     }
 
     @Override

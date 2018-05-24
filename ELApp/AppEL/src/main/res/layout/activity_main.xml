@@ -46,15 +46,13 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp">
 
-            <include
-                layout="@layout/main_title"></include>
+            <include layout="@layout/main_title" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:orientation="horizontal">
-
 
 
                 <EditText
@@ -98,9 +96,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_weight="1"
+                android:background="@color/white"
                 android:text="未完成"
                 android:textColor="@color/maincolor"
-                android:background="@color/white"
                 android:textSize="32sp" />
 
             <TextView
@@ -145,7 +143,7 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/left_navigation_view_header_layout"
         app:menu="@menu/left_navigation_view_menu"
-        tools:ignore="RtlHardcoded" >
+        tools:ignore="RtlHardcoded">
 
     </android.support.design.widget.NavigationView>
 
