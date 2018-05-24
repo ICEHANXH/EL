@@ -35,6 +35,7 @@
                 android:layout_height="50dp"
                 android:hint="@string/taskName"
                 android:gravity="center"
+                android:padding="5dp"
                 android:inputType=""
                 android:textColor="@color/maincolor"
                 android:background="@drawable/new_task_edittext"/>
@@ -111,8 +112,9 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="start"
+                android:gravity="center"
                 android:hint="@string/remarkHint"
+                android:padding="5dp"
                 android:inputType=""
                 android:background="@drawable/new_task_edittext"/>
 
