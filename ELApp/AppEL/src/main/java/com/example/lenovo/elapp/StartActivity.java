@@ -26,7 +26,7 @@ public class StartActivity extends AppCompatActivity {
 
     private void initImage() {
         ImageView iv_start = findViewById(R.id.iv_start);
-        iv_start.setImageResource(R.drawable.head_portrait);
+        iv_start.setImageResource(R.drawable.start_image);
         //进行缩放动画
         ScaleAnimation scaleAnimation = new ScaleAnimation(1.4f, 1.0f, 1.4f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         scaleAnimation.setDuration(4000);
@@ -40,7 +40,8 @@ public class StartActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                startActivity();
+                Intent intent = new Intent(StartActivity.this, MainActivity.class);
+                startActivity(intent);
             }
 
             @Override
