@@ -9,9 +9,12 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
-import Activitys.MainActivity;
+import com.example.testlfm.MainActivity;
+import com.example.testlfm.R;
 
-public class StartActivity extends AppCompatActivity {
+public class start_activity extends AppCompatActivity {
+    private ImageView iv_start;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,13 +23,14 @@ public class StartActivity extends AppCompatActivity {
         //隐藏状态栏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.start);
+
+        setContentView(R.layout.start_layout);
         initImage();
     }
 
     private void initImage() {
-        ImageView iv_start = findViewById(R.id.iv_start);
-        iv_start.setImageResource(R.drawable.head_portrait);
+        iv_start = (ImageView) findViewById(R.id.iv_start);
+        iv_start.setImageResource(R.drawable.start);
         //进行缩放动画
         ScaleAnimation scaleAnimation = new ScaleAnimation(1.4f, 1.0f, 1.4f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         scaleAnimation.setDuration(4000);
@@ -40,7 +44,7 @@ public class StartActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                Intent intent = new Intent(StartActivity.this, MainActivity.class);
+                Intent intent = new Intent(start_activity.this, MainActivity.class);
                 startActivity(intent);
             }
 
@@ -50,12 +54,5 @@ public class StartActivity extends AppCompatActivity {
             }
         });
         iv_start.startAnimation(scaleAnimation);
-    }
-
-    private void startActivity() {
-        Intent intent = new Intent(StartActivity.this, MainActivity.class);
-        startActivity(intent);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        finish();
     }
 }
