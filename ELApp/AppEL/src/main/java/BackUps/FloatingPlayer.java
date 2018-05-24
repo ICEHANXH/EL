@@ -3,7 +3,6 @@ package BackUps;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.util.Log;
-import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
 
@@ -26,20 +25,17 @@ public class FloatingPlayer {
     private MediaPlayer mediaPlayer = musicManager.GetMediaPlayer();
 
     public void floatStart(Context context, ImageView imageView) {
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!IsBegin) {
-                    mediaPlayer = musicManager.play(context, mediaPlayer, R.raw.bgm8);
-                    IsBegin = true;
-                }
-                if (IsPause) {
-                    mediaPlayer = musicManager.ContinueToPlay(mediaPlayer);
-                    IsPause = false;
-                } else {
-                    mediaPlayer = musicManager.pause(mediaPlayer);
-                    IsPause = true;
-                }
+        imageView.setOnClickListener(v -> {
+            if (!IsBegin) {
+                mediaPlayer = musicManager.play(context, mediaPlayer, R.raw.bgm8);
+                IsBegin = true;
+            }
+            if (IsPause) {
+                mediaPlayer = musicManager.ContinueToPlay(mediaPlayer);
+                IsPause = false;
+            } else {
+                mediaPlayer = musicManager.pause(mediaPlayer);
+                IsPause = true;
             }
         });
 
