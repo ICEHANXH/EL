@@ -27,8 +27,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.elapp.AchievementActivity;
+import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
+import com.example.lenovo.elapp.RemindActivity;
 
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         button_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AchievementActivity.class);
+                Intent intent = new Intent(MainActivity.this, NewTaskActivity.class);
                 startActivity(intent);
             }
         });
@@ -107,8 +109,14 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()){
                     case R.id.nav_achievement:
-                        Intent intent1 = new Intent(MainActivity.this,NewTaskActivity.class);
+                        Intent intent1 = new Intent(MainActivity.this,AchievementActivity.class);
                         startActivity(intent1);
+                    case R.id.nav_greeting:
+                        Intent intent2 = new Intent(MainActivity.this,RemindActivity.class);
+                        startActivity(intent2);
+                    case R.id.nav_help:
+                        Intent intent3 = new Intent(MainActivity.this,HelpActivity.class);
+                        startActivity(intent3);
                 }
 
                 return true;

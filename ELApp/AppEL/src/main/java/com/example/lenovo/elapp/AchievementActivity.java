@@ -1,5 +1,6 @@
 package com.example.lenovo.elapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import Activitys.MainActivity;
 
 
 public class AchievementActivity extends AppCompatActivity {
@@ -38,7 +41,8 @@ public class AchievementActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(AchievementActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
