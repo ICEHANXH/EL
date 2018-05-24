@@ -11,6 +11,6 @@
     <string name="help3">音乐和成就系统都可以解锁 用户可以通过获得的金币来购买新的音乐，通过完成不同的事件来取得相应成就啦～</string>
     <string name="count">2/5</string>
     <string name="title_name">成就</string>
-    <string name="remarkHint">                                   请输入内容</string>
+    <string name="remarkHint">请输入内容</string>
     <string name="remark">备注：</string>
 </resources>
