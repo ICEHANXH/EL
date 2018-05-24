@@ -42,6 +42,7 @@
         <activity android:name="BackUps.GoodEvening" />
         <activity android:name="BackUps.GoodMorning" />
         <activity android:name=".ClockActivity"/>
+        <activity android:name=".CalendarActivity"/>
 
         <receiver android:name="BackUps.TaskFailed" />
 
