@@ -50,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
+<<<<<<< HEAD
+//        Button button_ = findViewById(R.id.titleButton);
+//        button_.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, NewTaskActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+=======
         Button button_ = findViewById(R.id.titleButton);
         button_.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+>>>>>>> 584ea9142ca429fee2976a8056311e964d601d3e
 
     }
 
