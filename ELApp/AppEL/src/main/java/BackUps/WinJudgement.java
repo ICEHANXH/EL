@@ -36,7 +36,6 @@ public class WinJudgement {
     private volatile boolean IsFailed = false;
     private volatile Class<? extends TaskFailed> FailedClass;
 
-
     private WinJudgement(Context context, Task task, MediaPlayer mediaPlayer, int MaxDelay) {
         synchronized (this) {
             this.MaxDelay = MaxDelay;
