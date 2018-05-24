@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center|start"
-                android:text="重复"
+                android:text="@string/repetition"
                 android:textColor="@color/maincolor"
                 android:textSize="24sp" />
 
@@ -75,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center|start"
-                android:text="任务时间"
+                android:text="@string/taskTime"
                 android:textColor="@color/maincolor"
                 android:textSize="24sp" />
 
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center|start"
-                android:text="提醒时间"
+                android:text="@string/ringTime"
                 android:textColor="@color/maincolor"
                 android:textSize="24sp" />
 
@@ -91,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center|start"
-                android:text="打开App"
+                android:text="@string/anotherApp"
                 android:textColor="@color/maincolor"
                 android:textSize="24sp" />
 
