@@ -6,31 +6,25 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_coin"
-            android:checkable="true"
             android:icon="@mipmap/ic_coins"
             android:title="金币"
             app:actionViewClass="android.widget.TextView" />
         <item
             android:id="@+id/nav_achievement"
             android:icon="@mipmap/achievement"
-            android:title="成就"
-            android:checkable="true"/>
+            android:title="成就" />
         <item
             android:id="@+id/nav_greeting"
-            android:checkable="true"
             android:icon="@mipmap/greeting"
             android:title="早晚安问候" />
         <item
             android:id="@+id/nav_help"
-            android:checkable="true"
             android:icon="@mipmap/help"
             android:title="帮助与反馈" />
 
     </group>
 
-    <item
-        android:checkable="true"
-        android:title="模式">
+    <item android:title="模式">
         <menu>
             <item
                 android:id="@+id/nav_store"
