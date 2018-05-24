@@ -23,6 +23,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.codbking.widget.DatePickDialog;
+import com.codbking.widget.bean.DateType;
 import com.example.lenovo.elapp.AchievementActivity;
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
@@ -52,7 +54,26 @@ public class MainActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
-
+        Button button = (Button)findViewById(R.id.main_return);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickDialog dialog = new DatePickDialog(MainActivity.this);
+                //设置上下年分限制
+                dialog.setYearLimt(5);
+                //设置标题
+                dialog.setTitle("选择时间");
+                //设置类型
+                dialog.setType(DateType.TYPE_HM);
+                //设置消息体的显示格式，日期格式
+                dialog.setMessageFormat("yyyy-MM-dd HH:mm");
+                //设置选择回调
+                dialog.setOnChangeLisener(null);
+                //设置点击确定按钮回调
+                dialog.setOnSureLisener(null);
+                dialog.show();
+            }
+        });
     }
 
     @Override

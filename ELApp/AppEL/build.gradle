@@ -66,6 +66,7 @@ dependencies {
     //        exclude group: 'com.android.support'
     //    }//透明指示层
     //    compile 'me.jahirfiquitiva:FABsMenu:1.0.3'
+    compile 'com.github.codbking:PickTime:v1.0.1'
 }
 repositories {
     mavenCentral()
