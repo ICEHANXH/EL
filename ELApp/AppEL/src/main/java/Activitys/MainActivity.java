@@ -50,15 +50,6 @@ public class MainActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
-        Button button_ = findViewById(R.id.titleButton);
-        button_.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NewTaskActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
     }
 

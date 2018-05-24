@@ -66,7 +66,6 @@ dependencies {
     //        exclude group: 'com.android.support'
     //    }//透明指示层
     //    compile 'me.jahirfiquitiva:FABsMenu:1.0.3'
-
 }
 repositories {
     mavenCentral()
