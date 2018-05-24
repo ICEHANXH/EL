@@ -52,7 +52,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:orientation="horizontal">
+
 
 
                 <EditText
@@ -98,6 +100,7 @@
                 android:layout_weight="1"
                 android:text="未完成"
                 android:textColor="@color/maincolor"
+                android:background="@color/white"
                 android:textSize="32sp" />
 
             <TextView
@@ -113,7 +116,7 @@
                 android:layout_height="10dp"
                 android:layout_weight="1"
                 android:text="已完成"
-                android:textColor="@color/maincolor2"
+                android:textColor="@color/maincolor"
                 android:textSize="32sp" />
 
             <TextView
