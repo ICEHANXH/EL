@@ -21,7 +21,7 @@ public class storySeventhActivity extends AppCompatActivity {
         if(actionBar!=null){
             actionBar.hide();
         }
-        Button button = (Button)findViewById(R.id.button7);
+        Button button = (Button)findViewById(R.id.buttonStory7);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
